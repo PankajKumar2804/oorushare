@@ -61,19 +61,19 @@ def create_deck(filename):
     s1 = prs.slides.add_slide(blank_layout)
     set_slide_bg(s1, C_DARK)
 
-    # Pill badge
-    pill = s1.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE, Inches(0.8), Inches(1.2), Inches(5.8), Inches(0.4))
-    pill.fill.solid()
-    pill.fill.fore_color.rgb = C_SLATE
-    pill.line.color.rgb = C_BLUE
-    p_tf = pill.text_frame
+    # Eyebrow tag (Strict Carbon v11 rectangle tag)
+    tag_s1 = s1.shapes.add_shape(MSO_SHAPE.RECTANGLE, Inches(0.8), Inches(1.2), Inches(6.8), Inches(0.38))
+    tag_s1.fill.solid()
+    tag_s1.fill.fore_color.rgb = C_SLATE
+    tag_s1.line.color.rgb = C_BLUE
+    tag_s1.line.width = Pt(2)
+    p_tf = tag_s1.text_frame
     p_tf.word_wrap = False
     pp = p_tf.paragraphs[0]
-    pp.text = "IBM BOBATHON: BUILD FOR BENGALURU  |  THEME 1"
-    pp.font.size = Pt(10)
+    pp.text = "IBM BOBATHON: BUILD FOR BENGALURU  |  THEME 1: SMARTER STREETS BETTER LIVING"
+    pp.font.size = Pt(9.5)
     pp.font.bold = True
     pp.font.color.rgb = C_CYAN
-    pp.alignment = PP_ALIGN.CENTER
 
     # Title
     t1_box = s1.shapes.add_textbox(Inches(0.8), Inches(1.8), Inches(11.5), Inches(1.5))
@@ -128,7 +128,8 @@ def create_deck(filename):
     # ==========================================
     s2 = prs.slides.add_slide(blank_layout)
     set_slide_bg(s2, C_BG_LIGHT)
-    add_header(s2, "The Problem: Why 10-Minute Delivery Broke Bengaluru's Residential Bylanes")
+    add_header(s2, "The Problem: Why 10-Minute Delivery Broke Bengaluru's Residential Bylanes",
+               "REQUIREMENT 1: THE PROBLEM — WHO EXPERIENCES IT & WHAT NEEDS TO IMPROVE?")
 
     # Lead text
     lead_box = s2.shapes.add_textbox(Inches(0.8), Inches(1.4), Inches(11.7), Inches(0.6))
@@ -249,7 +250,8 @@ def create_deck(filename):
     # ==========================================
     s4 = prs.slides.add_slide(blank_layout)
     set_slide_bg(s4, C_BG_LIGHT)
-    add_header(s4, "The Prototype: 4 Working Dashboards Built with IBM Bob")
+    add_header(s4, "The Prototype: 4 Working Dashboards Built with IBM Bob",
+               "REQUIREMENT 2: THE PROTOTYPE — A WORKING SOLUTION WITH AGENTIC AI")
 
     dashboards = [
         ("1. Resident Dashboard (resident.html)",
@@ -266,9 +268,9 @@ def create_deck(filename):
         row = i // 2
         col = i % 2
         left = Inches(0.8 + col * 5.95)
-        top = Inches(1.6 + row * 2.65)
+        top = Inches(1.5 + row * 2.3)
         
-        d_box = s4.shapes.add_shape(MSO_SHAPE.RECTANGLE, left, top, Inches(5.75), Inches(2.4))
+        d_box = s4.shapes.add_shape(MSO_SHAPE.RECTANGLE, left, top, Inches(5.75), Inches(2.15))
         d_box.fill.solid()
         d_box.fill.fore_color.rgb = C_CARD_BG
         d_box.line.color.rgb = C_CARD_BORDER
@@ -278,14 +280,33 @@ def create_deck(filename):
         
         dp1 = dtf.paragraphs[0]
         dp1.text = title
-        dp1.font.size = Pt(13)
+        dp1.font.size = Pt(12)
         dp1.font.bold = True
         dp1.font.color.rgb = C_BLUE
         
         dp2 = dtf.add_paragraph()
         dp2.text = desc
-        dp2.font.size = Pt(10)
+        dp2.font.size = Pt(9.5)
         dp2.font.color.rgb = RGBColor(60, 60, 60)
+
+    # Asymmetric Onboarding Banner
+    onboarding_box = s4.shapes.add_shape(MSO_SHAPE.RECTANGLE, Inches(0.8), Inches(6.15), Inches(11.7), Inches(0.95))
+    onboarding_box.fill.solid()
+    onboarding_box.fill.fore_color.rgb = C_SLATE
+    onboarding_box.line.color.rgb = C_BLUE
+    onboarding_box.line.width = Pt(1.5)
+    ob_tf = onboarding_box.text_frame
+    ob_tf.word_wrap = True
+    ob_p1 = ob_tf.paragraphs[0]
+    ob_p1.text = "ASYMMETRIC TWO-SIDED ONBOARDING: Overcoming the Gig Cold-Start Barrier"
+    ob_p1.font.size = Pt(10.5)
+    ob_p1.font.bold = True
+    ob_p1.font.color.rgb = C_CYAN
+
+    ob_p2 = ob_tf.add_paragraph()
+    ob_p2.text = "• DEMAND: B2B Business Associate Agreement (BAA) with quick-commerce platforms (Blinkit/Zepto) streams active rosters via webhooks—zero rider app install required! • SUPPLY: Grassroots RWA campaigns onboard driveway owners (+10 credits/drop = ₹150–₹350/mo society maintenance fee offset)."
+    ob_p2.font.size = Pt(9.2)
+    ob_p2.font.color.rgb = RGBColor(220, 220, 220)
 
     # ==========================================
     # SLIDE 5: The Agentic AI Core (Theme 1 Core)
@@ -345,7 +366,8 @@ def create_deck(filename):
     # ==========================================
     s6 = prs.slides.add_slide(blank_layout)
     set_slide_bg(s6, C_BG_LIGHT)
-    add_header(s6, "The Bob Story: How IBM Bob Co-Architected OoruShare")
+    add_header(s6, "The Bob Story: How IBM Bob Co-Architected OoruShare",
+               "REQUIREMENT 3: THE BOB STORY — HOW THE TEAM USED BOB THROUGHOUT DEVELOPMENT")
 
     bob_steps = [
         ("Step 1: Problem Definition & Responsible AI",
@@ -447,7 +469,8 @@ def create_deck(filename):
     # ==========================================
     s8 = prs.slides.add_slide(blank_layout)
     set_slide_bg(s8, C_BG_LIGHT)
-    add_header(s8, "Safety & Governance: Privacy and Human Review by Design")
+    add_header(s8, "Safety & Governance: Privacy and Human Review by Design",
+               "REQUIREMENT 5: SAFETY-FOCUSED — PRIVACY AND HUMAN REVIEW IN DESIGN")
 
     safety_cards = [
         ("1. RWA Human-in-the-Loop Verification",
@@ -531,7 +554,7 @@ def create_deck(filename):
     set_slide_bg(s10, C_DARK)
 
     s10_tag = s10.shapes.add_textbox(Inches(0.8), Inches(0.6), Inches(11.7), Inches(0.35))
-    s10_tag.text_frame.paragraphs[0].text = "IBM BOBATHON SUBMISSION SUMMARY"
+    s10_tag.text_frame.paragraphs[0].text = "IBM BOBATHON SUBMISSION SUMMARY: ALL PARTICIPATION REQUIREMENTS SATISFIED"
     s10_tag.text_frame.paragraphs[0].font.size = Pt(10)
     s10_tag.text_frame.paragraphs[0].font.bold = True
     s10_tag.text_frame.paragraphs[0].font.color.rgb = C_CYAN
