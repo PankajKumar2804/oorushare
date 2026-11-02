@@ -61,6 +61,19 @@ a { color: var(--blue); }
   letter-spacing: 0.04em;
   text-transform: uppercase;
   margin-right: auto;
+  display: flex;
+  align-items: center;
+}
+.header-theme-tag {
+  font-size: 0.72rem;
+  font-weight: 400;
+  color: var(--gray-50);
+  letter-spacing: 0.02em;
+  margin-left: 0.65rem;
+  text-transform: none;
+}
+@media (max-width: 960px) {
+  .header-theme-tag { display: none; }
 }
 .os-header .nav         { display: flex; gap: 0; }
 .os-header .nav a       { color: var(--gray-50); text-decoration: none; font-size: 0.8125rem; padding: 0 1rem; line-height: 3rem; border-bottom: 2px solid transparent; transition: color 0.15s; }
