@@ -225,9 +225,19 @@ a { color: var(--blue); }
 /* ─── 17. Filter bar ────────────────────────────────────────────────────── */
 .filter-bar { display: flex; gap: 0.75rem; align-items: center; flex-wrap: wrap; margin-bottom: 1rem; }
 .filter-bar .form-input { width: auto; }
-.live-dot { font-size: 0.8rem; white-space: nowrap; }
-.live-dot.on  { color: var(--green); }
-.live-dot.off { color: var(--red); }
+.status-badge {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: 0.2rem 0.5rem;
+  border: 1px solid var(--gray-30);
+  background: var(--gray-10);
+  color: var(--gray-70);
+  white-space: nowrap;
+}
+.status-badge.on  { border-color: #a7f0ba; background: #defbe6; color: #0e6027; }
+.status-badge.off { border-color: #ffd7d9; background: #fff1f1; color: #a2191f; }
 
 /* ─── 18. Queue rows ────────────────────────────────────────────────────── */
 .queue-row-pending    td:first-child { border-left: 3px solid var(--blue); }
@@ -422,26 +432,17 @@ a { color: var(--blue); }
   position: relative;
   z-index: 2;
 }
-.hero-pill {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  background: rgba(15, 98, 254, 0.15);
-  border: 1px solid #0f62fe;
+.hero-eyebrow {
+  display: inline-block;
   color: #78a9ff;
   font-family: var(--font-mono);
-  font-size: 0.75rem;
-  padding: 0.3rem 0.75rem;
-  margin-bottom: 1.25rem;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
-}
-.hero-pill .dot {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: #42be65;
-  box-shadow: 0 0 8px #42be65;
+  margin-bottom: 1.25rem;
+  border-left: 3px solid #0f62fe;
+  padding-left: 0.75rem;
 }
 .hero-title {
   font-size: 2.75rem;

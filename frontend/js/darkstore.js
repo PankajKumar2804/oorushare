@@ -215,13 +215,17 @@ function connectSSE() {
   sse.onmessage = () => { loadQueue(); loadStats(); };
   sse.onerror   = () => {
     const ind = document.getElementById('queue-live');
-    ind.textContent = '● Offline'; ind.className = 'live-dot off';
+    if (ind) {
+      ind.textContent = 'Reconnecting'; ind.className = 'status-badge off';
+    }
     sse.close();
     setTimeout(connectSSE, 5000);
   };
   sse.onopen = () => {
     const ind = document.getElementById('queue-live');
-    ind.textContent = '● Live'; ind.className = 'live-dot on';
+    if (ind) {
+      ind.textContent = 'Queue Active'; ind.className = 'status-badge on';
+    }
   };
 }
 

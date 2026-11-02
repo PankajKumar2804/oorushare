@@ -361,8 +361,8 @@ function connectSSE() {
   sse.onerror = () => {
     const ind = document.getElementById('live-indicator');
     if (ind) {
-      ind.textContent = '● OFFLINE';
-      ind.className = 'live-dot off';
+      ind.textContent = 'Reconnecting';
+      ind.className = 'status-badge off';
     }
     sse.close();
     setTimeout(connectSSE, 5000);
@@ -370,8 +370,8 @@ function connectSSE() {
   sse.onopen = () => {
     const ind = document.getElementById('live-indicator');
     if (ind) {
-      ind.textContent = '● LIVE';
-      ind.className = 'live-dot on';
+      ind.textContent = 'Radar Active';
+      ind.className = 'status-badge on';
     }
   };
 }
