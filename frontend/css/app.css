@@ -30,7 +30,7 @@
 
 /* ─── 2. Reset & base ───────────────────────────────────────────────────── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; background: #161616; }
 
 body {
   background:  var(--gray-10);
@@ -38,6 +38,7 @@ body {
   font-size:   14px;
   line-height: 1.5;
   color:       var(--gray-100);
+  min-height:  100vh;
 }
 
 a { color: var(--blue); }
@@ -83,10 +84,11 @@ a { color: var(--blue); }
 /* ─── 4. Page wrapper ───────────────────────────────────────────────────── */
 .page {
   margin-top:  0;
-  padding:     4.25rem 1.5rem 3rem;
+  padding:     4.25rem 1.5rem 5.5rem;
   max-width:   1200px;
   margin-left: auto;
   margin-right: auto;
+  min-height:  calc(100vh - 2.5rem);
 }
 
 .page-title {
@@ -272,7 +274,7 @@ a { color: var(--blue); }
 
 /* ─── 21. Toast ─────────────────────────────────────────────────────────── */
 .toast {
-  position: fixed; bottom: 1.5rem; right: 1.5rem;
+  position: fixed; bottom: 3.5rem; right: 1.5rem;
   background: var(--gray-90); color: var(--white);
   padding:    0.75rem 1.125rem;
   font-size:  0.875rem;
@@ -290,7 +292,7 @@ a { color: var(--blue); }
 @media (max-width: 768px) {
   .grid-2, .grid-3, .grid-4, .form-row, .form-row-3 { grid-template-columns: 1fr; }
   #map { height: 300px; }
-  .page { padding: 1.5rem 1rem 2rem; }
+  .page { padding: 4.25rem 1rem 5rem; }
   .filter-bar { flex-direction: column; align-items: stretch; }
   .filter-bar .form-input { width: 100%; }
   .os-table { font-size: 0.8rem; }
@@ -836,10 +838,15 @@ a { color: var(--blue); }
 .bob-colophon {
   background: #161616;
   color: #8d8d8d;
-  padding: 1.5rem 1.5rem;
+  padding: 0.6rem 1.5rem;
   border-top: 1px solid #262626;
   font-size: 0.8125rem;
-  margin-top: 4rem;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  margin-top: 0;
 }
 .bob-colophon-inner {
   max-width: 1200px;
@@ -847,28 +854,32 @@ a { color: var(--blue); }
   display: flex;
   justify-content: space-between;
   align-items: center;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   gap: 1rem;
 }
 .bob-colophon .brand-text {
   font-weight: 500;
   color: #c6c6c6;
-  font-size: 0.8125rem;
+  font-size: 0.775rem;
 }
 .bob-colophon .brand-sub {
   color: #6f6f6f;
-  font-size: 0.75rem;
-  margin-top: 0.2rem;
+  font-size: 0.7rem;
+  margin-top: 0.1rem;
 }
 .bob-colophon .bob-tag {
   font-family: var(--font-mono);
-  font-size: 0.72rem;
+  font-size: 0.7rem;
   color: #a8a8a8;
   background: #262626;
   border: 1px solid #393939;
-  padding: 0.25rem 0.65rem;
+  padding: 0.2rem 0.55rem;
   letter-spacing: 0.04em;
   text-transform: uppercase;
+  white-space: nowrap;
+}
+@media (max-width: 768px) {
+  .bob-colophon .brand-sub { display: none; }
 }
 
 
