@@ -95,3 +95,53 @@ The marketing page is not a static mockup; it dynamically hydrates from live bac
 - Fully responsive across mobile (delivery riders on phones) and 4K desktop (judges & dispatch monitors).
 - Non-blocking asynchronous fetches with graceful fallback if the local daemon is rebooting.
 
+---
+
+## 7. Enterprise Onboarding & The Asymmetric Two-Sided Market Model
+
+A critical failure mode of typical gig-economy civic hacks is expecting 50,000 delivery riders to independently discover, download, and register on a standalone app. OoruShare solves this cold-start barrier through an **Asymmetric Onboarding Architecture**:
+
+```
+┌────────────────────────────────────────────────────────────────────────────────────────┐
+│                        ASYMMETRIC TWO-SIDED ONBOARDING MODEL                           │
+├────────────────────────────────────────────────────────────────────────────────────────┤
+│                                                                                        │
+│   [SUPPLY: RESIDENTS]                             [DEMAND: GIG RIDERS & FLEETS]        │
+│   Hyperlocal Grassroots Marketing                 B2B Enterprise BAA & API Federation  │
+│   ───────────────────────────────                 ───────────────────────────────────  │
+│   • Channel: RWA associations, society            • Channel: Business Associate        │
+│     gate flyers, community WhatsApp,                Agreement (BAA) with Blinkit,      │
+│     MyGate / NoBrokerHood notices.                  Zepto, Swiggy Instamart, Dunzo.    │
+│   • Value Hook: Earn RWA maintenance              • Zero Rider Friction: Riders do NOT │
+│     credits (₹150-₹350/mo bill offset).             download or register on OoruShare. │
+│   • Listing Effort: 60-second web form            • Automated Ingestion: Rider shift   │
+│     (address, slot hours, gate width).              rosters and active drop targets    │
+│   • Trust Gate: RWA committee verifies              pulled via enterprise webhooks     │
+│     and approves driveway listings.                 (`POST /integrations/dispatch`).   │
+│                                                   • In-App Turn-by-Turn: Allocated     │
+│                                                     curb bay coordinates pushed        │
+│                                                     directly into the rider's existing │
+│                                                     delivery app navigation!           │
+└────────────────────────────────────────────────────────────────────────────────────────┘
+```
+
+### 7.1 Supply Side (Resident Driveway Crowdsourcing)
+- **Grassroots Hyperlocal Marketing**: Driveways are onboarded on an individual resident basis via targeted society campaigns across high-density pilot corridors (HSR Layout Sector 1, Indiranagar 100 Feet Road, Koramangala 80 Feet Road).
+- **The Financial Incentive**: Driveways sitting empty during standard working hours (9:00 AM – 6:00 PM) generate verifiable community credits (+10 credits/drop), redeemable at a guaranteed rate of ₹50 per 10 credits toward society maintenance dues.
+- **RWA Governance Gate**: The Resident Welfare Association acts as the local trust authority, approving listings to prevent fraudulent addresses or unsafe access points.
+
+### 7.2 Demand Side (B2B Fleet Federation via BAA)
+- **Business Associate Agreement (BAA)**: Quick-commerce dark store operators enter into a civic data-sharing agreement with OoruShare.
+- **Zero Rider Friction**: Riders never need to install or monitor a separate app while navigating Bengaluru traffic. The dark store dispatch engine queries `POST /integrations/dispatch` at order checkout, and the allocated 2-minute curb bay is returned directly to the rider's existing platform app as the recommended parking coordinate.
+
+---
+
+## 8. DPDP Act 2023 Compliance & Data Governance
+
+Under India's **Digital Personal Data Protection (DPDP) Act 2023**, sharing unmasked personal identifiers across commercial platforms is heavily restricted. OoruShare implements strict privacy-preserving architectural boundaries:
+
+1. **Tokenized Identity Federation**: Platforms push anonymized tokens (e.g., `rider_token: "BLK_HSR_4021"`, masked vehicle number `KA01***39`), preventing PII leakage across third-party networks.
+2. **Geofenced Temporal Scoping**: Loading bay reservations are strictly time-bounded to 2 minutes with atomic advisory locks (`pg_try_advisory_xact_lock`), self-expiring upon departure.
+3. **Audit Immutability**: All BAA dispatch transactions are recorded in the audit trail without exposing personal resident or rider identity to external telemetry consumers.
+
+

@@ -452,8 +452,8 @@ def create_deck(filename):
     safety_cards = [
         ("1. RWA Human-in-the-Loop Verification",
          "No driveway enters the active dispatch radar without explicit human review from the local Resident Welfare Association. RWAs audit gate widths (minimum 2.5m for bikes), compound visibility, and resident authorization."),
-        ("2. Ephemeral PII & Zero Data Leakage",
-         "Riders and residents never receive each other's private phone numbers or personal identities. Bookings use short-lived order tokens (e.g. 'Order #9842 · Blinkit') that expire immediately upon drop completion."),
+        ("2. BAA Fleet Federation & DPDP Compliance",
+         "Quick-commerce fleets integrate via enterprise Business Associate Agreements (BAAs). Shift rosters and drop targets are federated via webhooks directly into the rider's existing delivery GPS—zero rider app install required. Driveways are crowdsourced organically via grassroots RWA marketing. Zero PII stored (DPDP Act 2023)."),
         ("3. Strict 2-Minute Loading Cap",
          "Bays are strictly designated as 2-minute temporary loading zones, not long-term parking. Any bike remaining past 5 minutes triggers an automated alert to dark store dispatch supervisors."),
         ("4. Transparent watsonx Audit Trail",

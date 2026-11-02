@@ -129,8 +129,8 @@ tr:last-child td{border-bottom:none}
 <h3>4.2 Location data</h3>
 <div class="callout cr"><strong>Sensitive data notice:</strong> Residential addresses and GPS coordinates are stored in plain text. Production deployments must enable PostgreSQL column-level encryption or use a cloud KMS-backed storage solution before handling real residential data at scale.</div>
 
-<h3>4.3 No cross-platform tracking</h3>
-<p>OoruShare does not share rider or resident data with delivery platforms (Blinkit, Zepto, Swiggy, Dunzo). The <code>platform</code> field is a self-reported label used only for display purposes.</p>
+<h3>4.3 B2B Fleet Integration &amp; DPDP Act 2023 Compliance</h3>
+<p>In accordance with India's <strong>Digital Personal Data Protection (DPDP) Act 2023</strong>, delivery platforms (Blinkit, Zepto, Swiggy) enter into a <strong>Business Associate Agreement (BAA) / Civic Integration SLA</strong> with OoruShare. Active delivery shifts and drop targets are ingested via automated webhooks (<code>POST /integrations/dispatch</code>). Rider identities are strictly pseudonymized via tokenized identifiers (e.g. <code>rider_token: "BLK_HSR_4021"</code>). Riders do not undergo separate KYC or redundant onboarding, eliminating friction while ensuring zero PII leakage to driveway owners.</p>
 
 <h2>5 · Safety &amp; Robustness</h2>
 <h3>5.1 Abuse prevention</h3>

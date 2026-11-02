@@ -33,6 +33,11 @@ OoruShare connects four stakeholders who were never coordinated before through a
 - **Fail-Safe In-Memory Engine:** A drop-in memory database (`memdb.js`) that allows judges to test the entire application end-to-end with zero container setup.
 - **Enterprise Design:** Pixel-perfect adherence to the **IBM Carbon Design System (v11)** with IBM Plex typography.
 
+### Real-World Feasibility & Onboarding Strategy (The Asymmetric Engine)
+- **Supply-Side (Individual Residents):** Onboarded organically through grassroots hyperlocal marketing (RWA general body meetings, society gate notices, MyGate/NoBrokerHood community channels). The tangible value hook is an immediate ₹150–₹350/month offset on society maintenance dues (+10 credits/drop).
+- **Demand-Side (Riders & Fleets via BAA):** Solves the gig-economy cold start barrier. Riders do NOT download another app. Instead, OoruShare establishes a **Business Associate Agreement (BAA) / Platform Integration SLA** with quick-commerce operators (Blinkit, Zepto, Swiggy Instamart). Shift rosters and dispatch targets are federated via enterprise webhooks (`POST /integrations/dispatch`), and allocated curb bay coordinates are delivered directly inside the rider's existing delivery app turn-by-turn navigation.
+- **DPDP Act 2023 Compliance:** Rider identity is tokenized (`rider_token: "BLK_HSR_4021"`, masked vehicle number `KA01***39`), preventing PII leakage across platforms while ensuring complete regulatory compliance.
+
 ---
 
 ## 3. The Bob Story: How IBM Bob Built OoruShare
