@@ -67,7 +67,7 @@ a { color: var(--blue); }
   display: flex;
   align-items: center;
 }
-.header-theme-tag {
+.header-sub-tag {
   font-size: 0.72rem;
   font-weight: 400;
   color: var(--gray-50);
@@ -75,8 +75,8 @@ a { color: var(--blue); }
   margin-left: 0.65rem;
   text-transform: none;
 }
-@media (max-width: 960px) {
-  .header-theme-tag { display: none; }
+@media (max-width: 768px) {
+  .header-sub-tag { display: none; }
 }
 .os-header .nav         { display: flex; gap: 0; }
 .os-header .nav a       { color: var(--gray-50); text-decoration: none; font-size: 0.8125rem; padding: 0 1rem; line-height: 3rem; border-bottom: 2px solid transparent; transition: color 0.15s; }
@@ -842,7 +842,7 @@ a { color: var(--blue); }
 .bob-colophon {
   background: #161616;
   color: #8d8d8d;
-  padding: 1.25rem 1.5rem;
+  padding: 1.1rem 1.5rem;
   border-top: 1px solid #262626;
   font-size: 0.8125rem;
   margin-top: auto;
@@ -861,22 +861,36 @@ a { color: var(--blue); }
   font-weight: 500;
   color: #c6c6c6;
   font-size: 0.8125rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
-.bob-colophon .brand-sub {
-  color: #6f6f6f;
-  font-size: 0.75rem;
-  margin-top: 0.15rem;
+.bob-colophon .brand-text strong {
+  color: #ffffff;
+  font-weight: 600;
 }
 .bob-colophon .bob-tag {
   font-family: var(--font-mono);
-  font-size: 0.72rem;
-  color: #a8a8a8;
-  background: #262626;
-  border: 1px solid #393939;
-  padding: 0.25rem 0.65rem;
+  font-size: 0.75rem;
+  color: #e0e0e0;
+  background: #222222;
+  border: 1px solid #333333;
+  padding: 0.3rem 0.75rem;
   letter-spacing: 0.04em;
-  text-transform: uppercase;
   white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+.ibm-logo-mark {
+  background: #0f62fe;
+  color: #ffffff;
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 0.65rem;
+  letter-spacing: 0.08em;
+  padding: 0.1rem 0.35rem;
+  line-height: 1.2;
 }
 
 
