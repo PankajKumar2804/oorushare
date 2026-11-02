@@ -75,6 +75,11 @@ def create_deck(filename):
     pp.font.bold = True
     pp.font.color.rgb = C_CYAN
 
+    # Official IBM Bob Mascot (Holding </> signboard)
+    bob_img_path = "frontend/images/ibm-bob.png"
+    if os.path.exists(bob_img_path):
+        s1.shapes.add_picture(bob_img_path, Inches(10.7), Inches(0.9), width=Inches(1.8))
+
     # Title
     t1_box = s1.shapes.add_textbox(Inches(0.8), Inches(1.8), Inches(11.5), Inches(1.5))
     t1_tf = t1_box.text_frame
@@ -369,6 +374,10 @@ def create_deck(filename):
     add_header(s6, "The Bob Story: How IBM Bob Co-Architected OoruShare",
                "REQUIREMENT 3: THE BOB STORY — HOW THE TEAM USED BOB THROUGHOUT DEVELOPMENT")
 
+    # Official IBM Bob Mascot
+    if os.path.exists(bob_img_path):
+        s6.shapes.add_picture(bob_img_path, Inches(10.3), Inches(2.0), width=Inches(2.2))
+
     bob_steps = [
         ("Step 1: Problem Definition & Responsible AI",
          "Before writing any code, IBM Bob drafted our Responsible AI Principles (oorushare-responsible-ai-principles.html), establishing human-in-the-loop RWA oversight, zero PII storage, and algorithmic fairness across delivery platforms."),
@@ -384,7 +393,7 @@ def create_deck(filename):
 
     for i, (stitle, sbody) in enumerate(bob_steps):
         top = Inches(1.6 + i * 1.05)
-        b_card = s6.shapes.add_shape(MSO_SHAPE.RECTANGLE, Inches(0.8), top, Inches(11.7), Inches(0.95))
+        b_card = s6.shapes.add_shape(MSO_SHAPE.RECTANGLE, Inches(0.8), top, Inches(9.2), Inches(0.95))
         b_card.fill.solid()
         b_card.fill.fore_color.rgb = C_CARD_BG
         b_card.line.color.rgb = C_CARD_BORDER

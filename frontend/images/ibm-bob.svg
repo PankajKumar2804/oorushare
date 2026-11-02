@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bob-helmet-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2563eb"/>
+      <stop offset="100%" stop-color="#4f46e5"/>
+    </linearGradient>
+  </defs>
+  <!-- Ears / Bolts -->
+  <rect x="16" y="46" width="12" height="20" rx="5" fill="#cbd5e1" stroke="#0f172a" stroke-width="3"/>
+  <rect x="92" y="46" width="12" height="20" rx="5" fill="#cbd5e1" stroke="#0f172a" stroke-width="3"/>
+  <!-- Head Base -->
+  <rect x="24" y="38" width="72" height="46" rx="16" fill="#f8fafc" stroke="#0f172a" stroke-width="3.5"/>
+  <!-- Helmet Dome -->
+  <path d="M22 44 C 22 14, 98 14, 98 44 Z" fill="url(#bob-helmet-grad)" stroke="#0f172a" stroke-width="3.5" stroke-linejoin="round"/>
+  <!-- Helmet Center Ridge -->
+  <path d="M50 20 C 50 14, 70 14, 70 20 L70 40 L50 40 Z" fill="#1d4ed8" opacity="0.3"/>
+  <!-- Helmet Brim -->
+  <path d="M18 44 C 18 40, 102 40, 102 44 C 102 48, 18 48, 18 44 Z" fill="#2563eb" stroke="#0f172a" stroke-width="3.5"/>
+  <!-- Eyes -->
+  <circle cx="43" cy="56" r="8" fill="#0f172a"/>
+  <circle cx="45.5" cy="53.5" r="2.5" fill="#ffffff"/>
+  <circle cx="77" cy="56" r="8" fill="#0f172a"/>
+  <circle cx="79.5" cy="53.5" r="2.5" fill="#ffffff"/>
+  <!-- Smile -->
+  <path d="M53 66 Q 60 72 67 66" fill="none" stroke="#0f172a" stroke-width="3.5" stroke-linecap="round"/>
+  <!-- Body / Arms -->
+  <ellipse cx="30" cy="88" rx="8" ry="14" fill="#f8fafc" stroke="#0f172a" stroke-width="3.5" transform="rotate(15 30 88)"/>
+  <ellipse cx="90" cy="88" rx="8" ry="14" fill="#f8fafc" stroke="#0f172a" stroke-width="3.5" transform="rotate(-15 90 88)"/>
+  <!-- Signboard -->
+  <rect x="28" y="70" width="64" height="38" rx="8" fill="#ffffff" stroke="#0f172a" stroke-width="3.5"/>
+  <!-- Code Icon </> -->
+  <path d="M44 83 L36 89 L44 95" fill="none" stroke="#2563eb" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M56 97 L64 81" fill="none" stroke="#2563eb" stroke-width="4.5" stroke-linecap="round"/>
+  <path d="M76 83 L84 89 L76 95" fill="none" stroke="#2563eb" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- Hands over signboard -->
+  <circle cx="30" cy="89" r="6.5" fill="#f8fafc" stroke="#0f172a" stroke-width="3"/>
+  <circle cx="90" cy="89" r="6.5" fill="#f8fafc" stroke="#0f172a" stroke-width="3"/>
+</svg>

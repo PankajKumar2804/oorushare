@@ -56,7 +56,7 @@ window.runJudgeTour = async function() {
   } finally {
     if (btn) {
       btn.disabled = false;
-      btn.textContent = 'Run Simulation (Theme 1)';
+      btn.textContent = 'Run 30s Agent Tour';
     }
   }
 };
@@ -68,11 +68,11 @@ function createTourModal() {
   div.innerHTML = `
     <div class="wx-modal">
       <h3>
-        <span>OoruShare Autonomous Curb Governor · Audit Trace</span>
+        <span style="display:flex;align-items:center;gap:0.5rem;"><img src="images/ibm-bob.svg" width="22" height="22" alt="IBM Bob" /> OoruShare Autonomous Curb Governor &mdash; Audit Trace</span>
         <button onclick="document.getElementById('wx-tour-modal').style.display='none'" style="background:none;border:none;font-size:1.1rem;cursor:pointer;color:var(--gray-70);">&times;</button>
       </h3>
       <div style="font-size:0.78rem;color:var(--gray-70);margin-bottom:0.85rem;">
-        Theme 1: Smarter Streets Better Living · Bengaluru Bylane Capacity Governor (Built with IBM Bob)
+        Bengaluru Bylane Capacity Governor &middot; Built with IBM Bob
       </div>
 
       <div class="wx-metrics-grid">

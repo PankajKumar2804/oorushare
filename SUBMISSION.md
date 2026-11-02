@@ -101,7 +101,7 @@ Then open in your browser:
 - **Rider Spatial Radar:** `http://localhost:3001/rider.html`
 - **Dark Store Co-pilot:** `http://localhost:3001/darkstore.html`
 - **RWA Admin Console:** `http://localhost:3001/rwa.html`
-- **1-Click Simulation:** Click "Run Simulation (Theme 1)" in the top navigation bar!
+- **1-Click Simulation:** Click "Run 30s Agent Tour" in the top navigation bar!
 
 ### Option B — Production Docker Stack
 ```bash
@@ -110,5 +110,5 @@ docker compose up
 Open `http://localhost:8081` in your browser.
 
 ### The 10-Second Judge Tour:
-Click the **"🚀 Bobathon Judge Tour"** button in the header of any screen to watch the complete autonomous agentic loop execute live!
+Click the **"Run 30s Agent Tour"** button in the header of any screen to watch the complete autonomous agentic loop execute live!
 
