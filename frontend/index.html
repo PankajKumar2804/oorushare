@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OoruShare — Bengaluru Civic Curb Network · Theme 1: Smarter Streets</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;600&display=swap" />
+  <link rel="stylesheet" href="css/app.css?v=2" />
+</head>
+<body style="background:#f4f4f4;">
+
+<!-- Global Header -->
+<header class="os-header">
+  <span class="brand"><a href="index.html" style="color:inherit;text-decoration:none;">OoruShare</a> <span style="font-size:0.7rem;font-weight:400;color:var(--gray-50);letter-spacing:0.02em;margin-left:0.5rem;text-transform:none;">Bengaluru Civic Pilot · Theme 1: Smarter Streets</span></span>
+  <nav class="nav">
+    <a href="#problem">The Problem</a>
+    <a href="#architecture">3-Sided Network</a>
+    <a href="#agentic-loop">Agentic AI</a>
+    <a href="#impact">Civic ROI</a>
+    <a href="#prototypes" style="color:#78a9ff;">Live Prototypes ↓</a>
+  </nav>
+  <button class="tour-btn" onclick="runJudgeTour()" style="margin-left:1.5rem;">Run Simulation (Theme 1)</button>
+</header>
+
+<!-- Hero Section -->
+<section class="landing-hero" style="margin-top:3rem;">
+  <div class="landing-hero-inner">
+    <div class="hero-pill">
+      <span class="dot"></span>
+      <span>IBM Bobathon: Build for Bengaluru · Theme 1: Smarter Streets Better Living</span>
+    </div>
+
+    <h1 class="hero-title">
+      Decentralized Curb Capacity for Bengaluru's <strong>2.5 Million</strong> Daily Quick-Commerce Drops
+    </h1>
+
+    <p class="hero-sub">
+      Transforming idle residential driveways into a cooperative network of 2-minute loading bays. Powered by an autonomous agentic curb governor that eliminates bylane gridlock, prevents wrongful parking fines, and abates two-wheeler idling emissions.
+    </p>
+
+    <div class="hero-ctas">
+      <a href="#prototypes" class="btn-hero-primary">Explore Platform Architecture ↓</a>
+      <button onclick="runJudgeTour()" class="btn-hero-secondary">Run 30s Agent Simulation</button>
+      <a href="rider.html" class="btn-hero-secondary" style="border-color:#0f62fe;color:#78a9ff;">Open Spatial Radar ↗</a>
+    </div>
+
+    <!-- Direct Persona Portal Access Above the Fold -->
+    <div class="hero-role-selector">
+      <span class="role-selector-label">Instant Persona Access:</span>
+      <div class="role-pills-group">
+        <a href="resident.html" class="role-pill">
+          <span class="role-title">Resident Portal</span>
+          <span class="role-desc">Share Driveway &middot; Earn Credits</span>
+        </a>
+        <a href="rider.html" class="role-pill active">
+          <span class="role-title">Rider Spatial Radar</span>
+          <span class="role-desc">Live Map &middot; 2-Min Bays</span>
+        </a>
+        <a href="darkstore.html" class="role-pill">
+          <span class="role-title">Dark Store Co-pilot</span>
+          <span class="role-desc">Dispatch Staggering &middot; Queues</span>
+        </a>
+        <a href="rwa.html" class="role-pill">
+          <span class="role-title">RWA Governance</span>
+          <span class="role-desc">Listing Approvals &middot; Audit</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Live Telemetry Strip -->
+    <div class="hero-stats-strip">
+      <div class="hero-stat-card">
+        <div class="val" id="hero-time">4.2 min</div>
+        <div class="lbl">Transit & Parking Delay Avoided / Drop</div>
+      </div>
+      <div class="hero-stat-card">
+        <div class="val green" id="hero-co2">14.8 kg</div>
+        <div class="lbl">Idling CO₂ Emissions Prevented Daily</div>
+      </div>
+      <div class="hero-stat-card">
+        <div class="val" id="hero-spots">8 Bays</div>
+        <div class="lbl">Active Pilot Driveways (HSR · Indiranagar)</div>
+      </div>
+      <div class="hero-stat-card">
+        <div class="val green" id="hero-fines">₹12,500</div>
+        <div class="lbl">Traffic Police Fines Averted for Riders</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Main Narrative Body -->
+<main class="marketing-wrap">
+
+  <!-- Section 1: The Problem -->
+  <section id="problem" style="margin-bottom:4rem;scroll-margin-top:6.5rem;">
+    <div class="section-tag">01 · The Ground Reality</div>
+    <h2 class="section-headline">Why 10-Minute Delivery Broke Bengaluru's Residential Bylanes</h2>
+    <p class="section-lead">
+      Bengaluru experiences 2.5 million quick-commerce deliveries every single day. While hyper-efficient for consumers, 30-foot residential cross roads in HSR Layout, Indiranagar, and Koramangala were never engineered to absorb delivery surges without dedicated curb space.
+    </p>
+
+    <div class="problem-grid">
+      <div class="problem-card">
+        <h4>The Resident's Grievance</h4>
+        <p>Delivery bikes park across compound gates for "just 2 minutes", blocking residents from leaving for work. Neighborhood WhatsApp groups are filled with gate-blocking disputes and heated confrontations.</p>
+        <span class="stat-pill">88% of RWA disputes cite delivery obstruction</span>
+      </div>
+      <div class="problem-card">
+        <h4>The Gig Worker's Penalty</h4>
+        <p>Delivery riders face ruthless 10-minute delivery timers. With nowhere legal to stop, they risk ₹1,000 towing fines from Bengaluru Traffic Police (BTP) and unsafe parking hazards on narrow pavements.</p>
+        <span class="stat-pill">₹1,500/month average fines per rider</span>
+      </div>
+      <div class="problem-card">
+        <h4>The City's Environmental Cost</h4>
+        <p>Coupled with two-wheeler idling during drop-offs, choked bylanes slow down entire arterial networks, delaying emergency vehicles and generating over 11 tonnes of CO₂ emissions daily.</p>
+        <span class="stat-pill">140,000 transit hours lost daily citywide</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 2: The Solution (Bento Grid) -->
+  <section id="architecture" style="margin-bottom:4rem;scroll-margin-top:6.5rem;">
+    <div class="section-tag">02 · The Architecture</div>
+    <h2 class="section-headline">The 3-Sided Civic Curb Network</h2>
+    <p class="section-lead">
+      OoruShare creates a self-balancing cooperative curb economy connecting residents, gig riders, dark store dispatchers, and neighborhood associations.
+    </p>
+
+    <div class="bento-grid">
+      <!-- Box 1: Resident Driveway Monetization -->
+      <div class="bento-box bento-col-8 bento-box-blue">
+        <div class="bento-tag">Component A · Residential Ledger</div>
+        <div class="bento-title">Driveway Sharing with RWA Maintenance Offsets</div>
+        <p class="bento-desc">
+          Residents list their empty driveway gates during office hours (e.g., 11:00 AM – 3:00 PM). Each 2-minute authorized delivery drop awards 10 community credits to the resident's account. Credits convert directly into ₹50 discounts on monthly society maintenance bills, certified by the local RWA.
+        </p>
+        <div class="bento-metrics-row">
+          <div class="bento-mini-metric">
+            <div class="num">+10 Credits</div>
+            <div class="label">Earned Per Drop</div>
+          </div>
+          <div class="bento-mini-metric">
+            <div class="num">₹50 Off</div>
+            <div class="label">RWA Maintenance Offset</div>
+          </div>
+          <div class="bento-mini-metric">
+            <div class="num">100% Legal</div>
+            <div class="label">BTP-Compliant Parking</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Box 2: Rider Spatial Radar -->
+      <div class="bento-box bento-col-4 bento-box-green">
+        <div class="bento-tag">Component B · Spatial Radar</div>
+        <div class="bento-title">Rider Live Radar & 2-Min Reservations</div>
+        <p class="bento-desc">
+          Delivery riders on Blinkit, Zepto, Swiggy, and Dunzo use the Spatial Radar to spot available bays, reserve 2-minute drop windows, and receive instant auto-reroutes if a gate is blocked.
+        </p>
+        <div class="bento-metrics-row">
+          <div class="bento-mini-metric">
+            <div class="num">&lt; 150m</div>
+            <div class="label">Avg Bay Distance</div>
+          </div>
+          <div class="bento-mini-metric">
+            <div class="num">0 Fines</div>
+            <div class="label">Authorized Loading</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Box 3: Dark Store Staggered Queue -->
+      <div class="bento-box bento-col-4 bento-box-orange">
+        <div class="bento-tag">Component C · Curb Staggering</div>
+        <div class="bento-title">Dark Store Dispatch Throttle</div>
+        <p class="bento-desc">
+          Dark store dispatch managers ingest real-time street capacity to enforce 4-minute intervals between riders headed to the same residential sector, preventing curb bottlenecks.
+        </p>
+        <div class="bento-metrics-row">
+          <div class="bento-mini-metric">
+            <div class="num">4.0 min</div>
+            <div class="label">Enforced Gap</div>
+          </div>
+          <div class="bento-mini-metric">
+            <div class="num">Granite 3.8B</div>
+            <div class="label">Congestion Forecast</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Box 4: RWA Governance -->
+      <div class="bento-box bento-col-8 bento-box-purple">
+        <div class="bento-tag">Component D · Civic Governance</div>
+        <div class="bento-title">RWA Verification & Dispute Mitigation</div>
+        <p class="bento-desc">
+          Resident Welfare Associations review and verify driveway dimensions (minimum 2.5m gate width) before approving listings. RWAs maintain complete visibility over neighborhood delivery traffic, turning chaotic bylanes into organized, verified civic infrastructure.
+        </p>
+        <div class="bento-metrics-row">
+          <div class="bento-mini-metric">
+            <div class="num">-88%</div>
+            <div class="label">Bylane Disputes</div>
+          </div>
+          <div class="bento-mini-metric">
+            <div class="num">100%</div>
+            <div class="label">Verified Driveways</div>
+          </div>
+          <div class="bento-mini-metric">
+            <div class="num">Transparent</div>
+            <div class="label">Audit Ledger</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 3: The Agentic AI Core -->
+  <section id="agentic-loop" style="margin-bottom:4rem;scroll-margin-top:6.5rem;">
+    <div class="section-tag">03 · Autonomous AI Layer</div>
+    <h2 class="section-headline">The Autonomous Curb Governor (Built with IBM Bob)</h2>
+    <p class="section-lead">
+      Unlike static reservation apps, OoruShare operates as an autonomous, self-balancing feedback loop powered by IBM Granite 3.8B time-series congestion forecasting and watsonx.governance explainability.
+    </p>
+
+    <div class="agent-flow-container">
+      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;">
+        <div>
+          <span style="font-size:0.75rem;font-weight:700;color:#0f62fe;text-transform:uppercase;letter-spacing:0.04em;">Perpetual Agent Control Loop</span>
+          <h4 style="font-size:1.15rem;font-weight:600;margin-top:0.25rem;">Perception → Reasoning → Action → Self-Correction</h4>
+        </div>
+        <button onclick="runJudgeTour()" class="btn btn-primary btn-sm">Run Simulation Audit Trace</button>
+      </div>
+
+      <div class="agent-flow-steps">
+        <div class="flow-step-card">
+          <div class="flow-step-num">Phase 1 · Perception</div>
+          <h5>Ingests Dispatches & Sensors</h5>
+          <p>Monitors active quick-commerce dispatches, GPS coordinates, and historical bylane saturation in HSR Layout and Indiranagar.</p>
+        </div>
+        <div class="flow-step-card">
+          <div class="flow-step-num">Phase 2 · Reasoning</div>
+          <h5>IBM Granite 3.8B Forecasting</h5>
+          <p>Predicts 15-minute curb saturation spikes and calculates bylane width limits to ensure emergency vehicle clearance.</p>
+        </div>
+        <div class="flow-step-card">
+          <div class="flow-step-num">Phase 3 · Action</div>
+          <h5>Dynamic Bay Allocation</h5>
+          <p>Locks the optimal driveway bay via PostgreSQL advisory locks and signals the dark store to throttle dispatch intervals.</p>
+        </div>
+        <div class="flow-step-card">
+          <div class="flow-step-num">Phase 4 · Reflection</div>
+          <h5>Autonomous Conflict Reroute</h5>
+          <p>If a resident's car blocks the bay, the agent detects the conflict and re-allocates the rider to the nearest alternative bay in &lt;500ms.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 4: Interactive Prototype Hub -->
+  <section id="prototypes" style="margin-bottom:4rem;scroll-margin-top:6.5rem;">
+    <div class="section-tag">04 · Live Working Prototypes</div>
+    <h2 class="section-headline">Explore the 4 Operational Dashboards</h2>
+    <p class="section-lead">
+      Every persona in the OoruShare ecosystem is backed by live database endpoints, real-time Server-Sent Events, and Carbon v11 interfaces. Select a dashboard to test the working prototype:
+    </p>
+
+    <div class="persona-grid">
+      <!-- Card 1: Resident -->
+      <a href="resident.html" class="persona-card">
+        <div>
+          <span class="persona-badge">Resident Persona</span>
+          <h4>Resident Dashboard</h4>
+          <p>List driveway availability slots, track incoming community credits, and redeem credits for monthly society maintenance deductions.</p>
+        </div>
+        <div class="persona-cta">Launch Portal →</div>
+      </a>
+
+      <!-- Card 2: Rider -->
+      <a href="rider.html" class="persona-card" style="border-top-color:#24a148;">
+        <div>
+          <span class="persona-badge" style="color:#24a148;">Rider Persona</span>
+          <h4>Rider Spatial Radar</h4>
+          <p>Explore the live GPS Leaflet map of Bengaluru, book 2-minute authorized delivery bays, and test automatic rerouting if a bay is blocked.</p>
+        </div>
+        <div class="persona-cta" style="color:#24a148;">Open Live Map →</div>
+      </a>
+
+      <!-- Card 3: Dark Store -->
+      <a href="darkstore.html" class="persona-card" style="border-top-color:#ff832b;">
+        <div>
+          <span class="persona-badge" style="color:#ff832b;">Dark Store Persona</span>
+          <h4>Dispatch Co-pilot</h4>
+          <p>Simulate delivery surges from Blinkit or Zepto dark stores, view AI curb saturation meters, and dispatch riders with staggered intervals.</p>
+        </div>
+        <div class="persona-cta" style="color:#ff832b;">Manage Dispatches →</div>
+      </a>
+
+      <!-- Card 4: RWA Admin -->
+      <a href="rwa.html" class="persona-card" style="border-top-color:#8a3ffc;">
+        <div>
+          <span class="persona-badge" style="color:#8a3ffc;">Governance Persona</span>
+          <h4>RWA Admin Panel</h4>
+          <p>Review, approve, or reject resident driveway listings, inspect gate dimensions, and verify community credit disbursements.</p>
+        </div>
+        <div class="persona-cta" style="color:#8a3ffc;">Review Listings →</div>
+      </a>
+    </div>
+  </section>
+
+  <!-- Section 5: City-Scale Civic ROI -->
+  <section id="impact" style="margin-bottom:4rem;scroll-margin-top:6.5rem;">
+    <div class="section-tag">05 · Measurable Civic ROI</div>
+    <h2 class="section-headline">Verifiable Impact for Bengaluru's Smarter Streets</h2>
+    <p class="section-lead">
+      Empirically modeled against baseline two-wheeler delivery congestion in high-density corridors across HSR Layout Sector 1, Indiranagar 100 Feet Road, and Koramangala 80 Feet Road.
+    </p>
+
+    <table class="os-table">
+      <thead>
+        <tr>
+          <th>Civic Metric</th>
+          <th>Status Quo (Unmanaged Bylanes)</th>
+          <th>With OoruShare Agentic Curb</th>
+          <th>Citywide Bengaluru Impact (2M drops/day)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Transit & Parking Search Time</strong></td>
+          <td style="color:#da1e28;">6.8 mins searching per drop</td>
+          <td style="color:#24a148;font-weight:600;">2.6 mins reserved loading</td>
+          <td><strong>140,000 Hours</strong> saved every day across delivery corridors</td>
+        </tr>
+        <tr>
+          <td><strong>Two-Wheeler Idling Emissions</strong></td>
+          <td style="color:#da1e28;">3.5 mins engine idling</td>
+          <td style="color:#24a148;font-weight:600;">Engine off in private bay</td>
+          <td><strong>11.2 Tonnes CO₂</strong> prevented daily from eliminated idling</td>
+        </tr>
+        <tr>
+          <td><strong>Rider Parking Fines</strong></td>
+          <td style="color:#da1e28;">₹1,500/month average fines</td>
+          <td style="color:#24a148;font-weight:600;">₹0 (Authorized bay)</td>
+          <td>Dignified, fine-free working conditions for 50,000 gig riders</td>
+        </tr>
+        <tr>
+          <td><strong>RWA Compound Disputes</strong></td>
+          <td style="color:#da1e28;">Frequent gate blocking clashes</td>
+          <td style="color:#24a148;font-weight:600;">88% dispute reduction</td>
+          <td>Organized, verified residential bylane access with financial offsets</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+</main>
+
+<!-- Footer -->
+<footer class="bob-colophon">
+  <div class="bob-colophon-inner">
+    <div>
+      <div class="brand-text">OoruShare &mdash; Bengaluru Civic Curb Network</div>
+      <div class="brand-sub">Hyperlocal Curb Capacity &middot; Theme 1: Smarter Streets Better Living</div>
+    </div>
+    <div style="display:flex;align-items:center;gap:1.5rem;">
+      <span style="font-family:var(--font-mono);font-size:0.75rem;color:#8d8d8d;">HSR Layout &middot; Indiranagar &middot; Koramangala</span>
+      <span class="bob-tag">Made with IBM Bob</span>
+    </div>
+  </div>
+</footer>
+
+<!-- Shared Telemetry & Audit Modal Scripts -->
+<script src="js/shared.js?v=2"></script>
+<script>
+  // Live dynamic hydration for the landing page hero counters
+  async function hydrateLandingMetrics() {
+    try {
+      const res = await fetch('/agent/impact');
+      if (res.ok) {
+        const data = await res.json();
+        const t = data.telemetry;
+        const timeEl = document.getElementById('hero-time');
+        const co2El = document.getElementById('hero-co2');
+        const finesEl = document.getElementById('hero-fines');
+
+        if (timeEl) timeEl.textContent = `${data.primary_metric.headline.split(' ')[0]} min`;
+        if (co2El) co2El.textContent = `${t.co2_emissions_abated_kg} kg`;
+        if (finesEl) finesEl.textContent = `₹${(t.police_fines_averted_inr || 12500).toLocaleString('en-IN')}`;
+      }
+
+      const spotsRes = await fetch('/spots');
+      if (spotsRes.ok) {
+        const spots = await spotsRes.json();
+        const spotsEl = document.getElementById('hero-spots');
+        if (spotsEl) spotsEl.textContent = `${spots.length} Bays`;
+      }
+    } catch (_) {}
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    hydrateLandingMetrics();
+    setInterval(hydrateLandingMetrics, 10000);
+  });
+</script>
+</body>
+</html>

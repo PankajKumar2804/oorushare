@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OoruShare — RWA Admin</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;600&family=IBM+Plex+Mono:wght@400;600&display=swap" />
+  <link rel="stylesheet" href="css/app.css?v=2" />
+</head>
+<body>
+
+<header class="os-header">
+  <span class="brand"><a href="index.html" style="color:inherit;text-decoration:none;">OoruShare</a> <span style="font-size:0.7rem;font-weight:400;color:var(--gray-50);letter-spacing:0.02em;margin-left:0.5rem;text-transform:none;">Bengaluru Civic Pilot · Theme 1: Smarter Streets</span></span>
+  <nav class="nav">
+    <a href="index.html">Home</a>
+    <a href="resident.html">Resident</a>
+    <a href="rider.html">Rider Map</a>
+    <a href="darkstore.html">Dark Store</a>
+    <a href="rwa.html" class="active">RWA Admin</a>
+  </nav>
+  <button class="tour-btn" onclick="runJudgeTour()" style="margin-left:1.5rem;">Run Simulation (Theme 1)</button>
+</header>
+
+<main class="page">
+  <h1 class="page-title">RWA Admin Dashboard</h1>
+  <p class="page-sub">Review and approve or reject driveway spot listings submitted by residents in your society.</p>
+
+  <!-- Summary cards -->
+  <div class="grid-3" style="margin-bottom:2rem;">
+    <div class="stat-tile">
+      <div class="number" id="stat-pending">—</div>
+      <div class="label">Pending Review</div>
+    </div>
+    <div class="stat-tile">
+      <div class="number" id="stat-approved" style="color:var(--green);">—</div>
+      <div class="label">Approved</div>
+    </div>
+    <div class="stat-tile">
+      <div class="number" id="stat-rejected" style="color:var(--red);">—</div>
+      <div class="label">Rejected</div>
+    </div>
+  </div>
+
+  <!-- Filter bar -->
+  <div class="filter-bar" style="margin-bottom:1rem;">
+    <select id="filter-status" class="form-input" style="width:180px;">
+      <option value="">All Statuses</option>
+      <option value="pending">Pending</option>
+      <option value="approved">Approved</option>
+      <option value="rejected">Rejected</option>
+    </select>
+    <select id="filter-neighborhood" class="form-input" style="width:200px;">
+      <option value="">All Neighbourhoods</option>
+      <option>HSR Layout</option>
+      <option>Indiranagar</option>
+      <option>Koramangala</option>
+    </select>
+    <button class="btn btn-secondary btn-sm" id="refresh-btn">↻ Refresh</button>
+  </div>
+
+  <!-- Spots table -->
+  <p class="section-heading" style="margin-bottom:0.75rem;">Spot Listings</p>
+  <table class="os-table">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Owner</th>
+        <th>Address</th>
+        <th>Neighbourhood</th>
+        <th>Width</th>
+        <th>Window</th>
+        <th>Spot Status</th>
+        <th>RWA Status</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody id="spots-body">
+      <tr class="empty"><td colspan="9">Loading…</td></tr>
+    </tbody>
+  </table>
+
+  <!-- Credit Redemptions & Maintenance Offsets -->
+  <p class="section-heading" style="margin-top:2.5rem;margin-bottom:0.75rem;">Society Maintenance Dues Offset (Community Credit Ledger)</p>
+  <table class="os-table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Resident</th>
+        <th>Credits Used</th>
+        <th>Maintenance Offset (₹)</th>
+        <th>Benefit Category</th>
+        <th>Settlement Status</th>
+        <th>Date</th>
+      </tr>
+    </thead>
+    <tbody id="redemptions-body">
+      <tr class="empty"><td colspan="7">Loading redemptions…</td></tr>
+    </tbody>
+  </table>
+</main>
+
+<footer class="bob-colophon">
+  <div class="bob-colophon-inner">
+    <div>
+      <div class="brand-text">OoruShare &mdash; RWA Governance Portal</div>
+      <div class="brand-sub">Hyperlocal Curb Capacity &middot; Theme 1: Smarter Streets Better Living</div>
+    </div>
+    <div style="display:flex;align-items:center;gap:1.5rem;">
+      <span style="font-family:var(--font-mono);font-size:0.75rem;color:#8d8d8d;">HSR Layout &middot; Indiranagar &middot; Koramangala</span>
+      <span class="bob-tag">Made with IBM Bob</span>
+    </div>
+  </div>
+</footer>
+
+<div class="toast" id="toast"></div>
+
+<script src="js/shared.js"></script>
+<script src="js/rwa.js"></script>
+</body>
+</html>

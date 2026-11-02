@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OoruShare — Dark Store Dispatch</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;600&family=IBM+Plex+Mono:wght@400;600&display=swap" />
+  <link rel="stylesheet" href="css/app.css?v=2" />
+</head>
+<body>
+
+<header class="os-header">
+  <span class="brand"><a href="index.html" style="color:inherit;text-decoration:none;">OoruShare</a> <span style="font-size:0.7rem;font-weight:400;color:var(--gray-50);letter-spacing:0.02em;margin-left:0.5rem;text-transform:none;">Bengaluru Civic Pilot · Theme 1: Smarter Streets</span></span>
+  <nav class="nav">
+    <a href="index.html">Home</a>
+    <a href="resident.html">Resident</a>
+    <a href="rider.html">Rider Map</a>
+    <a href="darkstore.html" class="active">Dark Store</a>
+    <a href="rwa.html">RWA Admin</a>
+  </nav>
+  <button class="tour-btn" onclick="runJudgeTour()" style="margin-left:1.5rem;">Run Simulation (Theme 1)</button>
+</header>
+
+<main class="page">
+  <h1 class="page-title">Dispatch Queue Co-pilot</h1>
+  <p class="page-sub">Stagger rider dispatches to prevent curb gridlock. OoruShare schedules 4-minute gaps between riders in the same zone.</p>
+
+  <!-- Live congestion -->
+  <p class="section-heading" style="margin-bottom:0.75rem;">Live Street Congestion</p>
+  <div class="grid-3" id="congestion-grid" style="margin-bottom:2rem;">
+    <div class="stat-tile"><div class="number">—</div><div class="label">Loading…</div></div>
+  </div>
+
+  <!-- Add rider -->
+  <div class="card">
+    <h3>Add Rider to Dispatch Queue</h3>
+    <div class="form-row">
+      <div class="form-group">
+        <label class="form-label" for="q-store">Store Name</label>
+        <input id="q-store" class="form-input" placeholder="e.g. Blinkit HSR" />
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="q-neighborhood">Neighbourhood</label>
+        <select id="q-neighborhood" class="form-input">
+          <option>HSR Layout</option>
+          <option>Indiranagar</option>
+          <option>Koramangala</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group">
+        <label class="form-label" for="q-rider">Rider Name</label>
+        <input id="q-rider" class="form-input" placeholder="e.g. Ravi Kumar" />
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="q-platform">Platform</label>
+        <select id="q-platform" class="form-input">
+          <option>Blinkit</option>
+          <option>Zepto</option>
+          <option>Swiggy</option>
+          <option>Dunzo</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-group" style="max-width:200px;">
+      <label class="form-label" for="q-stagger">Stagger Interval (minutes)</label>
+      <input id="q-stagger" class="form-input" type="number" value="4" min="1" max="30" />
+      <span class="form-hint">Gap between successive dispatches to the same zone</span>
+    </div>
+    <button class="btn btn-primary" id="add-queue-btn">Add to Dispatch Queue</button>
+  </div>
+
+  <!-- Live queue table -->
+  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.75rem;">
+    <p class="section-heading" style="margin:0;">Live Dispatch Queue</p>
+    <span id="queue-live" class="live-dot on">● Live</span>
+  </div>
+  <table class="os-table" style="margin-bottom:0;">
+    <thead>
+      <tr>
+        <th>Store</th>
+        <th>Neighbourhood</th>
+        <th>Rider</th>
+        <th>Platform</th>
+        <th>Scheduled</th>
+        <th>Countdown</th>
+        <th>Status</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody id="queue-body">
+      <tr class="empty"><td colspan="8">Loading queue…</td></tr>
+    </tbody>
+  </table>
+
+  <!-- Simulation & Integrations -->
+  <div class="sim-card">
+    <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:0.5rem;margin-bottom:0.75rem;">
+      <h3 style="margin-bottom:0;">Bylane Staggering Governor & Platform Webhook Simulation</h3>
+      <span style="font-family:var(--font-mono);font-size:0.72rem;background:#0043ce;color:#fff;padding:0.15rem 0.5rem;">IBM Granite 3.8B Time-Series</span>
+    </div>
+    <p>Simulate dark store order bursts or trigger direct quick-commerce platform webhooks (Blinkit/Zepto ERP auto-allocation).</p>
+    
+    <div style="background:#fff;border:1px solid var(--gray-20);border-left:3px solid var(--blue);padding:0.75rem 1rem;margin-bottom:1rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:0.5rem;">
+      <div>
+        <strong style="color:var(--blue);">Granite Dynamic Stagger Advisory:</strong>
+        <span id="granite-advisory-text" style="font-size:0.8125rem;color:var(--gray-80);margin-left:0.5rem;">Loading congestion forecast…</span>
+      </div>
+      <button class="btn btn-secondary btn-sm" id="apply-granite-btn" style="white-space:nowrap;">Apply Stagger Buffer</button>
+    </div>
+
+    <div style="display:flex;align-items:center;gap:1rem;flex-wrap:wrap;">
+      <button class="btn btn-secondary" id="simulate-btn">Simulate Order Surge (5 Riders)</button>
+      <button class="btn btn-primary" id="webhook-btn" style="background:#0f62fe;">Test Platform Webhook Dispatch</button>
+      <span id="sim-status" style="font-size:0.8125rem;color:var(--gray-70);"></span>
+    </div>
+  </div>
+
+  <!-- Agent Thought Stream -->
+  <p class="section-heading" style="margin-top:2rem;margin-bottom:0.75rem;">Autonomous Curb Governor · Real-Time Audit Stream</p>
+  <div class="card" style="padding:1rem;">
+    <div id="agent-thought-stream" style="font-family:var(--font-mono);font-size:0.8rem;line-height:1.7;color:var(--gray-90);">
+      Loading agent perception cycle…
+    </div>
+  </div>
+</main>
+
+<footer class="bob-colophon">
+  <div class="bob-colophon-inner">
+    <div>
+      <div class="brand-text">OoruShare &mdash; Dark Store Dispatch Co-pilot</div>
+      <div class="brand-sub">Hyperlocal Curb Capacity &middot; Theme 1: Smarter Streets Better Living</div>
+    </div>
+    <div style="display:flex;align-items:center;gap:1.5rem;">
+      <span style="font-family:var(--font-mono);font-size:0.75rem;color:#8d8d8d;">HSR Layout &middot; Indiranagar &middot; Koramangala</span>
+      <span class="bob-tag">Made with IBM Bob</span>
+    </div>
+  </div>
+</footer>
+
+<div class="toast" id="toast"></div>
+
+<script src="js/shared.js"></script>
+<script src="js/darkstore.js"></script>
+</body>
+</html>

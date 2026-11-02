@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OoruShare — Resident Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;600&family=IBM+Plex+Mono:wght@400;600&display=swap" />
+  <link rel="stylesheet" href="css/app.css?v=2" />
+</head>
+<body>
+
+<header class="os-header">
+  <span class="brand"><a href="index.html" style="color:inherit;text-decoration:none;">OoruShare</a> <span style="font-size:0.7rem;font-weight:400;color:var(--gray-50);letter-spacing:0.02em;margin-left:0.5rem;text-transform:none;">Bengaluru Civic Pilot · Theme 1: Smarter Streets</span></span>
+  <nav class="nav">
+    <a href="index.html">Home</a>
+    <a href="resident.html" class="active">Resident</a>
+    <a href="rider.html">Rider Map</a>
+    <a href="darkstore.html">Dark Store</a>
+    <a href="rwa.html">RWA Admin</a>
+  </nav>
+  <button class="tour-btn" onclick="runJudgeTour()" style="margin-left:1.5rem;">Run Simulation (Theme 1)</button>
+</header>
+
+<main class="page">
+  <h1 class="page-title">Resident Dashboard</h1>
+  <p class="page-sub">List your driveway during empty slots. Earn community credits every time a rider uses your space.</p>
+
+  <!-- Credit banner -->
+  <div id="credit-bar" class="credit-bar" style="display:none;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:0.5rem;">
+    <div>
+      <span style="font-family:var(--font-mono);font-size:0.75rem;background:#0f62fe;color:#fff;padding:0.15rem 0.4rem;font-weight:600;margin-right:0.5rem;">CREDIT LEDGER</span>
+      <span id="credit-bar-text"></span>
+    </div>
+    <button class="btn btn-secondary btn-sm" id="redeem-btn" style="background:#fff;color:var(--gray-90);border:1px solid rgba(0,0,0,0.15);font-weight:600;white-space:nowrap;">Redeem 10 Credits (₹50 RWA Offset)</button>
+  </div>
+
+  <!-- KPI stats -->
+  <div class="grid-3" style="margin-bottom:2rem;">
+    <div class="stat-tile">
+      <div class="number" id="stat-spots">—</div>
+      <div class="label">Listed Spots</div>
+    </div>
+    <div class="stat-tile">
+      <div class="number" id="stat-credits">—</div>
+      <div class="label">Credits Earned</div>
+    </div>
+    <div class="stat-tile">
+      <div class="number" id="stat-bookings">—</div>
+      <div class="label">Completed Bookings</div>
+    </div>
+  </div>
+
+  <!-- List a new spot -->
+  <div class="card">
+    <h3>List Your Driveway</h3>
+    <div class="form-row">
+      <div class="form-group">
+        <label class="form-label" for="f-owner">Your Name</label>
+        <input id="f-owner" class="form-input" placeholder="e.g. Priya Sharma" autocomplete="name" />
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="f-neighborhood">Neighbourhood</label>
+        <select id="f-neighborhood" class="form-input">
+          <option>HSR Layout</option>
+          <option>Indiranagar</option>
+          <option>Koramangala</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="form-label" for="f-address">Full Address</label>
+      <input id="f-address" class="form-input" placeholder="e.g. 14, 27th Main, HSR Layout Sec 1" />
+    </div>
+    <div class="form-row">
+      <div class="form-group">
+        <label class="form-label" for="f-lat">Latitude</label>
+        <input id="f-lat" class="form-input" placeholder="12.9116" type="number" step="0.000001" />
+        <span class="form-hint">WGS-84 decimal degrees</span>
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="f-lng">Longitude</label>
+        <input id="f-lng" class="form-input" placeholder="77.6412" type="number" step="0.000001" />
+      </div>
+    </div>
+    <div style="margin-bottom:1.25rem;">
+      <button class="btn btn-secondary btn-sm" id="use-location-btn">Detect GPS Location</button>
+    </div>
+    <div class="form-row">
+      <div class="form-group">
+        <label class="form-label" for="f-width">Gate Width (metres)</label>
+        <input id="f-width" class="form-input" placeholder="3.0" type="number" step="0.1" min="1" />
+        <span class="form-hint">Minimum usable width for a delivery bike</span>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Availability Window</label>
+        <div class="time-range">
+          <input id="f-from" class="form-input" type="time" value="14:00" />
+          <span>to</span>
+          <input id="f-to" class="form-input" type="time" value="17:00" />
+        </div>
+      </div>
+    </div>
+    <button class="btn btn-primary" id="list-btn">List My Driveway</button>
+  </div>
+
+  <!-- My spots -->
+  <p class="section-heading" style="margin-bottom:0.75rem;">My Listed Spots</p>
+  <table class="os-table" style="margin-bottom:2rem;">
+    <thead>
+      <tr>
+        <th>Address</th>
+        <th>Neighbourhood</th>
+        <th>Width</th>
+        <th>Window</th>
+        <th>Status</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody id="spots-body">
+      <tr class="empty"><td colspan="6">Loading…</td></tr>
+    </tbody>
+  </table>
+
+  <!-- Credits history -->
+  <p class="section-heading" style="margin-bottom:0.75rem;">Credits History</p>
+  <table class="os-table">
+    <thead>
+      <tr><th>Reason</th><th>Credits</th><th>Date</th></tr>
+    </thead>
+    <tbody id="credits-body">
+      <tr class="empty"><td colspan="3">Loading…</td></tr>
+    </tbody>
+  </table>
+</main>
+
+<footer class="bob-colophon">
+  <div class="bob-colophon-inner">
+    <div>
+      <div class="brand-text">OoruShare &mdash; Resident Driveway Portal</div>
+      <div class="brand-sub">Hyperlocal Curb Capacity &middot; Theme 1: Smarter Streets Better Living</div>
+    </div>
+    <div style="display:flex;align-items:center;gap:1.5rem;">
+      <span style="font-family:var(--font-mono);font-size:0.75rem;color:#8d8d8d;">HSR Layout &middot; Indiranagar &middot; Koramangala</span>
+      <span class="bob-tag">Made with IBM Bob</span>
+    </div>
+  </div>
+</footer>
+
+<div class="toast" id="toast"></div>
+
+<script src="js/shared.js?v=2"></script>
+<script src="js/resident.js"></script>
+</body>
+</html>
+
