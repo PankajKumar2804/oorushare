@@ -10,12 +10,15 @@
 
 ---
 
-## 🏆 IBM Bobathon Submission Links
+## IBM Bobathon Submission Links
 
-- 📋 [**Official Hackathon Submission Document (SUBMISSION.md)**](SUBMISSION.md) — The Problem, Prototype, Bob Story & Measurable Outcomes
-- 🤖 [**The Bob Story (BOB_STORY.md)**](BOB_STORY.md) — Detailed narrative of how IBM Bob architected and accelerated OoruShare
-- 🛡️ [**Responsible AI Charter (RAI-001)**](.bob/artifacts/oorushare-responsible-ai-principles.html) — Pre-code governance, privacy & fairness architecture
-- 🚀 **1-Click Judge Tour:** Click the **"🚀 Bobathon Judge Tour"** button in any dashboard header to execute the live autonomous agentic loop!
+- [**Official Hackathon Submission Document (SUBMISSION.md)**](SUBMISSION.md) — The Problem, Prototype, Bob Story & Measurable Outcomes
+- [**Master Deliverables Index (DELIVERABLES_INDEX.md)**](DELIVERABLES_INDEX.md) — Verification checklist mapping all 5 participation requirements
+- [**Low-Level Design (LLD)**](lld.md) — Database schemas, API contracts, sequence diagrams, and locking mechanics
+- [**High-Level Design (HLD)**](hld.md) — System architecture, asymmetric onboarding, and DPDP Act 2023 governance
+- [**The Bob Story (BOB_STORY.md)**](BOB_STORY.md) — Detailed narrative of how IBM Bob architected and accelerated OoruShare
+- [**Responsible AI Charter (RAI-001)**](oorushare-responsible-ai-principles.html) — Pre-code governance, privacy & fairness architecture
+- **1-Click Judge Tour:** Click the **"Run 30s Agent Tour"** button in any dashboard header to execute the live autonomous agentic loop!
 
 ---
 
@@ -293,7 +296,7 @@ NODE_CLUSTER=1 node server.js
 
 ## What's Next
 
-- 📲 WhatsApp OTP login for residents — no app install required
-- 🏦 UPI credit redemption — community credits → maintenance fund contributions
-- 📡 Platform API integration — Blinkit / Zepto dispatch webhooks for auto-staggering
-- 📊 City-level congestion heatmap — aggregate anonymised curb-usage data
+- WhatsApp OTP login for residents — no app install required
+- UPI credit redemption — community credits -> maintenance fund contributions
+- Platform API integration — Blinkit / Zepto dispatch webhooks for auto-staggering
+- City-level congestion heatmap — aggregate anonymised curb-usage data

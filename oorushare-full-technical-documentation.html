@@ -417,10 +417,10 @@ npm run seed</pre>
   <div class="tbl-wrap"><table>
     <thead><tr><th>Field</th><th>Type</th><th>Required</th><th>Default</th><th>Description</th></tr></thead>
     <tbody>
-      <tr><td><code>owner_name</code></td><td>string</td><td>✓</td><td>—</td><td>Resident's display name</td></tr>
-      <tr><td><code>address</code></td><td>string</td><td>✓</td><td>—</td><td>Full street address</td></tr>
-      <tr><td><code>lat</code></td><td>number</td><td>✓</td><td>—</td><td>WGS-84 latitude</td></tr>
-      <tr><td><code>lng</code></td><td>number</td><td>✓</td><td>—</td><td>WGS-84 longitude</td></tr>
+      <tr><td><code>owner_name</code></td><td>string</td><td>Yes</td><td>—</td><td>Resident's display name</td></tr>
+      <tr><td><code>address</code></td><td>string</td><td>Yes</td><td>—</td><td>Full street address</td></tr>
+      <tr><td><code>lat</code></td><td>number</td><td>Yes</td><td>—</td><td>WGS-84 latitude</td></tr>
+      <tr><td><code>lng</code></td><td>number</td><td>Yes</td><td>—</td><td>WGS-84 longitude</td></tr>
       <tr><td><code>neighborhood</code></td><td>string</td><td></td><td><code>"HSR Layout"</code></td><td>Area name</td></tr>
       <tr><td><code>gate_width_m</code></td><td>number</td><td></td><td><code>3.0</code></td><td>Driveway width in metres</td></tr>
       <tr><td><code>available_from</code></td><td>string</td><td></td><td>null</td><td>HH:MM start of window</td></tr>
@@ -480,8 +480,8 @@ npm run seed</pre>
   <div class="tbl-wrap"><table>
     <thead><tr><th>Field</th><th>Type</th><th>Required</th><th>Default</th><th>Description</th></tr></thead>
     <tbody>
-      <tr><td><code>spot_id</code></td><td>number</td><td>✓</td><td>—</td><td>ID of the spot to book</td></tr>
-      <tr><td><code>rider_name</code></td><td>string</td><td>✓</td><td>—</td><td>Rider's display name</td></tr>
+      <tr><td><code>spot_id</code></td><td>number</td><td>Yes</td><td>—</td><td>ID of the spot to book</td></tr>
+      <tr><td><code>rider_name</code></td><td>string</td><td>Yes</td><td>—</td><td>Rider's display name</td></tr>
       <tr><td><code>rider_phone</code></td><td>string</td><td></td><td>null</td><td>Contact number</td></tr>
       <tr><td><code>platform</code></td><td>string</td><td></td><td><code>"Blinkit"</code></td><td>Blinkit | Zepto | Swiggy | Dunzo</td></tr>
       <tr><td><code>duration_mins</code></td><td>number</td><td></td><td><code>2</code></td><td>Slot duration in minutes</td></tr>
@@ -535,8 +535,8 @@ npm run seed</pre>
   <div class="tbl-wrap"><table>
     <thead><tr><th>Field</th><th>Type</th><th>Required</th><th>Default</th></tr></thead>
     <tbody>
-      <tr><td><code>store_name</code></td><td>string</td><td>✓</td><td>—</td></tr>
-      <tr><td><code>rider_name</code></td><td>string</td><td>✓</td><td>—</td></tr>
+      <tr><td><code>store_name</code></td><td>string</td><td>Yes</td><td>—</td></tr>
+      <tr><td><code>rider_name</code></td><td>string</td><td>Yes</td><td>—</td></tr>
       <tr><td><code>neighborhood</code></td><td>string</td><td></td><td><code>"HSR Layout"</code></td></tr>
       <tr><td><code>platform</code></td><td>string</td><td></td><td><code>"Blinkit"</code></td></tr>
       <tr><td><code>stagger_mins</code></td><td>number</td><td></td><td><code>4</code></td></tr>
@@ -625,7 +625,7 @@ sse.onmessage = e =&gt; {
         <td><strong>Rider Spatial Radar</strong></td>
         <td><code>rider.html</code></td>
         <td><code>js/rider.js</code></td>
-        <td>Leaflet.js + OpenStreetMap; colour-coded markers (🟢 available / 🔴 booked / ⚫ unavailable); SSE live updates with auto-reconnect; neighbourhood filter; booking panel overlay; recent bookings table; <code>rider_name</code> persisted in localStorage</td>
+        <td>Leaflet.js + OpenStreetMap; colour-coded markers (Green = available / Red = booked / Grey = unavailable); SSE live updates with auto-reconnect; neighbourhood filter; booking panel overlay; recent bookings table; <code>rider_name</code> persisted in localStorage</td>
       </tr>
       <tr>
         <td><strong>Dark Store Co-pilot</strong></td>
