@@ -27,3 +27,6 @@ Thumbs.db
 
 # Submission staging folders
 oorushare-bengaluru-submission/
+
+# Local-only recording scripts
+VIDEO_SCRIPT.md
