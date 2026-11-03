@@ -24,3 +24,6 @@ Thumbs.db
 *.err
 *.sqlite
 *.db
+
+# Submission staging folders
+oorushare-bengaluru-submission/
