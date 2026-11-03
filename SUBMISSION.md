@@ -117,6 +117,7 @@ Click the **"Run 30s Agent Tour"** button in the header of any screen to watch t
 
 ## 7. Submission Package & Video Demonstration
 
+- **Source Code Repository:** [https://github.com/PankajKumar2804/oorushare](https://github.com/PankajKumar2804/oorushare)
 - **Deliverables Index:** See [`DELIVERABLES_INDEX.md`](DELIVERABLES_INDEX.md) for complete checklist mapping all 5 participation requirements to repository files.
 - **Low-Level Design (LLD):** See [`lld.md`](lld.md) for full database schemas, API contracts, sequence diagrams, and concurrency locking specifications.
 - **High-Level Design (HLD):** See [`hld.md`](hld.md) for architectural trade-offs, DPDP Act 2023 compliance, and the asymmetric BAA onboarding model.

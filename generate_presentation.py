@@ -834,9 +834,15 @@ def create_deck(filename):
     rp2.font.color.rgb = C_CYAN
 
     rp3 = rtf.add_paragraph()
-    rp3.text = "Theme: Smarter Streets Better Living | Built with IBM Bob | Team: OoruShare Bengaluru"
-    rp3.font.size = Pt(10)
-    rp3.font.color.rgb = RGBColor(220, 225, 235)
+    rp3.text = "GITHUB REPOSITORY: https://github.com/PankajKumar2804/oorushare"
+    rp3.font.size = Pt(11)
+    rp3.font.bold = True
+    rp3.font.color.rgb = C_CYAN
+
+    rp4 = rtf.add_paragraph()
+    rp4.text = "Theme: Smarter Streets Better Living | Built with IBM Bob | Team: OoruShare Bengaluru"
+    rp4.font.size = Pt(9.5)
+    rp4.font.color.rgb = RGBColor(220, 225, 235)
 
     prs.save(filename)
     print(f"Presentation regenerated successfully: {filename}")

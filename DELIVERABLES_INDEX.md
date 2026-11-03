@@ -13,7 +13,7 @@ Per official IBM Bobathon submission criteria, this archive contains the followi
 |---|---|---|
 | **1. Problem Statement & Detailed Solution** | [`SUBMISSION.md`](SUBMISSION.md), [`hld.md`](hld.md), [`lld.md`](lld.md) | Verified & Documented |
 | **2. Working Prototype built with IBM Bob** | Complete `backend/` and `frontend/` (Node.js, Express, Carbon v11, ESRI GIS) | Operational (`http://localhost:3001`) |
-| **3. Source Code Repository** | Bundled root codebase (`backend/`, `frontend/`, `docker-compose.yml`) | Ready for local run & Git push |
+| **3. Source Code Repository** | [https://github.com/PankajKumar2804/oorushare](https://github.com/PankajKumar2804/oorushare) | Public & Active |
 | **4. Presentation Deck / Document** | [`OoruShare_IBM_Bobathon_Theme1_Submission.pptx`](OoruShare_IBM_Bobathon_Theme1_Submission.pptx) | 10 Slides, Carbon v11, Embedded Bob Mascot |
 | **5. Video Demonstration & Walkthrough** | [`VIDEO_SCRIPT.md`](VIDEO_SCRIPT.md) (Complete scene-by-scene script) & YouTube Link | Documented with exact screen actions |
 
