@@ -125,3 +125,11 @@ Click the **"Run 30s Agent Tour"** button in the header of any screen to watch t
 - **Video Link:** [Watch the OoruShare Demo Video (YouTube / Loom) — *To be populated upon final video upload*]
 - **Presentation Deck:** [`OoruShare_IBM_Bobathon_Theme1_Submission.pptx`](OoruShare_IBM_Bobathon_Theme1_Submission.pptx) (10 widescreen slides formatted in Carbon v11 with IBM Bob branding).
 
+---
+
+## 8. What's Next: Future Roadmap
+
+1. **WhatsApp OTP Login for Residents:** Zero-install onboarding via WhatsApp business notifications and OTP verification.
+2. **Direct UPI Credit Redemption:** Instant payout settlements transferring community credit earnings directly to resident bank accounts or society maintenance fund pools.
+3. **Automated Platform Webhook Federation:** Direct API production hooks with Blinkit, Zepto, and Swiggy dispatch microservices for automated bylane queue balancing.
+4. **City-Level Congestion Heatmaps:** Anonymized spatial analytics dashboard for BBMP and Bengaluru Traffic Police (BTP) to identify high-stress curb corridors.
