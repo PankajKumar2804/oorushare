@@ -39,6 +39,7 @@ OoruShare connects all four civic stakeholders through an **autonomous, agentic 
 ### Real-World Feasibility & Onboarding Strategy (The Asymmetric Engine)
 - **Supply-Side (Individual Residents):** Onboarded organically through grassroots hyperlocal marketing (RWA general body meetings, society gate notices, MyGate/NoBrokerHood community channels). The tangible value hook is an immediate ₹150–₹350/month offset on society maintenance dues (+10 credits/drop).
 - **Demand-Side (Riders & Fleets via BAA):** Solves the gig-economy cold start barrier. Riders do NOT download another app. Instead, OoruShare establishes a **Business Associate Agreement (BAA) / Platform Integration SLA** with quick-commerce operators (Blinkit, Zepto, Swiggy Instamart). Shift rosters and dispatch targets are federated via enterprise webhooks (`POST /integrations/dispatch`), and allocated curb bay coordinates are delivered directly inside the rider's existing delivery app turn-by-turn navigation.
+- **Current Data vs Real-Time Production Data:** *Important note for evaluators:* The data currently rendered in the prototype (driveway listings, rider names, order dispatches in `memdb.js` and `seed.js`) is **privacy-safe synthetic mock data** used to demonstrate end-to-end functionality. Following formal BAA execution with delivery platforms, this is superseded by **live, real-time enterprise webhook dispatches**, streaming active fleet telemetry directly into the agentic curb governor.
 - **DPDP Act 2023 Compliance:** Rider identity is tokenized (`rider_token: "BLK_HSR_4021"`, masked vehicle number `KA01***39`), preventing PII leakage across platforms while ensuring complete regulatory compliance.
 
 ---
@@ -111,4 +112,15 @@ Open `http://localhost:8081` in your browser.
 
 ### The 10-Second Judge Tour:
 Click the **"Run 30s Agent Tour"** button in the header of any screen to watch the complete autonomous agentic loop execute live!
+
+---
+
+## 7. Submission Package & Video Demonstration
+
+- **Deliverables Index:** See [`DELIVERABLES_INDEX.md`](DELIVERABLES_INDEX.md) for complete checklist mapping all 5 participation requirements to repository files.
+- **Low-Level Design (LLD):** See [`lld.md`](lld.md) for full database schemas, API contracts, sequence diagrams, and concurrency locking specifications.
+- **High-Level Design (HLD):** See [`hld.md`](hld.md) for architectural trade-offs, DPDP Act 2023 compliance, and the asymmetric BAA onboarding model.
+- **Video Demonstration Walkthrough:** A comprehensive 3–4 minute recording script with exact screen cues and voiceover is documented in [`VIDEO_SCRIPT.md`](VIDEO_SCRIPT.md).
+- **Video Link:** [Watch the OoruShare Demo Video (YouTube / Loom) — *To be populated upon final video upload*]
+- **Presentation Deck:** [`OoruShare_IBM_Bobathon_Theme1_Submission.pptx`](OoruShare_IBM_Bobathon_Theme1_Submission.pptx) (10 widescreen slides formatted in Carbon v11 with IBM Bob branding).
 

@@ -133,6 +133,7 @@ A critical failure mode of typical gig-economy civic hacks is expecting 50,000 d
 ### 7.2 Demand Side (B2B Fleet Federation via BAA)
 - **Business Associate Agreement (BAA)**: Quick-commerce dark store operators enter into a civic data-sharing agreement with OoruShare.
 - **Zero Rider Friction**: Riders never need to install or monitor a separate app while navigating Bengaluru traffic. The dark store dispatch engine queries `POST /integrations/dispatch` at order checkout, and the allocated 2-minute curb bay is returned directly to the rider's existing platform app as the recommended parking coordinate.
+- **Synthetic Demonstration vs Real-Time Fleet Telemetry**: *Note for evaluators:* The initial prototype demo dataset (spots, simulated dispatches in `memdb.js` / `seed.js`) is synthetic mock data to ensure privacy and offline judge reliability. Following BAA execution, the ingestion layer automatically switches to **real-time fleet telemetry**, processing live webhook payloads from dark stores during peak delivery surges.
 
 ---
 
