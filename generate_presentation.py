@@ -840,7 +840,7 @@ def create_deck(filename):
     rp3.font.color.rgb = C_CYAN
 
     rp4 = rtf.add_paragraph()
-    rp4.text = "Theme: Smarter Streets Better Living | Built with IBM Bob | Team: OoruShare Bengaluru"
+    rp4.text = "Contributors: Pankajkr Jain (SWE AI Full Stack) & IBM Bob (Autonomous Co-Pilot) | Theme 1"
     rp4.font.size = Pt(9.5)
     rp4.font.color.rgb = RGBColor(220, 225, 235)
 
