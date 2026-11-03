@@ -1,6 +1,8 @@
 # OoruShare: Master Submission & Deliverables Index
 
 **IBM Bobathon: Build for Bengaluru** — Theme 1: *Smarter Streets Better Living*  
+**Contributors:** Pankajkr Jain (SWE AI Full Stack) & IBM Bob (Autonomous Co-Pilot)
+  
 **Built with IBM Bob** · Bengaluru Civic Pilot
 
 ---
