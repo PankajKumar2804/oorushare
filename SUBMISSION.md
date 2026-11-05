@@ -122,7 +122,7 @@ Click the **"Run 30s Agent Tour"** button in the header of any screen to watch t
 - **Low-Level Design (LLD):** See [`lld.md`](lld.md) for full database schemas, API contracts, sequence diagrams, and concurrency locking specifications.
 - **High-Level Design (HLD):** See [`hld.md`](hld.md) for architectural trade-offs, DPDP Act 2023 compliance, and the asymmetric BAA onboarding model.
 - **Video Demonstration Walkthrough:** A comprehensive 3–4 minute recording script with exact screen cues and voiceover is documented in [`VIDEO_SCRIPT.md`](VIDEO_SCRIPT.md).
-- **Video Link:** [Watch the OoruShare Demo Video (YouTube / Loom) — *To be populated upon final video upload*]
+- **Video Link:** *To be added after recording — upload to IBM Box or a public video host and paste the link here.*
 - **Presentation Deck:** [`OoruShare_IBM_Bobathon_Theme1_Submission.pptx`](OoruShare_IBM_Bobathon_Theme1_Submission.pptx) (10 widescreen slides formatted in Carbon v11 with IBM Bob branding).
 
 ---
