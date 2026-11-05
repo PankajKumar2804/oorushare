@@ -21,6 +21,9 @@ const router = require('express').Router();
 const { pool } = require('../db/migrate');
 const { publisher, SSE_CHANNEL } = require('../db/redis');
 
+// Round-robin spot index for tour — advances on each call so different residents get allocated
+let tourSpotIndex = 0;
+
 // In-memory agent thought buffer (most recent 20 reasoning cycles)
 let agentThoughtLog = [
   {
@@ -180,14 +183,14 @@ router.post('/tour', async (req, res, next) => {
     // 1. Reset all booked spots to available so the tour always succeeds
     await pool.query("UPDATE spots SET status = 'available' WHERE status = 'booked'");
 
-    // 2. Find nearest available approved spot
-    const { rows: availableSpots } = await pool.query("SELECT * FROM spots WHERE rwa_status = 'approved' AND status = 'available' ORDER BY id LIMIT 1");
-    const spot = availableSpots[0];
-    if (!spot) {
+    // 2. Find all available approved spots and pick round-robin so each tour shows a different resident
+    const { rows: availableSpots } = await pool.query("SELECT * FROM spots WHERE rwa_status = 'approved' AND status = 'available' ORDER BY id");
+    if (!availableSpots.length) {
       return res.status(500).json({ error: 'No driveway spots configured in database.' });
     }
-
-    // 2. Agent reasoning & dynamic reservation
+    const spot = availableSpots[tourSpotIndex % availableSpots.length];
+    tourSpotIndex++;
+    // 3a. Agent reasoning & dynamic reservation
     logAgentThought('REASONING', spot.neighborhood, `Evaluated Spot #${spot.id} (${spot.address}). Distance: 35m. Gate width: ${spot.gate_width_m}m.`, 'Selected optimal spot with zero RWA complaints and maximum curb clearance.');
 
     // 3. Create booking
