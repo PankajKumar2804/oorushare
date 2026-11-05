@@ -292,6 +292,8 @@ const pool = {
     // ── BOOKINGS ───────────────────────────────────────────────────
     if (s.startsWith('select * from bookings') || s.includes('from bookings')) {
       let rows = [...bookings];
+      if (s.includes("status = 'active'"))    rows = rows.filter(r => r.status === 'active');
+      if (s.includes("status = 'completed'")) rows = rows.filter(r => r.status === 'completed');
       if (s.includes('spot_id =')) rows = rows.filter(r => r.spot_id === parseInt(params[0]));
       rows.sort((a,b) => new Date(b.booked_at) - new Date(a.booked_at));
       if (s.includes('limit 100')) rows = rows.slice(0, 100);

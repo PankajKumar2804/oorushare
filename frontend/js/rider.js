@@ -376,6 +376,53 @@ function connectSSE() {
   };
 }
 
+/* ── Zone heatmap circles — coloured by saturation from /agent/activity ── */
+const ZONE_CENTRES = {
+  'HSR Layout':  [12.9116, 77.6412],
+  'Indiranagar': [12.9784, 77.6408],
+  'Koramangala': [12.9340, 77.6260],
+};
+let zoneCircles = {};
+
+function saturationColor(pct) {
+  if (pct == null) return '#6f6f6f';
+  if (pct >= 100) return '#da1e28';
+  if (pct >= 60)  return '#f1c21b';
+  return '#24a148';
+}
+
+async function updateZoneHeatmap() {
+  if (!map || typeof L === 'undefined') return;
+  try {
+    const res = await fetch(`${API}/agent/activity`);
+    if (!res.ok) return;
+    const data = await res.json();
+
+    Object.entries(ZONE_CENTRES).forEach(([zone, centre]) => {
+      const thought = (data.recent_thoughts || []).find(t => t.zone && t.zone.startsWith(zone));
+      const pctMatch = thought && thought.message.match(/(\d+)%/);
+      const pct = pctMatch ? parseInt(pctMatch[1]) : 0;
+      const color = saturationColor(pct);
+      const label = `<b>${zone}</b><br>Saturation: ${pct}%<br>${pct >= 100 ? '⚠ Congested — dispatch throttled' : pct >= 60 ? '↑ Busy — stagger active' : '✓ Clear'}`;
+
+      if (zoneCircles[zone]) {
+        zoneCircles[zone].setStyle({ color, fillColor: color });
+        zoneCircles[zone].setPopupContent(label);
+      } else {
+        zoneCircles[zone] = L.circle(centre, {
+          radius: 600,
+          color,
+          fillColor: color,
+          fillOpacity: 0.12,
+          weight: 2,
+          opacity: 0.55,
+          dashArray: '6 4',
+        }).addTo(map).bindPopup(label);
+      }
+    });
+  } catch (_) {}
+}
+
 /* ── Boot ── */
 document.addEventListener('DOMContentLoaded', () => {
   initMap();
@@ -383,6 +430,8 @@ document.addEventListener('DOMContentLoaded', () => {
   loadBookings();
   connectSSE();
   setInterval(loadBookings, 8000);
+  // Heatmap: start after map has had a moment to initialize
+  setTimeout(() => { updateZoneHeatmap(); setInterval(updateZoneHeatmap, 10000); }, 800);
 });
 
 // If DOM is already loaded (e.g. script loaded async or late)
@@ -392,4 +441,5 @@ if (document.readyState === 'complete' || document.readyState === 'interactive')
   loadBookings();
   connectSSE();
   setInterval(loadBookings, 8000);
+  setTimeout(() => { updateZoneHeatmap(); setInterval(updateZoneHeatmap, 10000); }, 800);
 }
