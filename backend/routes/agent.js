@@ -141,9 +141,9 @@ router.get('/impact', async (req, res, next) => {
     const totalSpots = parseInt(spots[0]?.cnt || 8);
 
     // Measurable calculations based on Bengaluru urban mobility research.
-    // The pilot corridor (8 bays, ~30 drops/bay/day) handles ~240 drops/day.
+    // The pilot corridor (18 bays, ~15 drops/bay/day in an 8-hr window) = ~240 drops/day.
     // We project from actual bookings recorded, with a floor of 240 for the daily pilot.
-    const pilotDailyDrops = Math.max(totalBookings, totalSpots * 30);
+    const pilotDailyDrops = Math.max(totalBookings, 240);
 
     // 4.2 mins saved per drop (eliminating circling for parking in bylanes)
     const minutesSaved = pilotDailyDrops * 4.2;
