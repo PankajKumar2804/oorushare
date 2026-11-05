@@ -19,6 +19,7 @@
     <a href="#agentic-loop">Agentic AI</a>
     <a href="#impact">Civic ROI</a>
     <a href="#prototypes" style="color:#78a9ff;">Live Prototypes ↓</a>
+    <a href="#city-dashboard" style="color:#42be65;">Live Dashboard ↓</a>
   </nav>
   <button class="tour-btn" onclick="runJudgeTour()" style="margin-left:1.5rem;">Run 30s Agent Tour</button>
 </header>
@@ -55,8 +56,8 @@
         <div class="lbl">Idling CO₂ Emissions Prevented Daily</div>
       </div>
       <div class="hero-stat-card">
-        <div class="val" id="hero-spots">8 Bays</div>
-        <div class="lbl">Active Pilot Driveways (HSR · Indiranagar)</div>
+        <div class="val" id="hero-spots">18 Bays</div>
+        <div class="lbl">Active Pilot Driveways (HSR · Indiranagar · Koramangala)</div>
       </div>
       <div class="hero-stat-card">
         <div class="val green" id="hero-fines">₹12,500</div>
@@ -347,6 +348,34 @@
   </section>
 
   </div>
+
+  <!-- Section 6: Live City Dashboard -->
+  <section id="city-dashboard" style="margin-bottom:4rem;scroll-margin-top:6.5rem;">
+    <div class="section-tag">06 · Live City Dashboard</div>
+    <h2 class="section-headline">Real-Time Civic Telemetry — Pilot Corridor</h2>
+    <p class="section-lead">
+      Live metrics streaming from the agentic curb governor across all three pilot neighbourhoods.
+    </p>
+
+    <!-- Zone saturation cards — populated by JS -->
+    <div id="zone-saturation-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-bottom:2rem;">
+      <div class="stat-tile"><div class="number" style="color:var(--gray-30);">—</div><div class="label">HSR Layout · Saturation</div></div>
+      <div class="stat-tile"><div class="number" style="color:var(--gray-30);">—</div><div class="label">Indiranagar · Saturation</div></div>
+      <div class="stat-tile"><div class="number" style="color:var(--gray-30);">—</div><div class="label">Koramangala · Saturation</div></div>
+    </div>
+
+    <!-- Live agent thought stream -->
+    <div style="background:#1e1e1e;border:1px solid #333;border-left:4px solid #0f62fe;padding:1.25rem 1.5rem;">
+      <div style="font-family:var(--font-mono);font-size:0.72rem;color:#78a9ff;letter-spacing:0.06em;text-transform:uppercase;font-weight:600;margin-bottom:0.75rem;">
+        Autonomous Curb Governor · Live Perception Feed
+      </div>
+      <div id="landing-agent-stream" style="font-family:var(--font-mono);font-size:0.8rem;line-height:1.75;color:#c6c6c6;">
+        Connecting to agent…
+      </div>
+    </div>
+  </section>
+
+  </div>
 </main>
 
 <!-- Footer -->
@@ -364,34 +393,78 @@
 <!-- Shared Telemetry & Audit Modal Scripts -->
 <script src="js/shared.js?v=2"></script>
 <script>
-  // Live dynamic hydration for the landing page hero counters
+  const ZONE_COLORS = { 'HSR Layout': '#0f62fe', 'Indiranagar': '#ff832b', 'Koramangala': '#24a148' };
+
+  // Hero counters
   async function hydrateLandingMetrics() {
     try {
       const res = await fetch('/agent/impact');
       if (res.ok) {
         const data = await res.json();
         const t = data.telemetry;
-        const timeEl = document.getElementById('hero-time');
-        const co2El = document.getElementById('hero-co2');
+        const timeEl  = document.getElementById('hero-time');
+        const co2El   = document.getElementById('hero-co2');
         const finesEl = document.getElementById('hero-fines');
+        const spotsEl = document.getElementById('hero-spots');
+        if (timeEl)  timeEl.textContent  = `${data.primary_metric.headline.split(' ')[0]} min`;
+        if (co2El)   co2El.textContent   = `${t.co2_emissions_abated_kg} kg`;
+        if (finesEl) finesEl.textContent = `₹${(t.police_fines_averted_inr || 120000).toLocaleString('en-IN')}`;
+        if (spotsEl) spotsEl.textContent = `${t.active_community_bays} Bays`;
+      }
+    } catch (_) {}
+  }
 
-        if (timeEl) timeEl.textContent = `${data.primary_metric.headline.split(' ')[0]} min`;
-        if (co2El) co2El.textContent = `${t.co2_emissions_abated_kg} kg`;
-        if (finesEl) finesEl.textContent = `₹${(t.police_fines_averted_inr || 12500).toLocaleString('en-IN')}`;
+  // City dashboard — zone saturation + agent thought stream
+  async function hydrateCityDashboard() {
+    try {
+      const res = await fetch('/agent/activity');
+      if (!res.ok) return;
+      const data = await res.json();
+
+      // Zone saturation cards
+      const grid = document.getElementById('zone-saturation-grid');
+      if (grid && data.recent_thoughts) {
+        const zones = ['HSR Layout', 'Indiranagar', 'Koramangala'];
+        grid.innerHTML = zones.map(zone => {
+          const thought = data.recent_thoughts.find(t => t.zone && t.zone.startsWith(zone));
+          const pctMatch = thought && thought.message.match(/(\d+)%/);
+          const pct = pctMatch ? parseInt(pctMatch[1]) : null;
+          const color = pct == null ? '#6f6f6f'
+            : pct >= 100 ? '#da1e28'
+            : pct >= 60  ? '#f1c21b'
+            : '#24a148';
+          const label = pct == null ? '—' : `${pct}%`;
+          const status = pct == null ? 'No data' : pct >= 100 ? 'Congested' : pct >= 60 ? 'Busy' : 'Clear';
+          return `<div class="stat-tile">
+            <div class="number" style="color:${color};font-size:1.75rem;">${label}</div>
+            <div class="label">${zone} · ${status}</div>
+            <div style="height:4px;background:#e0e0e0;margin-top:0.5rem;border-radius:2px;">
+              <div style="height:4px;width:${Math.min(pct||0,100)}%;background:${color};border-radius:2px;transition:width 0.6s;"></div>
+            </div>
+          </div>`;
+        }).join('');
       }
 
-      const spotsRes = await fetch('/spots');
-      if (spotsRes.ok) {
-        const spots = await spotsRes.json();
-        const spotsEl = document.getElementById('hero-spots');
-        if (spotsEl) spotsEl.textContent = `${spots.length} Bays`;
+      // Agent thought stream
+      const stream = document.getElementById('landing-agent-stream');
+      if (stream && data.recent_thoughts) {
+        stream.innerHTML = data.recent_thoughts.slice(0, 4).map(t => {
+          const phaseColor = t.phase === 'PERCEPTION' ? '#78a9ff' : t.phase === 'REASONING' ? '#be95ff' : '#42be65';
+          return `<div style="margin-bottom:0.5rem;">` +
+            `<span style="color:${phaseColor};font-weight:700;">[${t.phase}]</span> ` +
+            `<span style="color:#6f6f6f;font-size:0.72rem;">${t.timestamp} · ${t.zone}</span><br>` +
+            `<span>${t.message}</span>` +
+          `</div>`;
+        }).join('<div style="border-top:1px dashed #393939;margin:0.4rem 0;"></div>');
       }
     } catch (_) {}
   }
 
   document.addEventListener('DOMContentLoaded', () => {
     hydrateLandingMetrics();
+    hydrateCityDashboard();
     setInterval(hydrateLandingMetrics, 10000);
+    setInterval(hydrateCityDashboard, 8000);
   });
 </script>
 </body>
