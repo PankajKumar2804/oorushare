@@ -30,11 +30,26 @@ function esc(s) {
 
 /* ── Owner name persistence ── */
 const ownerInput = document.getElementById('f-owner');
-const savedOwner = localStorage.getItem('oorushare_owner');
-if (savedOwner) ownerInput.value = savedOwner;
+// Pre-fill with first seeded resident so the dashboard loads with real data on first visit
+const savedOwner = localStorage.getItem('oorushare_owner') || 'Priya Sharma';
+ownerInput.value = savedOwner;
 ownerInput.addEventListener('change', () => {
   localStorage.setItem('oorushare_owner', ownerInput.value.trim());
+  const sel = document.getElementById('demo-resident');
+  if (sel) sel.value = ownerInput.value.trim();
 });
+
+/* ── Demo resident switcher ── */
+const demoSel = document.getElementById('demo-resident');
+if (demoSel) {
+  // Sync dropdown to saved owner on load
+  demoSel.value = savedOwner;
+  demoSel.addEventListener('change', () => {
+    ownerInput.value = demoSel.value;
+    localStorage.setItem('oorushare_owner', demoSel.value);
+    refresh();
+  });
+}
 
 /* ── "Use My Location" button ── */
 document.getElementById('use-location-btn').addEventListener('click', () => {
