@@ -172,14 +172,12 @@ router.post('/tour', async (req, res, next) => {
   try {
     logAgentThought('PERCEPTION', 'Indiranagar 12th Main', 'Judge Tour Triggered: High order surge simulated from Blinkit Dark Store.', 'Perceiving 2 incoming delivery bikes headed to same bylane.');
 
-    // 1. Find nearest available approved spot
-    const { rows: availableSpots } = await pool.query("SELECT * FROM spots WHERE rwa_status = 'approved' AND status = 'available'");
-    let spot = availableSpots[0];
-    if (!spot) {
-      await pool.query("UPDATE spots SET status = 'available' WHERE id = 1");
-      const { rows: fallbackRows } = await pool.query("SELECT * FROM spots WHERE id = 1");
-      spot = fallbackRows[0] || (await pool.query("SELECT * FROM spots")).rows[0];
-    }
+    // 1. Reset all booked spots to available so the tour always succeeds
+    await pool.query("UPDATE spots SET status = 'available' WHERE status = 'booked'");
+
+    // 2. Find nearest available approved spot
+    const { rows: availableSpots } = await pool.query("SELECT * FROM spots WHERE rwa_status = 'approved' AND status = 'available' ORDER BY id LIMIT 1");
+    const spot = availableSpots[0];
     if (!spot) {
       return res.status(500).json({ error: 'No driveway spots configured in database.' });
     }
