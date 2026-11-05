@@ -252,7 +252,7 @@
   <!-- Section 4: Interactive Prototype Hub -->
   <section id="prototypes" style="margin-bottom:4rem;scroll-margin-top:6.5rem;">
     <div class="section-tag">04 · Live Working Prototypes</div>
-    <h2 class="section-headline">Explore the 5 Operational Dashboards</h2>
+    <h2 class="section-headline">Explore the 4 Operational Dashboards</h2>
     <p class="section-lead">
       Every persona in the OoruShare ecosystem is backed by live database endpoints, real-time Server-Sent Events, and Carbon v11 interfaces. Select a dashboard to test the working prototype:
     </p>
@@ -298,23 +298,15 @@
         <div class="persona-cta" style="color:#8a3ffc;">Review Listings →</div>
       </a>
 
-      <!-- Card 5: City Dashboard -->
-      <a href="#city-dashboard" class="persona-card" style="border-top-color:#42be65;" onclick="event.preventDefault();document.getElementById('city-dashboard').scrollIntoView({behavior:'smooth'});">
-        <div>
-          <span class="persona-badge" style="color:#42be65;">City Persona</span>
-          <h4>Live City Dashboard</h4>
-          <p>Real-time zone saturation telemetry and autonomous agent thought stream across all three pilot neighbourhoods — HSR, Indiranagar, Koramangala.</p>
-        </div>
-        <div class="persona-cta" style="color:#42be65;">View Live Feed ↓</div>
-      </a>
     </div>
 
-    <!-- City Dashboard inline panel -->
-    <div id="city-dashboard" style="margin-top:2rem;scroll-margin-top:6.5rem;">
-      <p class="section-heading" style="margin-bottom:0.75rem;">
-        Live City Telemetry — Autonomous Curb Governor
-        <span style="font-family:var(--font-mono);font-size:0.7rem;background:#0043ce;color:#fff;padding:0.15rem 0.4rem;margin-left:0.5rem;vertical-align:middle;">LIVE</span>
-      </p>
+    <!-- Live city telemetry — sits quietly below the 4 persona cards, no persona framing -->
+    <div id="city-dashboard" style="margin-top:2rem;">
+      <div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:0.75rem;">
+        <span style="font-size:0.875rem;font-weight:600;color:var(--gray-90);">Live Street Telemetry</span>
+        <span style="font-family:var(--font-mono);font-size:0.68rem;background:#0043ce;color:#fff;padding:0.1rem 0.4rem;font-weight:600;letter-spacing:0.04em;">LIVE</span>
+        <span style="font-size:0.8rem;color:var(--gray-50);">Autonomous Curb Governor · pilot corridor</span>
+      </div>
 
       <!-- Zone saturation cards -->
       <div id="zone-saturation-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-bottom:1.25rem;">
