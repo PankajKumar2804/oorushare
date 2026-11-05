@@ -21,8 +21,9 @@ const router = require('express').Router();
 const { pool } = require('../db/migrate');
 const { publisher, SSE_CHANNEL } = require('../db/redis');
 
-// Round-robin spot index for tour — advances on each call so different residents get allocated
-let tourSpotIndex = 0;
+// Round-robin spot index for tour — start at random offset so first click after restart
+// doesn't always land on Spot #1 (Priya Sharma)
+let tourSpotIndex = Math.floor(Math.random() * 18);
 
 // In-memory agent thought buffer (most recent 20 reasoning cycles)
 let agentThoughtLog = [
