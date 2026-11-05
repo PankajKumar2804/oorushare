@@ -32,46 +32,84 @@ function now() { return new Date().toISOString(); }
 
 // Seed demo data on startup
 function seedDemo() {
+  // 8 spots: 6 approved (on rider map), 2 pending (for RWA review flow demo)
   const DEMO_SPOTS = [
-    { owner_name: 'Priya Sharma',   address: '14, 27th Main, HSR Layout Sec 1',  neighborhood: 'HSR Layout',   lat: 12.9116, lng: 77.6412, gate_width_m: 3.5, available_from: '14:00', available_to: '17:00' },
-    { owner_name: 'Rajan Nair',     address: '8B, 5th Cross, Indiranagar',        neighborhood: 'Indiranagar',  lat: 12.9784, lng: 77.6408, gate_width_m: 2.8, available_from: '11:00', available_to: '15:00' },
-    { owner_name: 'Meena Patel',    address: '22, 80 Feet Rd, Koramangala',       neighborhood: 'Koramangala',  lat: 12.9352, lng: 77.6245, gate_width_m: 4.0, available_from: '09:00', available_to: '12:00' },
-    { owner_name: 'Suresh Kumar',   address: '3, 17th Cross, HSR Layout Sec 2',   neighborhood: 'HSR Layout',   lat: 12.9089, lng: 77.6389, gate_width_m: 3.0, available_from: '13:00', available_to: '16:00' },
-    { owner_name: 'Anitha Reddy',   address: '7, 12th Main, Indiranagar',         neighborhood: 'Indiranagar',  lat: 12.9762, lng: 77.6421, gate_width_m: 3.2, available_from: '10:00', available_to: '14:00' },
-    { owner_name: 'Vikram Shetty',  address: '45, 7th Block, Koramangala',        neighborhood: 'Koramangala',  lat: 12.9328, lng: 77.6278, gate_width_m: 2.5, available_from: '15:00', available_to: '19:00' },
-    { owner_name: 'Deepa Menon',    address: '11, 31st Cross, HSR Layout Sec 4',  neighborhood: 'HSR Layout',   lat: 12.9141, lng: 77.6435, gate_width_m: 3.8, available_from: '08:00', available_to: '11:00' },
-    { owner_name: 'Arjun Krishnan', address: '2, 100 Feet Rd, Indiranagar',       neighborhood: 'Indiranagar',  lat: 12.9801, lng: 77.6389, gate_width_m: 4.5, available_from: '12:00', available_to: '18:00' },
+    { owner_name: 'Priya Sharma',    address: '14, 27th Main, HSR Layout Sec 1',    neighborhood: 'HSR Layout',   lat: 12.9116, lng: 77.6412, gate_width_m: 3.5, available_from: '09:00', available_to: '18:00', rwa_status: 'approved',  status: 'available' },
+    { owner_name: 'Rajan Nair',      address: '8B, 5th Cross, Indiranagar',          neighborhood: 'Indiranagar',  lat: 12.9784, lng: 77.6408, gate_width_m: 2.8, available_from: '10:00', available_to: '16:00', rwa_status: 'approved',  status: 'available' },
+    { owner_name: 'Meena Patel',     address: '22, 80 Feet Rd, Koramangala',         neighborhood: 'Koramangala',  lat: 12.9352, lng: 77.6245, gate_width_m: 4.0, available_from: '09:00', available_to: '13:00', rwa_status: 'approved',  status: 'available' },
+    { owner_name: 'Suresh Kumar',    address: '3, 17th Cross, HSR Layout Sec 2',     neighborhood: 'HSR Layout',   lat: 12.9089, lng: 77.6389, gate_width_m: 3.0, available_from: '11:00', available_to: '17:00', rwa_status: 'approved',  status: 'available' },
+    { owner_name: 'Anitha Reddy',    address: '7, 12th Main, Indiranagar',           neighborhood: 'Indiranagar',  lat: 12.9762, lng: 77.6421, gate_width_m: 3.2, available_from: '10:00', available_to: '15:00', rwa_status: 'approved',  status: 'available' },
+    { owner_name: 'Vikram Shetty',   address: '45, 7th Block, Koramangala',          neighborhood: 'Koramangala',  lat: 12.9328, lng: 77.6278, gate_width_m: 2.5, available_from: '14:00', available_to: '19:00', rwa_status: 'approved',  status: 'available' },
+    { owner_name: 'Deepa Menon',     address: '11, 31st Cross, HSR Layout Sec 4',    neighborhood: 'HSR Layout',   lat: 12.9141, lng: 77.6435, gate_width_m: 3.8, available_from: '08:00', available_to: '12:00', rwa_status: 'approved',  status: 'available' },
+    { owner_name: 'Arjun Krishnan',  address: '2, 100 Feet Rd, Indiranagar',         neighborhood: 'Indiranagar',  lat: 12.9801, lng: 77.6389, gate_width_m: 4.5, available_from: '12:00', available_to: '18:00', rwa_status: 'approved',  status: 'available' },
+    // Pending review — visible only in RWA dashboard
+    { owner_name: 'Kavitha Iyer',    address: '6, 19th Main, HSR Layout Sec 3',      neighborhood: 'HSR Layout',   lat: 12.9102, lng: 77.6401, gate_width_m: 2.6, available_from: '10:00', available_to: '16:00', rwa_status: 'pending',   status: 'unavailable' },
+    { owner_name: 'Rohan Desai',     address: '33, CMH Road, Indiranagar',            neighborhood: 'Indiranagar',  lat: 12.9770, lng: 77.6430, gate_width_m: 3.1, available_from: '09:00', available_to: '14:00', rwa_status: 'pending',   status: 'unavailable' },
+    { owner_name: 'Nandini Rao',     address: '8, 1st Cross, Koramangala 5th Block', neighborhood: 'Koramangala',  lat: 12.9310, lng: 77.6260, gate_width_m: 2.8, available_from: '11:00', available_to: '17:00', rwa_status: 'rejected',  status: 'unavailable' },
   ];
-  DEMO_SPOTS.forEach(s => spots.push({ ...s, id: nextId('spots'), status: 'available', rwa_status: 'approved', created_at: now() }));
+  DEMO_SPOTS.forEach(s => spots.push({ ...s, id: nextId('spots'), created_at: now() }));
 
+  // Rich queue: 8 riders across all 3 zones with staggered dispatch times
   const DEMO_QUEUE = [
-    { store_name: 'Blinkit HSR',        neighborhood: 'HSR Layout',   rider_name: 'Ravi Kumar',  platform: 'Blinkit', offset_mins: 0 },
-    { store_name: 'Blinkit HSR',        neighborhood: 'HSR Layout',   rider_name: 'Sanjay Das',  platform: 'Blinkit', offset_mins: 4 },
-    { store_name: 'Zepto Koramangala',  neighborhood: 'Koramangala',  rider_name: 'Kiran Singh', platform: 'Zepto',   offset_mins: 2 },
-    { store_name: 'Swiggy Indiranagar', neighborhood: 'Indiranagar',  rider_name: 'Vijay Reddy', platform: 'Swiggy',  offset_mins: 1 },
+    { store_name: 'Blinkit HSR Dark Store',      neighborhood: 'HSR Layout',   rider_name: 'Ravi Kumar',    platform: 'Blinkit', offset_mins: 0  },
+    { store_name: 'Blinkit HSR Dark Store',      neighborhood: 'HSR Layout',   rider_name: 'Sanjay Das',    platform: 'Blinkit', offset_mins: 4  },
+    { store_name: 'Blinkit HSR Dark Store',      neighborhood: 'HSR Layout',   rider_name: 'Mohan Rao',     platform: 'Blinkit', offset_mins: 8  },
+    { store_name: 'Zepto Koramangala Hub',       neighborhood: 'Koramangala',  rider_name: 'Kiran Singh',   platform: 'Zepto',   offset_mins: 2  },
+    { store_name: 'Zepto Koramangala Hub',       neighborhood: 'Koramangala',  rider_name: 'Arun Prasad',   platform: 'Zepto',   offset_mins: 6  },
+    { store_name: 'Swiggy Indiranagar Kitchen',  neighborhood: 'Indiranagar',  rider_name: 'Vijay Reddy',   platform: 'Swiggy',  offset_mins: 1  },
+    { store_name: 'Swiggy Indiranagar Kitchen',  neighborhood: 'Indiranagar',  rider_name: 'Deepak Nair',   platform: 'Swiggy',  offset_mins: 5  },
+    { store_name: 'Dunzo HSR Express',           neighborhood: 'HSR Layout',   rider_name: 'Pradeep Joshi', platform: 'Dunzo',   offset_mins: 3  },
   ];
   DEMO_QUEUE.forEach(q_ => {
     const t = new Date(Date.now() + q_.offset_mins * 60000);
     queue.push({ ...q_, id: nextId('queue'), scheduled_at: t.toISOString(), status: 'pending', spot_id: null, created_at: now() });
   });
 
-  // Welcome credits
-  spots.slice(0, 3).forEach(s => {
-    credits.push({ id: nextId('credits'), owner_name: s.owner_name, spot_id: s.id, booking_id: null, credits: 10, reason: 'Welcome bonus', created_at: now() });
+  // Rich credits: multiple residents with realistic earning history
+  const DEMO_CREDITS = [
+    { owner_name: 'Priya Sharma',   spot_id: 1, booking_id: null, credits: 10, reason: 'Blinkit drop — 27th Main bay',    mins_ago: 180 },
+    { owner_name: 'Priya Sharma',   spot_id: 1, booking_id: null, credits: 10, reason: 'Zepto drop — 27th Main bay',      mins_ago: 120 },
+    { owner_name: 'Priya Sharma',   spot_id: 1, booking_id: null, credits: 10, reason: 'Swiggy drop — 27th Main bay',     mins_ago: 60  },
+    { owner_name: 'Rajan Nair',     spot_id: 2, booking_id: null, credits: 10, reason: 'Blinkit drop — 5th Cross bay',    mins_ago: 150 },
+    { owner_name: 'Rajan Nair',     spot_id: 2, booking_id: null, credits: 10, reason: 'Dunzo drop — 5th Cross bay',      mins_ago: 90  },
+    { owner_name: 'Meena Patel',    spot_id: 3, booking_id: null, credits: 10, reason: 'Zepto drop — 80 Feet Rd bay',     mins_ago: 200 },
+    { owner_name: 'Meena Patel',    spot_id: 3, booking_id: null, credits: 10, reason: 'Swiggy drop — 80 Feet Rd bay',    mins_ago: 100 },
+    { owner_name: 'Suresh Kumar',   spot_id: 4, booking_id: null, credits: 10, reason: 'Blinkit drop — 17th Cross bay',   mins_ago: 240 },
+    { owner_name: 'Anitha Reddy',   spot_id: 5, booking_id: null, credits: 10, reason: 'Zepto drop — 12th Main bay',      mins_ago: 300 },
+    { owner_name: 'Deepa Menon',    spot_id: 7, booking_id: null, credits: 10, reason: 'Swiggy drop — 31st Cross bay',    mins_ago: 45  },
+    { owner_name: 'Arjun Krishnan', spot_id: 8, booking_id: null, credits: 10, reason: 'Blinkit drop — 100 Feet Rd bay',  mins_ago: 20  },
+  ];
+  DEMO_CREDITS.forEach(c => {
+    const ts = new Date(Date.now() - c.mins_ago * 60000).toISOString();
+    credits.push({ id: nextId('credits'), owner_name: c.owner_name, spot_id: c.spot_id, booking_id: c.booking_id, credits: c.credits, reason: c.reason, created_at: ts });
   });
 
-  // Seed 1 redemption for demo
-  redemptions.push({
-    id: nextId('redemptions'),
-    owner_name: 'Priya Sharma',
-    credits_used: 10,
-    inr_value: 50,
-    benefit_type: 'RWA_MAINTENANCE_OFFSET',
-    status: 'approved',
-    created_at: now()
+  // Rich bookings history so rider dashboard has data
+  const DEMO_BOOKINGS = [
+    { spot_id: 1, rider_name: 'Rider Rahul (BLK_HSR_4021)', rider_phone: 'KA01***89', platform: 'Blinkit', duration_mins: 2, status: 'completed', mins_ago: 180 },
+    { spot_id: 2, rider_name: 'Rider Sunil (ZPT_IND_2034)', rider_phone: 'KA04***12', platform: 'Zepto',   duration_mins: 2, status: 'completed', mins_ago: 150 },
+    { spot_id: 3, rider_name: 'Rider Raj (SWG_KOR_1187)',   rider_phone: 'KA03***56', platform: 'Swiggy',  duration_mins: 2, status: 'completed', mins_ago: 120 },
+    { spot_id: 4, rider_name: 'Rider Dev (BLK_HSR_3390)',   rider_phone: 'KA01***34', platform: 'Blinkit', duration_mins: 2, status: 'completed', mins_ago: 90  },
+    { spot_id: 1, rider_name: 'Rider Amit (ZPT_HSR_5512)',  rider_phone: 'KA05***78', platform: 'Zepto',   duration_mins: 2, status: 'completed', mins_ago: 60  },
+    { spot_id: 5, rider_name: 'Rider Ganesh (DZO_IND_881)', rider_phone: 'KA02***90', platform: 'Dunzo',   duration_mins: 2, status: 'completed', mins_ago: 30  },
+  ];
+  DEMO_BOOKINGS.forEach(b => {
+    const ts = new Date(Date.now() - b.mins_ago * 60000).toISOString();
+    bookings.push({ id: nextId('bookings'), spot_id: b.spot_id, rider_name: b.rider_name, rider_phone: b.rider_phone, platform: b.platform, duration_mins: b.duration_mins, status: b.status, booked_at: ts });
   });
 
-  console.log(`[mem-db] Seeded ${spots.length} spots, ${queue.length} queue entries, ${credits.length} credits`);
+  // Redemptions: 3 residents have redeemed credits
+  const DEMO_REDEMPTIONS = [
+    { owner_name: 'Priya Sharma',  credits_used: 20, inr_value: 100, benefit_type: 'RWA_MAINTENANCE_OFFSET', status: 'approved', mins_ago: 4320 },
+    { owner_name: 'Rajan Nair',    credits_used: 10, inr_value: 50,  benefit_type: 'RWA_MAINTENANCE_OFFSET', status: 'approved', mins_ago: 2880 },
+    { owner_name: 'Meena Patel',   credits_used: 10, inr_value: 50,  benefit_type: 'RWA_MAINTENANCE_OFFSET', status: 'pending',  mins_ago: 60   },
+  ];
+  DEMO_REDEMPTIONS.forEach(r => {
+    const ts = new Date(Date.now() - r.mins_ago * 60000).toISOString();
+    redemptions.push({ id: nextId('redemptions'), owner_name: r.owner_name, credits_used: r.credits_used, inr_value: r.inr_value, benefit_type: r.benefit_type, status: r.status, created_at: ts });
+  });
+
+  console.log(`[mem-db] Seeded ${spots.length} spots, ${queue.length} queue, ${credits.length} credits, ${bookings.length} bookings, ${redemptions.length} redemptions`);
 }
 
 // Fake pg Pool interface
@@ -80,6 +118,16 @@ const pool = {
     const s = sql.trim().replace(/\s+/g, ' ').toLowerCase();
 
     // ── SPOTS ──────────────────────────────────────────────────────
+    // NOTE: group-by check MUST come before the general SELECT FROM spots branch
+    if (s.includes('group by rwa_status')) {
+      // rwa stats — count spots by rwa_status
+      const map = { pending: 0, approved: 0, rejected: 0 };
+      spots.forEach(sp => {
+        const k = sp.rwa_status || 'approved';
+        if (map[k] !== undefined) map[k]++;
+      });
+      return { rows: Object.entries(map).filter(([,c]) => c > 0).map(([rwa_status, count]) => ({ rwa_status, count: String(count) })) };
+    }
     if (s.startsWith('select * from spots') || s.startsWith('select id, lat') || (s.startsWith('select') && s.includes('from spots'))) {
       let rows = [...spots];
       // Filter out rejected/pending spots unless query explicitly checks rwa_status or selects all
@@ -139,16 +187,6 @@ const pool = {
       if (spot) spot.rwa_status = 'rejected';
       return { rows: spot ? [spot] : [] };
     }
-    if (s.includes('group by rwa_status')) {
-      // rwa stats
-      const map = {};
-      spots.forEach(sp => {
-        const k = sp.rwa_status || 'approved';
-        map[k] = (map[k] || 0) + 1;
-      });
-      return { rows: Object.entries(map).map(([rwa_status, count]) => ({ rwa_status, count })) };
-    }
-
     // ── COUNT QUERIES ─────────────────────────────────────────────
     if (s.includes('count(*)') && s.includes('from bookings')) {
       return { rows: [{ cnt: bookings.length }] };
@@ -189,7 +227,7 @@ const pool = {
     }
 
     // ── CREDITS ────────────────────────────────────────────────────
-    if (s.startsWith('select * from credits')) {
+    if (s.startsWith('select * from credits') || s.startsWith('select credits from credits')) {
       let rows = [...credits];
       if (s.includes('owner_name =')) rows = rows.filter(r => r.owner_name === params[0]);
       rows.sort((a,b) => new Date(b.created_at) - new Date(a.created_at));
