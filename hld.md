@@ -58,7 +58,8 @@ Adheres strictly to **IBM Carbon Design System v11** and **Refero Design** stand
 ├────────────────────────────────────────────────────────────────────────┤
 │ 5. THE 3-SIDED CIVIC CURB NETWORK (Bento Grid)                         │
 │    - Box 1: Verified Driveway Sharing (+10 Credits/drop)               │
-│    - Box 2: Rider Spatial Radar (2-min legal bays, zero fines)         │
+│    - Box 2: Rider Spatial Radar (fallback for non-BAA riders; new/     │
+│             cross-zone riders without local street knowledge)           │
 │    - Box 3: Dark Store Staggered Dispatch (Granite 3.8B throttle)       │
 │    - Box 4: RWA Bylane Governance & Maintenance Offset                 │
 ├────────────────────────────────────────────────────────────────────────┤
@@ -97,7 +98,42 @@ The marketing page is not a static mockup; it dynamically hydrates from live bac
 
 ---
 
-## 7. Enterprise Onboarding & The Asymmetric Two-Sided Market Model
+## 7. The Last-10-Metres Gap: Why Platforms Won't Build This
+
+A question any investor or evaluator will ask: *"Blinkit and Zepto have their own dark stores with managed loading bays — what gap does OoruShare actually fill?"*
+
+The answer is precise: **dark store loading bays solve the warehouse origin, not the residential destination.**
+
+```
+┌─────────────────────────────────────────────────────────────────────────┐
+│  DELIVERY JOURNEY — WHERE THE GAP SITS                                  │
+├──────────────────┬──────────────────────────────┬───────────────────────┤
+│  Dark Store      │  En Route (Google Maps)       │  Customer Bylane      │
+│  Loading Bay     │  Internal routing             │  LAST 10 METRES       │
+├──────────────────┼──────────────────────────────┼───────────────────────┤
+│  ✅ SOLVED        │  ✅ SOLVED                    │  ❌ ZERO SOLUTION      │
+│  Platform's own  │  Platform's own               │  30-ft residential    │
+│  private         │  navigation engine            │  bylane · no curb ·   │
+│  property        │                               │  no legal stop point  │
+└──────────────────┴──────────────────────────────┴───────────────────────┘
+```
+
+The gap is specifically and only the **2-minute stop at the customer's residential address** — a narrow bylane where formal loading zones are structurally impossible (BBMP minimum road width for commercial loading is 40 ft; Bengaluru bylanes are 18–30 ft).
+
+### Why No Single Platform Will Build This:
+
+| Reason | Detail |
+| :--- | :--- |
+| **Shared commons problem** | Any residential bay serves all four platforms (Blinkit, Zepto, Swiggy, Dunzo) equally. No platform has incentive to fund infrastructure that benefits its direct competitors. |
+| **Community ops, not tech ops** | Unlocking driveways requires resident trust, RWA endorsement, and society governance — entirely outside the product mandate of a quick-commerce company. |
+| **Supply cannot be owned** | Residential driveways are private property. Platforms cannot acquire or control them at scale. Only a neutral civic layer with a community credit incentive can crowdsource this supply. |
+| **Regulatory boundary** | Under the DPDP Act 2023, sharing rider location and identity data across a shared platform requires BAA-level agreements — a legal framework a single-platform product would never voluntarily create for competitors. |
+
+**OoruShare is the neutral civic infrastructure layer all four platforms benefit from but none will build alone.**
+
+---
+
+## 8. Enterprise Onboarding & The Asymmetric Two-Sided Market Model
 
 A critical failure mode of typical gig-economy civic hacks is expecting 50,000 delivery riders to independently discover, download, and register on a standalone app. OoruShare solves this cold-start barrier through an **Asymmetric Onboarding Architecture**:
 
@@ -134,6 +170,45 @@ A critical failure mode of typical gig-economy civic hacks is expecting 50,000 d
 - **Business Associate Agreement (BAA)**: Quick-commerce dark store operators enter into a civic data-sharing agreement with OoruShare.
 - **Zero Rider Friction**: Riders never need to install or monitor a separate app while navigating Bengaluru traffic. The dark store dispatch engine queries `POST /integrations/dispatch` at order checkout, and the allocated 2-minute curb bay is returned directly to the rider's existing platform app as the recommended parking coordinate.
 - **Synthetic Demonstration vs Real-Time Fleet Telemetry**: *Note for evaluators:* The initial prototype demo dataset (spots, simulated dispatches in `memdb.js` / `seed.js`) is synthetic mock data to ensure privacy and offline judge reliability. Following BAA execution, the ingestion layer automatically switches to **real-time fleet telemetry**, processing live webhook payloads from dark stores during peak delivery surges.
+
+---
+
+## 9. Strategic Defensibility: Staying Neutral Against Platform Replication
+
+The honest counterargument to OoruShare's market position is: *"If this works, couldn't Blinkit just build the same thing?"* The answer depends on which scenario plays out.
+
+### Scenario A — One platform builds a walled-garden version
+If Blinkit builds "Blinkit Parking" locked to their own riders only:
+- Residents get fewer drops (Blinkit ≈ 30–40% of total volume) → fewer credits → weaker listing incentive → thin supply
+- The bylane congestion problem is not solved — Zepto and Swiggy riders still double-park on the same street
+- Blinkit must run all community ops (RWA negotiations, gate audits, credit reconciliation) for a product that delivers partial relief
+- **Likely outcome:** Quietly killed as "not core product" within 6–12 months
+
+### Scenario B — All platforms build a joint consortium
+- Requires Zomato (Blinkit), Zepto, Swiggy, and Dunzo to co-invest in shared neutral infrastructure
+- India's quick-commerce industry has not successfully co-operated on any shared standard in 5+ years of operations
+- DPDP Act 2023 makes cross-platform rider data sharing a legal minefield each platform's compliance team will block
+- ONDC integration has been fragmented after 3 years — this would be harder
+- **Likely outcome:** Years of committee meetings while OoruShare already has RWA MoUs, BBMP partnerships, and live dispatches
+
+### Scenario C — Acquisition (the best-case outcome, not a threat)
+- If a platform acquires OoruShare after Phase 2 embeds it in civic governance, they must keep it neutral to preserve RWA endorsement and ONDC compliance
+- Locking it to one platform's riders destroys the supply side — residents withdraw listings
+- **Outcome:** Acquirer is forced to operate it as the neutral layer it already is. This is the preferred exit.
+
+### The Real Moat: Civic Embeddedness, Not Technology
+Technology can be replicated in 6 months. Community trust, RWA MoUs, and municipal data partnerships cannot. The strategic priority is to build these civic relationships faster than any platform could replicate the tech.
+
+---
+
+## 10. Strategic Roadmap
+
+| Phase | Timeframe | Goal | Key Milestone |
+| :--- | :--- | :--- | :--- |
+| **Phase 0** | Now → 3 months | Prove supply-side conversion | ≥40% of approached residents list RSU; pilot in 1 HSR/Indiranagar society |
+| **Phase 1** | 3 → 9 months | Lock first BAA | ≥500 live dispatches via `POST /integrations/dispatch` from one dark store operator |
+| **Phase 2** | 9 → 18 months | Civic infrastructure status | ≥3 RWA federation MoUs; 1 BBMP/BTP data partnership; 2+ platform BAAs |
+| **Phase 3** | 18 → 36 months | Scale or strategic exit | 50+ corridors citywide OR acquisition on neutral-layer terms |
 
 ---
 

@@ -1,8 +1,11 @@
 # OoruShare — Bengaluru Civic Curb Network
 
-> **IBM Bobathon: Build for Bengaluru** — Theme 1: *Smarter Streets Better Living*  
-> *Turning 2 metres of Bengaluru curb space into a shared community asset.*  
+> **IBM Bobathon: Build for Bengaluru** — Theme 1: *Smarter Streets Better Living*
+> *Turning 2 metres of Bengaluru curb space into a shared community asset.*
 > **Built with IBM Bob** · Node.js · PostgreSQL · Redis · Leaflet.js · IBM Carbon Design System v11
+
+**Builder & Idea Originator:** [Pankaj Kumar (Pankajkr Jain)](https://github.com/PankajKumar2804) · SWE AI Full Stack · Healthcare Industry
+**Co-Pilot:** IBM Bob · Autonomous Principal Architect
 
 [![Built with IBM Bob](https://img.shields.io/badge/Built%20with-IBM%20Bob-8a3ffc?style=flat-square)](BOB_STORY.md)
 [![Theme: Smarter Streets](https://img.shields.io/badge/Theme-Smarter%20Streets%20Better%20Living-0f62fe?style=flat-square)](SUBMISSION.md)
@@ -23,12 +26,18 @@
 
 ---
 
-## The Problem
+## The Problem — The Last 10 Metres
 
-Narrow bylanes in HSR Layout, Indiranagar, and Koramangala have **zero loading bays**.
-Quick-commerce dark stores + 50,000 gig riders = daily gate-blocking disputes with RWAs.
+Blinkit, Zepto, and Swiggy have solved the warehouse end. Their dark stores have loading docks, their riders have routing. **But there is one piece nobody has solved: the last 10 metres.**
 
-Bengaluru processes **2.5 million quick-commerce deliveries per day** — with 0 dedicated loading infrastructure.
+The 2-minute stop at the customer's residential gate — on a 30-foot bylane that has zero legal loading infrastructure and structurally never can (BBMP minimum for commercial loading zones is 40 ft).
+
+Bengaluru processes **2.5 million quick-commerce deliveries per day** with **0 dedicated residential loading infrastructure**:
+- Riders double-park across private gates → **88% of RWA disputes** cite delivery obstruction
+- No legal stop = **₹1,500/month** in wrongful BTP towing fines per rider
+- Choked bylanes = **140,000 transit hours lost daily** citywide
+
+**Why no single platform solves this:** Any residential loading bay serves Blinkit, Zepto, Swiggy, and Dunzo equally. No platform will fund shared infrastructure that benefits competitors. Only a neutral civic layer can.
 
 ---
 
@@ -39,8 +48,8 @@ OoruShare connects four stakeholders who were never coordinated before:
 | Role | Dashboard | Core Capability |
 |------|-----------|-----------------|
 | **Resident** | `resident.html` | List driveway slots · Earn +10 credits/drop · Redeem ₹50 RWA maintenance offset |
-| **Rider** | `rider.html` | Live ESRI spatial radar · Book 2-min bay · Auto-reroute if blocked |
-| **Dark Store** | `darkstore.html` | Stagger dispatches via IBM Granite 3.8B forecast · Prevent bylane clustering |
+| **Rider** | `rider.html` | Receives pre-allocated bay from dark store dispatch engine via BAA · Spatial radar as fallback for new/cross-zone riders · Auto-reroute if blocked |
+| **Dark Store** | `darkstore.html` | **Primary OoruShare customer** · Stagger dispatches via IBM Granite 3.8B forecast · Pre-allocate bays before riders leave · Prevent bylane clustering |
 | **RWA Admin** | `rwa.html` | Approve/reject listings · Audit gate widths · Settle credit ledger |
 
 The root `/` (`index.html`) is the **civic landing page** — the agent loop, impact metrics, and prototype hub.
@@ -200,9 +209,19 @@ oorushare/
 
 ---
 
-## What's Next (Roadmap)
+## What's Next: Strategic Roadmap
 
-- WhatsApp OTP login for residents — zero app install
-- UPI credit redemption — maintenance credits → bank/fund transfer
-- Blinkit / Zepto production webhook federation
-- BBMP city-level congestion heatmap dashboard
+| Phase | Timeframe | Goal |
+|---|---|---|
+| **Phase 0** | Now → 3 months | Prove supply side — single-society pilot, ≥40% resident listing conversion |
+| **Phase 1** | 3 → 9 months | First BAA — one dark store operator, 500+ live dispatches |
+| **Phase 2** | 9 → 18 months | Civic infrastructure status — RWA MoUs, ONDC alignment, BBMP data partnership |
+| **Phase 3** | 18 → 36 months | 50+ corridors citywide OR strategic acquisition on neutral terms |
+
+**Near-term product:**
+- WhatsApp OTP listing — reduces friction, increases Phase 0 conversion
+- Direct UPI credit payout — turns maintenance offset into real cash, doubles retention
+- Single dark store BAA pilot — first live dispatch data
+- BBMP ward-level congestion heatmap — anchors civic data revenue stream
+
+> Full strategic rationale in [`SUBMISSION.md §8`](SUBMISSION.md) and [`hld.md §9–10`](hld.md).

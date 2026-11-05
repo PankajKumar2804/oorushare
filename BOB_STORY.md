@@ -62,3 +62,10 @@ To address the hackathon's core challenge—*"How can agentic AI help solve Beng
 
 **IBM Bob turned a complex 4-sided urban logistics coordination problem into clean, maintainable, enterprise-grade software.** OoruShare demonstrates that with the right AI co-pilot, developers can rapidly architect solutions that make Bengaluru's streets smarter, safer, and better for everyone.
 
+---
+
+**Builder & Idea Originator:** Pankaj Kumar (Pankajkr Jain)
+SWE AI Full Stack · Healthcare Industry
+GitHub: [PankajKumar2804](https://github.com/PankajKumar2804)
+*Conceived the OoruShare idea, defined the civic problem statement, designed the product architecture, and built the full stack end-to-end — with IBM Bob as co-pilot throughout.*
+
