@@ -1,0 +1,625 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>OoruShare — RSU, USP &amp; Revenue Model</title>
+  <style>
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, "Segoe UI", system-ui, sans-serif;
+      font-size: 14px;
+      line-height: 1.6;
+      background: #ffffff;
+      color: #1f2328;
+    }
+
+    .header {
+      background: #161616;
+      color: #ffffff;
+      padding: 28px 32px 24px;
+      border-bottom: 3px solid #0f62fe;
+    }
+
+    .header .eyebrow {
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #a8c7fa;
+      margin-bottom: 6px;
+    }
+
+    .header h1 {
+      font-size: 22px;
+      font-weight: 700;
+      letter-spacing: -0.3px;
+    }
+
+    .header .sub {
+      font-size: 13px;
+      color: #8b949e;
+      margin-top: 4px;
+    }
+
+    .wrap {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 32px 24px 48px;
+    }
+
+    h2 {
+      font-size: 15px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #0f62fe;
+      margin: 36px 0 14px;
+      padding-bottom: 6px;
+      border-bottom: 1px solid #e5e7eb;
+    }
+
+    h3 {
+      font-size: 13px;
+      font-weight: 700;
+      color: #1f2328;
+      margin: 18px 0 6px;
+    }
+
+    p {
+      margin-bottom: 10px;
+      color: #1f2328;
+    }
+
+    ul {
+      padding-left: 18px;
+      margin-bottom: 10px;
+    }
+
+    li {
+      margin-bottom: 5px;
+    }
+
+    /* RSU CARD */
+    .rsu-card {
+      background: #f0f4ff;
+      border: 1px solid #0f62fe;
+      border-left: 4px solid #0f62fe;
+      border-radius: 6px;
+      padding: 20px 22px;
+      margin: 18px 0 24px;
+    }
+
+    .rsu-card .label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: #0f62fe;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .rsu-card .definition {
+      font-size: 16px;
+      font-weight: 700;
+      color: #161616;
+      margin-bottom: 8px;
+    }
+
+    .rsu-card p {
+      color: #3b4252;
+      font-size: 13px;
+      margin: 0;
+    }
+
+    /* USP BENTO GRID */
+    .usp-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin: 18px 0 24px;
+    }
+
+    @media(max-width:560px) {
+      .usp-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .usp-card {
+      background: #f7f8fa;
+      border: 1px solid #e5e7eb;
+      border-radius: 6px;
+      padding: 16px 18px;
+    }
+
+    .usp-card .num {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #57606a;
+      margin-bottom: 4px;
+    }
+
+    .usp-card h3 {
+      font-size: 13px;
+      margin: 0 0 5px;
+      color: #1f2328;
+    }
+
+    .usp-card p {
+      font-size: 12px;
+      color: #57606a;
+      margin: 0;
+    }
+
+    .accent-blue {
+      border-top: 3px solid #0f62fe;
+    }
+
+    .accent-green {
+      border-top: 3px solid #24a148;
+    }
+
+    .accent-orange {
+      border-top: 3px solid #ff832b;
+    }
+
+    .accent-purple {
+      border-top: 3px solid #7c5cd8;
+    }
+
+    /* REVENUE FLOW TABLE */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 14px 0 20px;
+      font-size: 13px;
+    }
+
+    th {
+      background: #f7f8fa;
+      border: 1px solid #e5e7eb;
+      padding: 8px 12px;
+      text-align: left;
+      font-weight: 700;
+      color: #57606a;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    td {
+      border: 1px solid #e5e7eb;
+      padding: 9px 12px;
+      vertical-align: top;
+    }
+
+    tr:nth-child(even) td {
+      background: #f7f8fa;
+    }
+
+    /* CASHFLOW FLOW */
+    .flow {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      margin: 18px 0;
+    }
+
+    .flow-step {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      padding: 14px 0;
+      border-bottom: 1px dashed #e5e7eb;
+    }
+
+    .flow-step:last-child {
+      border-bottom: none;
+    }
+
+    .flow-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: #0f62fe;
+      color: #fff;
+      font-weight: 700;
+      font-size: 13px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .flow-icon.green {
+      background: #24a148;
+    }
+
+    .flow-icon.orange {
+      background: #ff832b;
+    }
+
+    .flow-icon.purple {
+      background: #7c5cd8;
+    }
+
+    .flow-body h3 {
+      margin: 0 0 3px;
+      font-size: 13px;
+    }
+
+    .flow-body p {
+      margin: 0;
+      font-size: 12px;
+      color: #57606a;
+    }
+
+    /* METRICS ROW */
+    .metrics {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      margin: 18px 0;
+    }
+
+    @media(max-width:560px) {
+      .metrics {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    .metric-card {
+      background: #161616;
+      border-radius: 6px;
+      padding: 14px 12px;
+      text-align: center;
+    }
+
+    .metric-card .val {
+      font-size: 18px;
+      font-weight: 700;
+      color: #a8c7fa;
+      display: block;
+    }
+
+    .metric-card .lbl {
+      font-size: 10px;
+      color: #8b949e;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      display: block;
+      margin-top: 3px;
+    }
+
+    /* CALLOUT */
+    .callout {
+      border-radius: 5px;
+      padding: 12px 16px;
+      font-size: 13px;
+      margin: 14px 0;
+    }
+
+    .callout-blue {
+      background: #e8f0fe;
+      border-left: 3px solid #0f62fe;
+      color: #1e3a5f;
+    }
+
+    .callout-green {
+      background: #e6f4ea;
+      border-left: 3px solid #24a148;
+      color: #1b4332;
+    }
+
+    .pill {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 20px;
+      font-size: 11px;
+      font-weight: 600;
+      margin-left: 4px;
+    }
+
+    .pill-b {
+      background: #e8f0fe;
+      color: #0f62fe;
+    }
+
+    .pill-g {
+      background: #e6f4ea;
+      color: #24a148;
+    }
+
+    .pill-o {
+      background: #fff3e0;
+      color: #e65100;
+    }
+
+    .footer {
+      text-align: center;
+      font-size: 11px;
+      color: #8b949e;
+      border-top: 1px solid #e5e7eb;
+      padding: 16px 0 10px;
+      margin-top: 40px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="header">
+    <div class="eyebrow">OoruShare · Business Model Intelligence</div>
+    <h1>RSU, USP &amp; Revenue / Cashflow Model</h1>
+    <div class="sub">IBM Bobathon: Build for Bengaluru · Theme 1: Smarter Streets Better Living</div>
+  </div>
+
+  <div class="wrap">
+
+
+    <h2>What Is an RSU?</h2>
+
+    <div class="rsu-card">
+      <div class="label">RSU — Resident Spot Unit</div>
+      <div class="definition">The atomised, monetisable unit of idle residential driveway capacity</div>
+      <p>
+        An RSU is a single private driveway registered by a Bengaluru resident on OoruShare — verified by the local RWA,
+        geotagged (WGS-84 GPS), and made available as a <strong>legal 2-minute loading bay</strong> during standard work
+        hours (9 AM – 6 PM). It is the core supply-side asset of the entire platform.
+      </p>
+    </div>
+
+    <h3>RSU Lifecycle</h3>
+    <div class="flow">
+      <div class="flow-step">
+        <div class="flow-icon">1</div>
+        <div class="flow-body">
+          <h3>Resident Lists the Driveway</h3>
+          <p>60-second web form: address, gate width (min 2.5 m), available slot hours. No app install required.</p>
+        </div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-icon">2</div>
+        <div class="flow-body">
+          <h3>RWA Approves the Spot</h3>
+          <p>Human-in-the-loop governance: the RWA committee verifies address legitimacy and gate compliance. Spot is
+            inactive until approval.</p>
+        </div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-icon green">3</div>
+        <div class="flow-body">
+          <h3>RSU Goes Live on the Radar</h3>
+          <p>Approved spot appears on the rider's ESRI spatial radar as an available green pin — bookable in &lt; 1
+            second via PostgreSQL advisory lock.</p>
+        </div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-icon orange">4</div>
+        <div class="flow-body">
+          <h3>Delivery Rider Books &amp; Departs</h3>
+          <p>2-minute atomic reservation. Auto-released after departure or 2-minute window. No double-booking, no race
+            conditions.</p>
+        </div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-icon purple">5</div>
+        <div class="flow-body">
+          <h3>Resident Earns Credits</h3>
+          <p>+10 Community Credits automatically awarded per completed drop. Credits → ₹50 RWA maintenance deduction per
+            10 credits = <strong>₹150–₹350/month</strong> passive income for the resident.</p>
+        </div>
+      </div>
+    </div>
+
+
+    <h2>Main USP — The Unfair Advantages</h2>
+
+    <div class="callout callout-blue">
+      <strong>Core USP:</strong> OoruShare turns zero-utility idle residential driveways into a city-scale, autonomous,
+      self-balancing loading bay network — without requiring delivery riders to install a single new app.
+    </div>
+
+    <div class="usp-grid">
+      <div class="usp-card accent-blue">
+        <div class="num">USP 01</div>
+        <h3>Asymmetric Zero-Friction Onboarding</h3>
+        <p>Riders never download or register on OoruShare. B2B Business Associate Agreements (BAA) with Blinkit, Zepto
+          &amp; Swiggy stream live shift rosters via enterprise webhooks directly into existing rider delivery apps.
+          <strong>Eliminates the cold-start problem.</strong></p>
+      </div>
+      <div class="usp-card accent-green">
+        <div class="num">USP 02</div>
+        <h3>Passive Community Income for Residents</h3>
+        <p>Driveways sitting empty between 9 AM–6 PM generate ₹150–₹350/month automatically off society maintenance
+          dues. The only civic platform that turns an idle driveway into a financial asset with zero daily effort.</p>
+      </div>
+      <div class="usp-card accent-orange">
+        <div class="num">USP 03</div>
+        <h3>Agentic Congestion Prevention (Not Reaction)</h3>
+        <p>IBM Granite 3.8B time-series forecasting + 4-minute dispatch staggering stops bylane clustering <em>before
+            riders leave the dark store</em>. The only platform that fixes gridlock upstream at dispatch, not downstream
+          at the curb.</p>
+      </div>
+      <div class="usp-card accent-purple">
+        <div class="num">USP 04</div>
+        <h3>Sub-Second Race-Condition-Proof Booking</h3>
+        <p>PostgreSQL advisory locks (<code>pg_try_advisory_xact_lock</code>) guarantee atomic spot reservation during
+          evening surge peaks — no double-bookings, no phantom slots, no stale radar pins.</p>
+      </div>
+    </div>
+
+
+    <h2>Revenue Model — How OoruShare Generates Revenue</h2>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Revenue Stream</th>
+          <th>Who Pays</th>
+          <th>Mechanism</th>
+          <th>Stage</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>B2B Platform SaaS / BAA Licensing</strong> <span class="pill pill-b">Primary</span></td>
+          <td>Blinkit, Zepto, Swiggy Instamart, Dunzo</td>
+          <td>Monthly API access fee for the <code>POST /integrations/dispatch</code> webhook integration — curb bay
+            allocation embedded directly in dark store dispatch pipeline.</td>
+          <td><span class="pill pill-g">Post-BAA</span></td>
+        </tr>
+        <tr>
+          <td><strong>Per-Drop Micro-Transaction Fee</strong> <span class="pill pill-b">Primary</span></td>
+          <td>Quick-commerce dark store operators</td>
+          <td>Small per-dispatch fee (₹X per routed drop) charged to the dark store for each confirmed spot allocation —
+            similar to a payment gateway fee model.</td>
+          <td><span class="pill pill-g">Post-BAA</span></td>
+        </tr>
+        <tr>
+          <td><strong>RWA / Society Subscription</strong> <span class="pill pill-o">Secondary</span></td>
+          <td>Resident Welfare Associations</td>
+          <td>Annual civic governance subscription for the RWA Admin Panel: spot oversight, credit reconciliation
+            reports, bylane utilization analytics.</td>
+          <td><span class="pill pill-o">Roadmap</span></td>
+        </tr>
+        <tr>
+          <td><strong>BBMP / BTP Civic Data Licensing</strong> <span class="pill pill-o">Secondary</span></td>
+          <td>BBMP, Bengaluru Traffic Police</td>
+          <td>Anonymized, aggregated citywide congestion heatmap data sold to municipal bodies for curb zoning and
+            traffic policy planning.</td>
+          <td><span class="pill pill-o">Roadmap</span></td>
+        </tr>
+        <tr>
+          <td><strong>UPI Credit Settlement Float</strong> <span class="pill pill-o">Secondary</span></td>
+          <td>Residents (indirect)</td>
+          <td>When credits are converted to direct UPI bank payouts (roadmap), a small settlement spread on the
+            conversion float generates passive revenue.</td>
+          <td><span class="pill pill-o">Roadmap</span></td>
+        </tr>
+      </tbody>
+    </table>
+
+
+    <h2>Cashflow Generation Loop</h2>
+
+    <p>OoruShare's cashflow is driven by a <strong>two-sided network flywheel</strong>: more RSUs → more dispatch
+      integrations → more platform revenue → more credits earned → more residents list RSUs.</p>
+
+    <div class="flow">
+      <div class="flow-step">
+        <div class="flow-icon">①</div>
+        <div class="flow-body">
+          <h3>BAA Execution — Inbound SaaS Revenue</h3>
+          <p>Quick-commerce platforms (Blinkit/Zepto/Swiggy) sign a Business Associate Agreement. Monthly platform
+            licensing fee + per-drop dispatch fee begins flowing in from day one of integration.</p>
+        </div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-icon green">②</div>
+        <div class="flow-body">
+          <h3>Dispatch Volume → Per-Drop Revenue</h3>
+          <p>Every delivery rider dispatch routed through <code>POST /integrations/dispatch</code> generates a
+            micro-fee. Bengaluru alone processes 2.5M drops/day — even 0.1% capture × ₹2/drop = ₹5,000/day from a single
+            corridor cluster.</p>
+        </div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-icon orange">③</div>
+        <div class="flow-body">
+          <h3>Credit Redemption Spread — Community Offset</h3>
+          <p>Residents redeem credits (10 credits = ₹50 maintenance offset). The RWA pays OoruShare the
+            maintenance-billing integration fee. Net: residents gain ₹150–₹350/month, OoruShare earns a small
+            reconciliation margin per society.</p>
+        </div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-icon purple">④</div>
+        <div class="flow-body">
+          <h3>Civic Data Monetization — Municipal Licensing</h3>
+          <p>Aggregated, anonymized congestion telemetry sold to BBMP and BTP as a curb-zoning intelligence feed. Zero
+            PII — only geospatial saturation data. One-time setup + annual license fee per municipal ward.</p>
+        </div>
+      </div>
+    </div>
+
+
+    <h2>Verifiable Impact Metrics (Civic ROI That Drives Demand)</h2>
+
+    <div class="metrics">
+      <div class="metric-card">
+        <span class="val">4.2 min</span>
+        <span class="lbl">Saved per drop</span>
+      </div>
+      <div class="metric-card">
+        <span class="val">₹1,500</span>
+        <span class="lbl">Fines averted / rider / mo</span>
+      </div>
+      <div class="metric-card">
+        <span class="val">₹350</span>
+        <span class="lbl">Max resident credit / mo</span>
+      </div>
+      <div class="metric-card">
+        <span class="val">−88%</span>
+        <span class="lbl">RWA gate disputes</span>
+      </div>
+    </div>
+
+    <div class="callout callout-green">
+      <strong>Why these metrics are the commercial moat:</strong> The ₹1,500/month fine savings for riders and the
+      ₹350/month maintenance offset for residents create deeply rational, financially-motivated retention on both sides
+      of the marketplace — making churn structurally self-defeating for both user groups.
+    </div>
+
+
+    <h2>One-Line Summary</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Concept</th>
+          <th>Definition</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>RSU</strong></td>
+          <td>Resident Spot Unit — one verified, geotagged residential driveway; the atomic supply-side asset of the
+            OoruShare network.</td>
+        </tr>
+        <tr>
+          <td><strong>Main USP</strong></td>
+          <td>Zero rider app install (BAA B2B integration) + passive income for residents + upstream agentic dispatch
+            prevention using IBM Granite 3.8B.</td>
+        </tr>
+        <tr>
+          <td><strong>Primary Revenue</strong></td>
+          <td>B2B SaaS licensing + per-drop dispatch fees from quick-commerce dark store operators (Blinkit, Zepto,
+            Swiggy).</td>
+        </tr>
+        <tr>
+          <td><strong>Cashflow Engine</strong></td>
+          <td>BAA license fees + per-dispatch micro-fee × Bengaluru's 2.5M daily drops → recurring SaaS + transaction
+            revenue flywheel.</td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+
+  <div class="wrap" style="padding-top:0">
+    <div class="footer">Made with IBM Bob</div>
+  </div>
+
+</body>
+
+</html>

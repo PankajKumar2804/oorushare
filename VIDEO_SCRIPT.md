@@ -26,12 +26,12 @@ node server.js
 
 ## Scene-by-Scene Script
 
-### Scene 1 · The Problem (0:00–0:35)
+### Scene 1 · The Problem (0:00–0:40)
 
 **Screen:** `http://localhost:3001/` — hero section visible
 
 **Narration:**
-> "Bengaluru processes 2.5 million quick-commerce deliveries every single day. But residential bylanes in HSR Layout, Indiranagar, and Koramangala have zero dedicated loading infrastructure. Delivery riders double-park across private gates — blocking residents, obstructing emergency vehicles, and racking up wrongful parking fines of fifteen hundred rupees a month per rider. OoruShare solves this by turning idle residential driveways into a cooperative network of authorized 2-minute loading bays."
+> "Bengaluru processes 2.5 million quick-commerce deliveries every single day. Blinkit, Zepto, and Swiggy have solved the warehouse end — their dark stores have loading docks, their riders have routing. But there is one piece of the delivery journey nobody has solved: the last 10 metres. The 2-minute stop at the customer's residential gate, on a 30-foot bylane that has zero legal loading infrastructure and structurally never can. Riders double-park across private gates, blocking residents and racking up fifteen hundred rupees a month in wrongful police fines. OoruShare fills exactly that gap — turning idle residential driveways into a cooperative network of authorized 2-minute loading bays, coordinated by an autonomous agentic curb governor."
 
 **Actions:**
 1. Slowly scroll through **Section 01 · The Ground Reality** — pause on the 3 problem cards (Resident Grievance, Gig Worker Penalty, City's Environmental Cost)
@@ -44,7 +44,7 @@ node server.js
 **Screen:** Scroll to **Section 02 · The 3-Sided Civic Curb Network** and **Section 03 · Autonomous AI Layer**
 
 **Narration:**
-> "OoruShare connects four civic stakeholders who were never coordinated before: residents who list driveways, riders who find legal spots, dark stores that stagger dispatches, and RWA admins who govern access. The entire system is powered by an autonomous agentic curb governor — architected end-to-end with IBM Bob. Bob designed the 4-phase perpetual control loop: Perception, Reasoning, Action, and Self-Correction, using IBM Granite 3.8B time-series forecasting to predict bylane saturation before it happens."
+> "OoruShare coordinates four civic stakeholders: residents who monetize idle driveways, dark stores whose dispatch engine pre-allocates bays before riders leave, RWA admins who govern access, and riders who arrive at a legal, resident-approved stop — without installing anything new. Experienced riders already know their local spots. What they can't solve alone is the 7 PM surge where six riders from the same dark store flood the same bylane simultaneously. That's the coordination problem OoruShare fixes at the dispatch layer, using IBM Granite 3.8B time-series forecasting to stagger departures before congestion happens."
 
 **Actions:**
 1. Scroll through the Bento grid architecture cards — point out the 4 components (A through D)
@@ -74,7 +74,7 @@ node server.js
 **Screen:** Click **"Rider Map"** → `http://localhost:3001/rider.html`
 
 **Narration:**
-> "Riders see a live spatial radar powered by the ESRI Enterprise World Street Map. The 18 green pulsing pins are available bays across all three zones. Notice the three dashed zone circles — these are live saturation heatmaps. Green means clear, amber means busy, red means the governor has throttled dispatch. I'll click a pin to book a 2-minute slot."
+> "The rider spatial radar is the fallback interface — for riders not yet reached by BAA dispatch integration, and for new or cross-zone riders who don't have local street knowledge. The 18 green pulsing pins are RWA-approved, legally authorized bays. The three dashed zone circles are live saturation heatmaps — green means clear, amber means busy, red means the governor has already throttled dispatch at the dark store to prevent this bylane from getting hit. I'll click a pin to book a 2-minute slot."
 
 **Actions:**
 1. Show map with **18 green pulsing pins** and **3 dashed zone circles**
@@ -150,7 +150,7 @@ node server.js
 **Screen:** Scroll to the `http://localhost:3001/` Bob Story callout card and footer
 
 **Narration:**
-> "Every architectural decision in OoruShare was made with IBM Bob as the principal co-architect: the Responsible AI charter written before any code, the PostgreSQL advisory locking layer that eliminates double-bookings under concurrent load, the Redis pub/sub SSE fan-out that scales to 100,000 simultaneous riders at constant database cost, and the full Carbon v11 interface you see here. OoruShare is production-ready for citywide deployment. Built with IBM Bob. Built for Bengaluru."
+> "Every architectural decision in OoruShare was made with IBM Bob as the principal co-architect: the Responsible AI charter written before any code, the PostgreSQL advisory locking layer that eliminates double-bookings under concurrent load, the Redis pub/sub SSE fan-out that scales to 100,000 simultaneous riders at constant database cost, and the full Carbon v11 interface you see here. The gap OoruShare fills — the last 10 metres of every delivery — is one no single quick-commerce platform will build, because it benefits all of them equally. That's why it needs a neutral civic layer. OoruShare is that layer. Production-ready for citywide deployment. I'm Pankaj Kumar, SWE AI Full Stack, and this is OoruShare — Built with IBM Bob. Built for Bengaluru."
 
 **Actions:**
 1. Show the **IBM Bob Story callout card** (Section 03) with the mascot

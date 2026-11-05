@@ -1,0 +1,455 @@
+
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>OoruShare — Business Model &amp; Revenue Architecture</title>
+<style>
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:-apple-system,"Segoe UI",system-ui,sans-serif;font-size:14px;line-height:1.65;background:#fff;color:#1f2328}
+  .header{background:#161616;color:#fff;padding:26px 32px 22px;border-bottom:3px solid #0f62fe}
+  .header .eye{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#a8c7fa;margin-bottom:5px}
+  .header h1{font-size:21px;font-weight:700;letter-spacing:-.3px}
+  .header .sub{font-size:12px;color:#8b949e;margin-top:4px}
+  .wrap{max-width:760px;margin:0 auto;padding:30px 24px 48px}
+  h2{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:#0f62fe;margin:34px 0 14px;padding-bottom:6px;border-bottom:1px solid #e5e7eb}
+  h3{font-size:13px;font-weight:700;margin:14px 0 5px}
+  p{margin-bottom:9px;color:#1f2328;font-size:13px}
+  ul{padding-left:18px;margin-bottom:9px}
+  li{margin-bottom:4px;font-size:13px}
+
+  /* FLYWHEEL */
+  .flywheel{background:#f7f8fa;border:1px solid #e5e7eb;border-radius:8px;padding:22px;margin:16px 0 22px;text-align:center}
+  .fw-row{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:4px;margin-bottom:6px}
+  .fw-node{background:#161616;color:#a8c7fa;border-radius:5px;padding:8px 14px;font-size:12px;font-weight:600;min-width:130px}
+  .fw-arr{font-size:18px;color:#0f62fe;font-weight:700;padding:0 4px}
+  .flywheel .caption{font-size:11px;color:#57606a;margin-top:8px}
+
+  /* CANVAS GRID */
+  .canvas{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin:14px 0 22px}
+  @media(max-width:580px){.canvas{grid-template-columns:1fr}}
+  .cbox{border-radius:6px;padding:14px 16px;border:1px solid #e5e7eb}
+  .cbox .ctag{font-size:10px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;margin-bottom:5px}
+  .cbox h3{font-size:12px;margin:0 0 6px}
+  .cbox ul{font-size:12px;color:#57606a;padding-left:14px}
+  .cbox li{margin-bottom:3px}
+  .c-blue{background:#e8f0fe;border-top:3px solid #0f62fe}.c-blue .ctag{color:#0f62fe}
+  .c-green{background:#e6f4ea;border-top:3px solid #24a148}.c-green .ctag{color:#24a148}
+  .c-orange{background:#fff3e0;border-top:3px solid #ff832b}.c-orange .ctag{color:#d15700}
+  .c-purple{background:#f3eeff;border-top:3px solid #7c5cd8}.c-purple .ctag{color:#7c5cd8}
+  .c-dark{background:#f7f8fa;border-top:3px solid #57606a}.c-dark .ctag{color:#57606a}
+  .c-red{background:#fff1f1;border-top:3px solid #cf222e}.c-red .ctag{color:#cf222e}
+
+  /* REVENUE TABLE */
+  table{width:100%;border-collapse:collapse;margin:12px 0 18px;font-size:12px}
+  th{background:#f7f8fa;border:1px solid #e5e7eb;padding:8px 10px;text-align:left;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:#57606a}
+  td{border:1px solid #e5e7eb;padding:8px 10px;vertical-align:top}
+  tr:nth-child(even) td{background:#f7f8fa}
+
+  /* REVENUE FLOW */
+  .rflow{margin:14px 0}
+  .rflow-step{display:flex;gap:14px;padding:12px 0;border-bottom:1px dashed #e5e7eb;align-items:flex-start}
+  .rflow-step:last-child{border-bottom:none}
+  .rflow-icon{width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:#fff;flex-shrink:0;margin-top:2px}
+  .ic-b{background:#0f62fe}.ic-g{background:#24a148}.ic-o{background:#ff832b}.ic-p{background:#7c5cd8}
+  .rflow-body h3{font-size:12px;font-weight:700;margin:0 0 2px}
+  .rflow-body p{font-size:12px;color:#57606a;margin:0}
+
+  /* METRICS */
+  .metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:14px 0 20px}
+  @media(max-width:540px){.metrics{grid-template-columns:1fr 1fr}}
+  .mc{background:#161616;border-radius:6px;padding:12px 10px;text-align:center}
+  .mc .val{font-size:17px;font-weight:700;color:#a8c7fa;display:block}
+  .mc .lbl{font-size:10px;color:#8b949e;text-transform:uppercase;letter-spacing:.07em;display:block;margin-top:2px}
+
+  /* TWO-SIDED */
+  .market{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:14px 0 22px}
+  @media(max-width:540px){.market{grid-template-columns:1fr}}
+  .mside{border-radius:6px;padding:16px;border:1px solid #e5e7eb}
+  .mside .stag{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.09em;margin-bottom:6px}
+  .mside h3{font-size:13px;margin:0 0 8px}
+  .mside ul{font-size:12px;padding-left:15px;color:#1f2328}
+  .mside li{margin-bottom:4px}
+  .supply{background:#e6f4ea;border-top:3px solid #24a148}.supply .stag{color:#24a148}
+  .demand{background:#e8f0fe;border-top:3px solid #0f62fe}.demand .stag{color:#0f62fe}
+
+  /* CALLOUT */
+  .callout{border-radius:5px;padding:11px 15px;font-size:12px;margin:12px 0 18px}
+  .cal-b{background:#e8f0fe;border-left:3px solid #0f62fe;color:#1e3a5f}
+  .cal-g{background:#e6f4ea;border-left:3px solid #24a148;color:#1b4332}
+  .cal-y{background:#fffbeb;border-left:3px solid #d97706;color:#78350f}
+
+  /* PILL */
+  .pill{display:inline-block;padding:1px 7px;border-radius:20px;font-size:10px;font-weight:600;margin-left:4px;vertical-align:middle}
+  .p-b{background:#e8f0fe;color:#0f62fe}
+  .p-g{background:#e6f4ea;color:#24a148}
+  .p-o{background:#fff3e0;color:#d15700}
+  .p-r{background:#fff1f1;color:#cf222e}
+
+  /* ROADMAP */
+  .roadmap{border-left:2px solid #e5e7eb;padding-left:20px;margin:14px 0}
+  .rm-item{position:relative;padding:10px 0 10px}
+  .rm-item::before{content:'';position:absolute;left:-25px;top:16px;width:10px;height:10px;border-radius:50%;background:#e5e7eb;border:2px solid #fff}
+  .rm-item.live::before{background:#24a148}
+  .rm-item.soon::before{background:#ff832b}
+  .rm-item.future::before{background:#57606a}
+  .rm-item h3{font-size:12px;font-weight:700;margin:0 0 2px}
+  .rm-item p{font-size:12px;color:#57606a;margin:0}
+
+  .footer{text-align:center;font-size:11px;color:#8b949e;border-top:1px solid #e5e7eb;padding:14px 0 8px;margin-top:36px}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="eye">OoruShare · Business Model Architecture</div>
+  <h1>Business Model &amp; Revenue Generation</h1>
+  <div class="sub">IBM Bobathon: Build for Bengaluru · Theme 1: Smarter Streets Better Living</div>
+</div>
+
+<div class="wrap">
+
+  
+  <h2>What OoruShare Is</h2>
+  <p>
+    OoruShare is a <strong>four-sided civic marketplace</strong> that coordinates residents, gig riders, dark store operators, and RWA committees into a single autonomous curb-sharing economy. The core product is a <strong>2-minute verified residential loading bay</strong> operated as a shared civic utility across Bengaluru's high-density bylanes.
+  </p>
+
+  <div class="metrics">
+    <div class="mc"><span class="val">2.5M</span><span class="lbl">Daily drops · Bengaluru</span></div>
+    <div class="mc"><span class="val">50,000</span><span class="lbl">Gig riders affected</span></div>
+    <div class="mc"><span class="val">0</span><span class="lbl">Legal loading bays today</span></div>
+    <div class="mc"><span class="val">88%</span><span class="lbl">RWA disputes: curbs</span></div>
+  </div>
+
+  
+  <h2>The Network Flywheel</h2>
+  <div class="flywheel">
+    <div class="fw-row">
+      <div class="fw-node">More RSUs Listed</div>
+      <div class="fw-arr">→</div>
+      <div class="fw-node">Denser Rider Coverage</div>
+      <div class="fw-arr">→</div>
+      <div class="fw-node">Platform BAA Value ↑</div>
+    </div>
+    <div class="fw-row">
+      <div class="fw-arr" style="transform:rotate(90deg)">↓</div>
+      <div style="flex:1"></div>
+      <div class="fw-arr" style="transform:rotate(90deg)">↓</div>
+    </div>
+    <div class="fw-row">
+      <div class="fw-node">Resident Income ↑</div>
+      <div class="fw-arr">←</div>
+      <div class="fw-node">More Drop Revenue</div>
+      <div class="fw-arr">←</div>
+      <div class="fw-node">More Dispatches Routed</div>
+    </div>
+    <div class="caption">Each new RSU and each new BAA partner amplifies every other metric simultaneously — the classic marketplace compounding loop.</div>
+  </div>
+
+  
+  <h2>The Two-Sided Market</h2>
+  <p>OoruShare solves the marketplace cold-start problem through an <strong>asymmetric onboarding architecture</strong> — supply and demand are seeded through completely different channels.</p>
+  <div class="market">
+    <div class="mside supply">
+      <div class="stag">Supply Side</div>
+      <h3>Residents → RSU Listings</h3>
+      <ul>
+        <li>Onboarded via RWA meetings, society gate notices, MyGate / NoBrokerHood</li>
+        <li>60-second web form — address, gate width, available hours</li>
+        <li>RWA committee approves each listing (human-in-the-loop gate)</li>
+        <li>+10 Community Credits per completed drop</li>
+        <li>10 credits = ₹50 RWA maintenance deduction</li>
+        <li><strong>₹150–₹350/month passive income</strong> from an idle driveway</li>
+      </ul>
+    </div>
+    <div class="mside demand">
+      <div class="stag">Demand Side</div>
+      <h3>Riders &amp; Fleets → BAA Integration</h3>
+      <ul>
+        <li>Riders <strong>never download</strong> or register on OoruShare</li>
+        <li>Dark stores sign a <strong>Business Associate Agreement (BAA)</strong></li>
+        <li>Shift rosters fed via enterprise webhooks (<code>POST /integrations/dispatch</code>)</li>
+        <li>Curb bay coordinates pushed <strong>inside the rider's existing delivery app</strong></li>
+        <li>Zero onboarding friction = zero cold-start drop-off</li>
+        <li>DPDP Act 2023 compliant: rider IDs tokenized</li>
+      </ul>
+    </div>
+  </div>
+
+  
+  <h2>Business Model Canvas</h2>
+  <div class="canvas">
+    <div class="cbox c-blue">
+      <div class="ctag">Value Proposition</div>
+      <h3>What OoruShare Delivers</h3>
+      <ul>
+        <li>Legal 2-min loading bays — zero rider fines</li>
+        <li>₹150–₹350/mo passive income for residents</li>
+        <li>88% reduction in RWA gate disputes</li>
+        <li>4.2 min transit time saved per drop</li>
+        <li>AI-staggered dispatch prevents gridlock upstream</li>
+      </ul>
+    </div>
+    <div class="cbox c-green">
+      <div class="ctag">Customer Segments</div>
+      <h3>Who It Serves</h3>
+      <ul>
+        <li>Quick-commerce platforms (Blinkit, Zepto, Swiggy, Dunzo)</li>
+        <li>Dark store operators</li>
+        <li>50,000 gig delivery riders</li>
+        <li>Bengaluru residents &amp; RWAs</li>
+        <li>BBMP / BTP (future civic data buyer)</li>
+      </ul>
+    </div>
+    <div class="cbox c-orange">
+      <div class="ctag">Channels</div>
+      <h3>How It Reaches Them</h3>
+      <ul>
+        <li>BAA enterprise API for platforms</li>
+        <li>RWA general body meetings</li>
+        <li>MyGate / NoBrokerHood notices</li>
+        <li>WhatsApp Business OTP (roadmap)</li>
+        <li>Dark store operator dashboard</li>
+      </ul>
+    </div>
+    <div class="cbox c-purple">
+      <div class="ctag">Key Resources</div>
+      <h3>What Powers It</h3>
+      <ul>
+        <li>RSU network (resident driveways)</li>
+        <li>IBM Granite 3.8B congestion AI</li>
+        <li>PostgreSQL advisory lock engine</li>
+        <li>Redis SSE pub/sub fan-out</li>
+        <li>BAA legal framework</li>
+      </ul>
+    </div>
+    <div class="cbox c-dark">
+      <div class="ctag">Key Activities</div>
+      <h3>What It Does Daily</h3>
+      <ul>
+        <li>Authenticate &amp; allocate RSUs</li>
+        <li>Route dispatches via AI stagger</li>
+        <li>Auto-reroute blocked riders (&lt;300ms)</li>
+        <li>Award &amp; reconcile community credits</li>
+        <li>Maintain RWA governance gate</li>
+      </ul>
+    </div>
+    <div class="cbox c-red">
+      <div class="ctag">Cost Structure</div>
+      <h3>Where Money Goes</h3>
+      <ul>
+        <li>Cloud infra (Node + PostgreSQL + Redis)</li>
+        <li>ESRI GIS tile licensing</li>
+        <li>BAA legal &amp; compliance setup</li>
+        <li>RWA onboarding &amp; field ops</li>
+        <li>IBM Granite API (AI inference)</li>
+      </ul>
+    </div>
+  </div>
+
+  
+  <h2>Revenue Streams — How Money Is Generated</h2>
+
+  <div class="callout cal-y">
+    <strong>Note on pricing:</strong> Specific BAA license fee amounts are not yet defined in the product documentation — they will be negotiated per platform contract. The per-drop micro-fee and civic data license are the quantifiable streams modelled below.
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Stream</th>
+        <th>Payer</th>
+        <th>Mechanism</th>
+        <th>Unit Economics</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>1</strong></td>
+        <td><strong>B2B Platform SaaS / BAA License</strong> <span class="pill p-b">Primary</span></td>
+        <td>Blinkit, Zepto, Swiggy, Dunzo</td>
+        <td>Monthly API access subscription for <code>POST /integrations/dispatch</code> webhook — curb bay allocation embedded in dark store checkout pipeline</td>
+        <td>Monthly recurring per platform. Pricing TBD via BAA negotiation. 4 platforms = 4 anchor contracts.</td>
+        <td><span class="pill p-o">Post-BAA</span></td>
+      </tr>
+      <tr>
+        <td><strong>2</strong></td>
+        <td><strong>Per-Drop Dispatch Micro-Fee</strong> <span class="pill p-b">Primary</span></td>
+        <td>Dark store operators</td>
+        <td>Small per-dispatch transaction fee for every confirmed spot allocation — analogous to a payment gateway per-transaction model</td>
+        <td>At ₹2/drop × 8,640 drops/month per corridor = <strong>₹17,280/month per corridor</strong>. 58 corridors → ₹10L/month from this stream alone.</td>
+        <td><span class="pill p-o">Post-BAA</span></td>
+      </tr>
+      <tr>
+        <td><strong>3</strong></td>
+        <td><strong>RWA / Society Subscription</strong> <span class="pill p-g">Secondary</span></td>
+        <td>Resident Welfare Associations</td>
+        <td>Annual civic governance subscription for the RWA Admin Panel: spot oversight, credit reconciliation reports, bylane utilization analytics</td>
+        <td>Annual fee per RWA society. Scales with number of participating layouts.</td>
+        <td><span class="pill p-r">Roadmap</span></td>
+      </tr>
+      <tr>
+        <td><strong>4</strong></td>
+        <td><strong>Municipal / Civic Data Licensing</strong> <span class="pill p-g">Secondary</span></td>
+        <td>BBMP, Bengaluru Traffic Police</td>
+        <td>Anonymized, aggregated curb saturation heatmaps sold to municipal bodies for curb zoning, traffic policy, and bylane planning</td>
+        <td>One-time setup + annual ward-level license. High-margin pure-data product (~95% gross margin).</td>
+        <td><span class="pill p-r">Roadmap</span></td>
+      </tr>
+      <tr>
+        <td><strong>5</strong></td>
+        <td><strong>UPI Credit Settlement Float</strong> <span class="pill p-g">Secondary</span></td>
+        <td>Residents (indirect)</td>
+        <td>When community credits convert to direct UPI bank payouts (roadmap), a small settlement spread on the conversion float generates passive revenue</td>
+        <td>Marginal spread × high volume of monthly credit redemptions across thousands of residents.</td>
+        <td><span class="pill p-r">Roadmap</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  
+  <h2>Cashflow Generation Loop — Step by Step</h2>
+
+  <div class="callout cal-b">
+    <strong>Core insight:</strong> OoruShare's primary cashflow comes from B2B, not B2C. Delivery platforms pay for access; residents and riders are value receivers, not payers. Revenue scales with dark store dispatch volume — not individual user acquisition cost.
+  </div>
+
+  <div class="rflow">
+    <div class="rflow-step">
+      <div class="rflow-icon ic-b">1</div>
+      <div class="rflow-body">
+        <h3>BAA Execution → Anchor License Revenue Starts</h3>
+        <p>A quick-commerce platform (e.g. Blinkit) signs a Business Associate Agreement. Monthly SaaS license fee begins. This is the primary anchor revenue — predictable, recurring, B2B. Contract price negotiated per platform.</p>
+      </div>
+    </div>
+    <div class="rflow-step">
+      <div class="rflow-icon ic-g">2</div>
+      <div class="rflow-body">
+        <h3>Live Dispatches Flow In → Per-Drop Micro-Revenue</h3>
+        <p>Dark stores call <code>POST /integrations/dispatch</code> at order checkout. Every successful curb bay allocation charges a micro-fee (e.g. ₹2/drop). Bengaluru's 2.5M drops/day is the total addressable dispatch volume.</p>
+      </div>
+    </div>
+    <div class="rflow-step">
+      <div class="rflow-icon ic-o">3</div>
+      <div class="rflow-body">
+        <h3>Resident Credits Earned → Community Value (Cost-of-Supply)</h3>
+        <p>Each drop awards +10 Community Credits = ₹50 maintenance offset to the resident. This is OoruShare's cost of supply — paid via billing offsets, not direct cash, keeping gross margin high.</p>
+      </div>
+    </div>
+    <div class="rflow-step">
+      <div class="rflow-icon ic-p">4</div>
+      <div class="rflow-body">
+        <h3>RWA Reconciliation → Secondary Subscription Revenue</h3>
+        <p>RWA committees settle credit redemptions monthly via the RWA Admin Portal. The governance + reconciliation integration service carries a small annual subscription fee per society.</p>
+      </div>
+    </div>
+    <div class="rflow-step">
+      <div class="rflow-icon ic-b">5</div>
+      <div class="rflow-body">
+        <h3>Congestion Data Matures → Civic Data Product</h3>
+        <p>After 6–12 months of operation, anonymized curb saturation patterns become a licensable municipal intelligence product for BBMP and BTP — near-100% margin once the data infrastructure is built.</p>
+      </div>
+    </div>
+  </div>
+
+  
+  <h2>Unit Economics — One Pilot Corridor (HSR Layout Sector 1)</h2>
+
+  <table>
+    <thead>
+      <tr><th>Metric</th><th>Assumption (from codebase)</th><th>Monthly Estimate</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Active RSUs in corridor</td>
+        <td>24 approved driveways (current pilot seed data)</td>
+        <td>24 spots × 9h available/day = 216 slot-hours/day</td>
+      </tr>
+      <tr>
+        <td>Drops routed through platform</td>
+        <td>~2 drops/hour per spot during peak hours</td>
+        <td>~8,640 drops/month from 1 corridor</td>
+      </tr>
+      <tr>
+        <td>Per-drop revenue (conservative)</td>
+        <td>₹2/drop (modelled estimate — not in docs)</td>
+        <td><strong>₹17,280/month</strong> from this stream, 1 corridor</td>
+      </tr>
+      <tr>
+        <td>Resident credit payouts</td>
+        <td>₹50 per 10 credits × 10 credits/drop (from codebase)</td>
+        <td>₹43,200 in maintenance offsets (non-cash, billing deduction)</td>
+      </tr>
+      <tr>
+        <td>BAA platform license fee</td>
+        <td>Negotiated per BAA contract — not defined in documentation</td>
+        <td><strong>TBD</strong> — high-margin recurring anchor revenue</td>
+      </tr>
+      <tr>
+        <td>Corridors to reach ₹10L/month (per-drop only)</td>
+        <td>₹17,280/month per corridor at ₹2/drop</td>
+        <td><strong>~58 corridors</strong> — Bengaluru has 200+ eligible layouts</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="callout cal-g">
+    <strong>Margin structure:</strong> BAA license revenue is near 100% gross margin (software). Per-drop revenue net of resident credits is ~60–70% gross margin (maintenance offsets are non-cash). Civic data product is ~95% gross margin once infrastructure is built. Mixed model trends toward high-margin SaaS + transaction blend.
+  </div>
+
+  
+  <h2>Revenue Activation Roadmap</h2>
+  <div class="roadmap">
+    <div class="rm-item live">
+      <h3>Phase 0 — Live Now (Prototype)</h3>
+      <p>Full 4-dashboard working prototype with synthetic seed data (24 spots, 18 residents, 20 bookings, 8 redemptions). Credit ledger, RWA governance, agentic dispatch, SSE live radar — all functional. Revenue engine technically validated, awaiting BAA execution.</p>
+    </div>
+    <div class="rm-item soon">
+      <h3>Phase 1 — Post-Hackathon · BAA Execution</h3>
+      <p>Sign BAA with 1 quick-commerce platform (Blinkit / Zepto). Activate live fleet webhooks. WhatsApp OTP resident login. Per-drop micro-fee revenue begins Day 1 of integration go-live.</p>
+    </div>
+    <div class="rm-item soon">
+      <h3>Phase 2 — Scale to 5 Corridors · UPI Redemption</h3>
+      <p>Expand to HSR, Indiranagar, Koramangala, Whitefield, JP Nagar. Direct UPI credit payouts to residents and society maintenance funds. Onboard 2nd and 3rd platforms under BAA framework.</p>
+    </div>
+    <div class="rm-item future">
+      <h3>Phase 3 — Citywide · Civic Data Monetization</h3>
+      <p>RWA annual subscription tiers launched. Anonymized congestion heatmap licensed to BBMP and BTP. 200+ corridor coverage. OoruShare becomes Bengaluru's curb intelligence layer.</p>
+    </div>
+  </div>
+
+  
+  <h2>Why This Business Model Is Defensible</h2>
+  <div class="canvas" style="grid-template-columns:1fr 1fr">
+    <div class="cbox c-blue">
+      <div class="ctag">Demand-Side Moat</div>
+      <h3>BAA Lock-In</h3>
+      <p style="font-size:12px;color:#3b4252;margin:0">Once Blinkit's dispatch pipeline integrates OoruShare's API, switching cost = re-engineering dispatch infrastructure. Network stickiness compounds with every routed delivery.</p>
+    </div>
+    <div class="cbox c-green">
+      <div class="ctag">Supply-Side Moat</div>
+      <h3>Community Loyalty</h3>
+      <p style="font-size:12px;color:#3b4252;margin:0">Residents earning ₹150–₹350/month passively will not remove their RSU listing. RWA endorsement creates social trust that is near-impossible to displace competitively.</p>
+    </div>
+    <div class="cbox c-orange">
+      <div class="ctag">Regulatory Moat</div>
+      <h3>DPDP + RWA Governance</h3>
+      <p style="font-size:12px;color:#3b4252;margin:0">DPDP Act 2023 compliance, BAA legal framework, and RWA democratic approval gate make OoruShare the trusted, compliant default for civic institutions and municipal partners.</p>
+    </div>
+    <div class="cbox c-purple">
+      <div class="ctag">AI Moat</div>
+      <h3>Proprietary Congestion Intelligence</h3>
+      <p style="font-size:12px;color:#3b4252;margin:0">IBM Granite 3.8B trained on OoruShare's own bylane saturation data creates proprietary dispatch intelligence no competitor can replicate without the same network history.</p>
+    </div>
+  </div>
+
+</div>
+
+<div class="wrap" style="padding-top:0">
+  <div class="footer">Made with IBM Bob</div>
+</div>
+</body>
+</html>

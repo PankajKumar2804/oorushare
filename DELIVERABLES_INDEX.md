@@ -1,8 +1,20 @@
 # OoruShare: Master Submission & Deliverables Index
 
-**IBM Bobathon: Build for Bengaluru** — Theme 1: *Smarter Streets Better Living*  
-**Contributors:** Pankajkr Jain (SWE AI Full Stack) & IBM Bob (Autonomous Co-Pilot)
-  
+**IBM Bobathon: Build for Bengaluru** — Theme 1: *Smarter Streets Better Living*
+
+---
+
+### Builder & Idea Originator
+
+**Pankaj Kumar (Pankajkr Jain)**
+SWE AI Full Stack · Healthcare Industry
+*Conceived, designed, and built OoruShare end-to-end — from the original civic problem statement and product architecture through every line of backend, frontend, and agentic AI code.*
+
+**IBM Bob** — Autonomous Co-Pilot & Principal Architect
+*Co-architected concurrency design, Responsible AI charter, agentic governor, Carbon v11 interfaces, and containerisation.*
+
+---
+
 **Built with IBM Bob** · Bengaluru Civic Pilot
 
 ---
@@ -18,6 +30,9 @@ Per official IBM Bobathon submission criteria, this archive contains the followi
 | **3. Source Code Repository** | [https://github.com/PankajKumar2804/oorushare](https://github.com/PankajKumar2804/oorushare) | ✅ Public & Active |
 | **4. Presentation Deck** | [`OoruShare_IBM_Bobathon_Theme1_Submission.pptx`](OoruShare_IBM_Bobathon_Theme1_Submission.pptx) | ✅ IBM Plex Sans font, Carbon v11, IBM Bob mascot |
 | **5. Video Demonstration** | [`VIDEO_SCRIPT.md`](VIDEO_SCRIPT.md) — 6-scene script, all dashboards covered | ⏳ Record using IBM Webex · paste link in SUBMISSION.md §7 |
+| **6. Market Gap & Competitive Analysis** | [`SUBMISSION.md §1`](SUBMISSION.md) — Last-10-Metres gap, why platforms won't build this | ✅ Added — Platform neutrality argument documented |
+| **7. Strategic Roadmap** | [`SUBMISSION.md §8`](SUBMISSION.md), [`hld.md §9–10`](hld.md) — 4-phase plan, defensibility scenarios | ✅ Added — Phase 0 → 3 execution plan |
+| **8. Responsible AI Charter** | [`oorushare-responsible-ai-principles.html`](oorushare-responsible-ai-principles.html) — RAI-001 v1.0 | ✅ Pre-code governance, DPDP 2023, fairness framework |
 
 ---
 
