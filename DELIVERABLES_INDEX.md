@@ -13,11 +13,11 @@ Per official IBM Bobathon submission criteria, this archive contains the followi
 
 | Deliverable Requirement | File / Resource Location | Status |
 |---|---|---|
-| **1. Problem Statement & Detailed Solution** | [`SUBMISSION.md`](SUBMISSION.md), [`hld.md`](hld.md), [`lld.md`](lld.md) | Verified & Documented |
-| **2. Working Prototype built with IBM Bob** | Complete `backend/` and `frontend/` (Node.js, Express, Carbon v11, ESRI GIS) | Operational (`http://localhost:3001`) |
-| **3. Source Code Repository** | [https://github.com/PankajKumar2804/oorushare](https://github.com/PankajKumar2804/oorushare) | Public & Active |
-| **4. Presentation Deck / Document** | [`OoruShare_IBM_Bobathon_Theme1_Submission.pptx`](OoruShare_IBM_Bobathon_Theme1_Submission.pptx) | 10 Slides, Carbon v11, Embedded Bob Mascot |
-| **5. Video Demonstration & Walkthrough** | [`VIDEO_SCRIPT.md`](VIDEO_SCRIPT.md) (Complete scene-by-scene script) & YouTube Link | Documented with exact screen actions |
+| **1. Problem Statement & Detailed Solution** | [`SUBMISSION.md`](SUBMISSION.md), [`hld.md`](hld.md), [`lld.md`](lld.md) | ✅ Verified & Documented |
+| **2. Working Prototype built with IBM Bob** | `backend/` + `frontend/` — 4 dashboards + civic landing, Node.js, Carbon v11, ESRI GIS | ✅ Operational at `http://localhost:3001` · 24 spots · 18 residents · live agent |
+| **3. Source Code Repository** | [https://github.com/PankajKumar2804/oorushare](https://github.com/PankajKumar2804/oorushare) | ✅ Public & Active |
+| **4. Presentation Deck** | [`OoruShare_IBM_Bobathon_Theme1_Submission.pptx`](OoruShare_IBM_Bobathon_Theme1_Submission.pptx) | ✅ IBM Plex Sans font, Carbon v11, IBM Bob mascot |
+| **5. Video Demonstration** | [`VIDEO_SCRIPT.md`](VIDEO_SCRIPT.md) — 6-scene script, all dashboards covered | ⏳ Record using IBM Webex · paste link in SUBMISSION.md §7 |
 
 ---
 
@@ -25,7 +25,7 @@ Per official IBM Bobathon submission criteria, this archive contains the followi
 
 > [!IMPORTANT]
 > **Data Disclosure for Judges & Evaluators:**
-> - **Current Prototype Data (Synthetic Baseline):** All driveway addresses, rider names, GPS coordinates, and historical bookings currently populated in `memdb.js` and `seed.js` are **synthetic, privacy-safe mock data** representing high-density Bengaluru corridors (HSR Layout Sector 1, Indiranagar 100 Feet Road, Koramangala 80 Feet Road).
+> - **Current Prototype Data (Synthetic Baseline):** All driveway addresses, rider names, GPS coordinates, and historical bookings currently populated in `memdb.js` are **synthetic, privacy-safe mock data** representing high-density Bengaluru corridors (HSR Layout Sector 1, Indiranagar 100 Feet Road, Koramangala 80 Feet Road). 24 spots across 18 residents, with verified GPS coordinates.
 > - **Production Transition (Real-Time BAA Federation):** In live city deployment, rider identities and drop destinations are **not entered manually**. Instead, under formal **Business Associate Agreements (BAA)** with delivery partners (Blinkit, Zepto, Swiggy Instamart), active dispatches, shift rosters, and curb allocations stream **in real time via enterprise webhooks** (`POST /integrations/dispatch`). 
 > - **DPDP Act 2023 Compliance:** Live data is tokenized on-the-fly (`rider_token: "BLK_HSR_4021"`, masked vehicle numbers `KA01***39`), preventing any PII exposure.
 
@@ -36,15 +36,16 @@ Per official IBM Bobathon submission criteria, this archive contains the followi
 - **Core Documentation**:
   - [`SUBMISSION.md`](SUBMISSION.md): Official hackathon answers matching all 5 evaluation criteria.
   - [`BOB_STORY.md`](BOB_STORY.md): Complete narrative of how IBM Bob co-architected and accelerated OoruShare.
-  - [`hld.md`](hld.md): High-Level Design document covering system architecture, asymmetric onboarding, and DPDP governance.
-  - [`lld.md`](lld.md): Low-Level Design document covering schemas, API contracts, PostgreSQL advisory locks, and sequence diagrams.
-  - [`VIDEO_SCRIPT.md`](VIDEO_SCRIPT.md): Step-by-step 3-minute video recording walkthrough script.
+  - [`hld.md`](hld.md): High-Level Design — system architecture, asymmetric onboarding, DPDP governance.
+  - [`lld.md`](lld.md): Low-Level Design — schemas, API contracts, PostgreSQL advisory locks, sequence diagrams.
+  - [`VIDEO_SCRIPT.md`](VIDEO_SCRIPT.md): 6-scene recording guide covering all dashboards, heatmap, agent tour, resident switcher.
   - [`oorushare-responsible-ai-principles.html`](oorushare-responsible-ai-principles.html): Responsible AI Charter (RAI-001).
+  - [`OoruShare_IBM_Bobathon_Theme1_Submission.pptx`](OoruShare_IBM_Bobathon_Theme1_Submission.pptx): 10-slide deck in IBM Plex Sans / Carbon v11.
 
 - **Executable Prototype**:
-  - `backend/`: Node.js Express server, dual-mode database (`memdb.js` / PostgreSQL), Redis pub/sub SSE, and agentic routes.
-  - `frontend/`: IBM Carbon Design System v11 UI, ESRI World Street Map radar, and 4 persona dashboards.
-  - `docker-compose.yml`: Production container stack with PostgreSQL, PgBouncer, Redis, Backend, and Nginx.
+  - `backend/`: Node.js Express, 6 route modules, dual-mode db (`memdb.js` / PostgreSQL), Redis SSE, agentic routes.
+  - `frontend/`: IBM Carbon v11 UI, ESRI World Street Map + zone heatmap, 4 dashboards + civic landing, resident switcher.
+  - `docker-compose.yml`: Full production stack — PostgreSQL, PgBouncer, Redis, Backend, Nginx.
 
 ---
 
