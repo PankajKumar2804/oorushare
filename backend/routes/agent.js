@@ -107,7 +107,7 @@ router.get('/activity', async (req, res, next) => {
           timestamp: new Date().toLocaleTimeString(),
           phase: 'PERCEPTION',
           zone: `${zone} Bylanes`,
-          message: `Street curb load nominal (${availSpots.length} verified bays open). Transit flow uninhibited.`,
+          message: `Curb saturation at ${saturationPct}% — ${availSpots.length} verified bays open. Transit flow uninhibited.`,
           reasoning: `Baseline 4-minute dispatch spacing sufficient to maintain zero double-parking footprint.`
         });
       }

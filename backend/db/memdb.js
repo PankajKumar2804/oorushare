@@ -66,26 +66,30 @@ function seedDemo() {
   ];
   DEMO_SPOTS.forEach(s => spots.push({ ...s, id: nextId('spots'), created_at: now() }));
 
-  // Queue: 14 riders across all 3 zones, 4 dark stores
+  // Queue: realistic mix of pending (next up) and dispatched (already en-route)
+  // pending = counts toward saturation; dispatched = already on road, not queued
   const DEMO_QUEUE = [
-    { store_name: 'Blinkit HSR Dark Store',      neighborhood: 'HSR Layout',   rider_name: 'Ravi Kumar',      platform: 'Blinkit', offset_mins: 0  },
-    { store_name: 'Blinkit HSR Dark Store',      neighborhood: 'HSR Layout',   rider_name: 'Sanjay Das',      platform: 'Blinkit', offset_mins: 4  },
-    { store_name: 'Blinkit HSR Dark Store',      neighborhood: 'HSR Layout',   rider_name: 'Mohan Rao',       platform: 'Blinkit', offset_mins: 8  },
-    { store_name: 'Blinkit HSR Dark Store',      neighborhood: 'HSR Layout',   rider_name: 'Girish Nayak',    platform: 'Blinkit', offset_mins: 12 },
-    { store_name: 'Zepto Koramangala Hub',       neighborhood: 'Koramangala',  rider_name: 'Kiran Singh',     platform: 'Zepto',   offset_mins: 2  },
-    { store_name: 'Zepto Koramangala Hub',       neighborhood: 'Koramangala',  rider_name: 'Arun Prasad',     platform: 'Zepto',   offset_mins: 6  },
-    { store_name: 'Zepto Koramangala Hub',       neighborhood: 'Koramangala',  rider_name: 'Shiva Reddy',     platform: 'Zepto',   offset_mins: 10 },
-    { store_name: 'Swiggy Indiranagar Kitchen',  neighborhood: 'Indiranagar',  rider_name: 'Vijay Reddy',     platform: 'Swiggy',  offset_mins: 1  },
-    { store_name: 'Swiggy Indiranagar Kitchen',  neighborhood: 'Indiranagar',  rider_name: 'Deepak Nair',     platform: 'Swiggy',  offset_mins: 5  },
-    { store_name: 'Swiggy Indiranagar Kitchen',  neighborhood: 'Indiranagar',  rider_name: 'Manoj Pillai',    platform: 'Swiggy',  offset_mins: 9  },
-    { store_name: 'Dunzo HSR Express',           neighborhood: 'HSR Layout',   rider_name: 'Pradeep Joshi',   platform: 'Dunzo',   offset_mins: 3  },
-    { store_name: 'Dunzo HSR Express',           neighborhood: 'HSR Layout',   rider_name: 'Santosh Babu',    platform: 'Dunzo',   offset_mins: 7  },
-    { store_name: 'Zepto HSR Hub',               neighborhood: 'HSR Layout',   rider_name: 'Naresh Hegde',    platform: 'Zepto',   offset_mins: 2  },
-    { store_name: 'Swiggy Koramangala Store',    neighborhood: 'Koramangala',  rider_name: 'Dinesh Sharma',   platform: 'Swiggy',  offset_mins: 4  },
+    // HSR Layout — 3 pending (next wave), 4 already dispatched (en-route)
+    { store_name: 'Blinkit HSR Dark Store',     neighborhood: 'HSR Layout',  rider_name: 'Ravi Kumar',    platform: 'Blinkit', offset_mins:  4, status: 'pending'    },
+    { store_name: 'Blinkit HSR Dark Store',     neighborhood: 'HSR Layout',  rider_name: 'Sanjay Das',    platform: 'Blinkit', offset_mins:  8, status: 'pending'    },
+    { store_name: 'Dunzo HSR Express',          neighborhood: 'HSR Layout',  rider_name: 'Pradeep Joshi', platform: 'Dunzo',   offset_mins: 12, status: 'pending'    },
+    { store_name: 'Blinkit HSR Dark Store',     neighborhood: 'HSR Layout',  rider_name: 'Mohan Rao',     platform: 'Blinkit', offset_mins: -5, status: 'dispatched' },
+    { store_name: 'Blinkit HSR Dark Store',     neighborhood: 'HSR Layout',  rider_name: 'Girish Nayak',  platform: 'Blinkit', offset_mins: -8, status: 'dispatched' },
+    { store_name: 'Dunzo HSR Express',          neighborhood: 'HSR Layout',  rider_name: 'Santosh Babu',  platform: 'Dunzo',   offset_mins: -3, status: 'dispatched' },
+    { store_name: 'Zepto HSR Hub',              neighborhood: 'HSR Layout',  rider_name: 'Naresh Hegde',  platform: 'Zepto',   offset_mins: -6, status: 'dispatched' },
+    // Koramangala — 2 pending, 2 dispatched
+    { store_name: 'Zepto Koramangala Hub',      neighborhood: 'Koramangala', rider_name: 'Kiran Singh',   platform: 'Zepto',   offset_mins:  2, status: 'pending'    },
+    { store_name: 'Swiggy Koramangala Store',   neighborhood: 'Koramangala', rider_name: 'Dinesh Sharma', platform: 'Swiggy',  offset_mins:  6, status: 'pending'    },
+    { store_name: 'Zepto Koramangala Hub',      neighborhood: 'Koramangala', rider_name: 'Arun Prasad',   platform: 'Zepto',   offset_mins: -4, status: 'dispatched' },
+    { store_name: 'Zepto Koramangala Hub',      neighborhood: 'Koramangala', rider_name: 'Shiva Reddy',   platform: 'Zepto',   offset_mins: -7, status: 'dispatched' },
+    // Indiranagar — 2 pending, 1 dispatched
+    { store_name: 'Swiggy Indiranagar Kitchen', neighborhood: 'Indiranagar', rider_name: 'Vijay Reddy',   platform: 'Swiggy',  offset_mins:  1, status: 'pending'    },
+    { store_name: 'Swiggy Indiranagar Kitchen', neighborhood: 'Indiranagar', rider_name: 'Deepak Nair',   platform: 'Swiggy',  offset_mins:  5, status: 'pending'    },
+    { store_name: 'Swiggy Indiranagar Kitchen', neighborhood: 'Indiranagar', rider_name: 'Manoj Pillai',  platform: 'Swiggy',  offset_mins: -2, status: 'dispatched' },
   ];
   DEMO_QUEUE.forEach(q_ => {
     const t = new Date(Date.now() + q_.offset_mins * 60000);
-    queue.push({ ...q_, id: nextId('queue'), scheduled_at: t.toISOString(), status: 'pending', spot_id: null, created_at: now() });
+    queue.push({ ...q_, id: nextId('queue'), scheduled_at: t.toISOString(), spot_id: null, created_at: now() });
   });
 
   // Credits: rich earning history for 18 residents
