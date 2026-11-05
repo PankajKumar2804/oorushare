@@ -53,12 +53,25 @@
 
   <!-- List a new spot -->
   <div class="card">
-    <h3>List Your Driveway</h3>
-    <div class="form-row">
-      <div class="form-group">
-        <label class="form-label" for="f-owner">Your Name</label>
-        <input id="f-owner" class="form-input" placeholder="e.g. Priya Sharma" autocomplete="name" />
-      </div>
+  <h3>List Your Driveway</h3>
+  <!-- Demo resident switcher -->
+  <div class="form-group" style="margin-bottom:1rem;">
+    <label class="form-label" for="demo-resident">View as Resident</label>
+    <select id="demo-resident" class="form-input" style="max-width:280px;">
+      <option>Priya Sharma</option>
+      <option>Rajan Nair</option>
+      <option>Meena Patel</option>
+      <option>Suresh Kumar</option>
+      <option>Anitha Reddy</option>
+      <option>Deepa Menon</option>
+      <option>Arjun Krishnan</option>
+    </select>
+  </div>
+  <div class="form-row">
+    <div class="form-group">
+      <label class="form-label" for="f-owner">Your Name</label>
+      <input id="f-owner" class="form-input" placeholder="e.g. Priya Sharma" autocomplete="name" />
+    </div>
       <div class="form-group">
         <label class="form-label" for="f-neighborhood">Neighbourhood</label>
         <select id="f-neighborhood" class="form-input">
@@ -148,7 +161,7 @@
 <div class="toast" id="toast"></div>
 
 <script src="js/shared.js?v=2"></script>
-<script src="js/resident.js?v=2"></script>
+<script src="js/resident.js?v=3"></script>
 </body>
 </html>
 
