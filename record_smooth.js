@@ -209,16 +209,16 @@ async function scrollAndCapture(page, fromY, toY, steps, label) {
   const total = frameIdx;
   console.log(`\n\n✅  Captured ${total} frames → assembling video...\n`);
 
-  // Assemble with ffmpeg — 1fps input, smooth 25fps output with minterpolate
+  // Assemble with ffmpeg — 1fps input, smooth 60fps output with minterpolate blend
   const { execSync } = require('child_process');
-  const videoOut = path.join(__dirname, 'OoruShare_Demo_Transitions.mp4');
+  const videoOut = path.join(__dirname, 'OoruShare_Demo_Smooth60.mp4');
 
   const cmd = [
     `"${FFMPEG}" -y`,
     `-framerate 1`,
     `-i "${path.join(OUT, 'frame_%05d.png')}"`,
-    `-vf "scale=1920:1080:force_original_aspect_ratio=decrease,pad=1920:1080:(ow-iw)/2:(oh-ih)/2:color=#161616,setsar=1,minterpolate=fps=25:mi_mode=blend"`,
-    `-c:v libx264 -preset fast -crf 18 -pix_fmt yuv420p`,
+    `-vf "scale=1920:1080:force_original_aspect_ratio=decrease,pad=1920:1080:(ow-iw)/2:(oh-ih)/2:color=#161616,setsar=1,minterpolate=fps=60:mi_mode=blend"`,
+    `-c:v libx264 -preset fast -crf 16 -pix_fmt yuv420p`,
     `"${videoOut}"`
   ].join(' ');
 
@@ -228,7 +228,7 @@ async function scrollAndCapture(page, fromY, toY, steps, label) {
     const durSec = total;
     const mm = Math.floor(durSec / 60), ss = durSec % 60;
     console.log(`\n✅  Video ready: ${videoOut}`);
-    console.log(`📦  ${sizeMB} MB · ${mm}m ${ss}s · smooth 25fps`);
+    console.log(`📦  ${sizeMB} MB · ${mm}m ${ss}s · smooth 60fps`);
     console.log(`\n💡  Open in any player. Add voiceover in Clipchamp.`);
   } catch(e) {
     console.error('❌  ffmpeg error:', e.message.slice(0,200));
