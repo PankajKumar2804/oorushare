@@ -1,0 +1,597 @@
+﻿<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>OoruShare — Responsible AI Principles</title>
+  <style>
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0
+    }
+
+    body {
+      font-family: -apple-system, "Segoe UI", system-ui, sans-serif;
+      font-size: 14px;
+      line-height: 1.6;
+      background: #f7f8fa;
+      color: #1f2328
+    }
+
+    .header {
+      background: #1f2328;
+      color: #fff;
+      padding: 1.75rem 2rem;
+      border-bottom: 3px solid #7c5cd8
+    }
+
+    .header h1 {
+      font-size: 1.5rem;
+      font-weight: 600
+    }
+
+    .header .sub {
+      font-size: 0.85rem;
+      color: #8b949e;
+      margin-top: 0.2rem
+    }
+
+    .doc-tag {
+      display: inline-block;
+      background: #7c5cd8;
+      color: #fff;
+      font-size: 0.7rem;
+      font-weight: 700;
+      padding: 0.2rem 0.6rem;
+      border-radius: 3px;
+      margin-top: 0.6rem;
+      letter-spacing: 0.05em
+    }
+
+    .wrap {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem 4rem
+    }
+
+    h2 {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #1f2328;
+      margin: 2.25rem 0 0.75rem;
+      padding-left: 0.75rem;
+      border-left: 4px solid #7c5cd8
+    }
+
+    h3 {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: #1f2328;
+      margin: 1.25rem 0 0.5rem
+    }
+
+    p {
+      margin-bottom: 0.7rem;
+      color: #1f2328;
+      font-size: 0.875rem
+    }
+
+    ul {
+      padding-left: 1.35rem;
+      margin-bottom: 0.75rem
+    }
+
+    li {
+      margin: 0.25rem 0;
+      font-size: 0.875rem
+    }
+
+    .principle-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      margin: 1.25rem 0
+    }
+
+    @media(max-width:640px) {
+      .principle-grid {
+        grid-template-columns: 1fr
+      }
+    }
+
+    .pcard {
+      background: #fff;
+      border: 1px solid #e5e7eb;
+      border-top: 4px solid var(--c);
+      padding: 1rem 1.1rem
+    }
+
+    .pcard .icon {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem
+    }
+
+    .pcard h3 {
+      font-size: 0.875rem;
+      font-weight: 700;
+      color: var(--c);
+      margin-bottom: 0.4rem
+    }
+
+    .pcard p {
+      font-size: 0.8rem;
+      color: #57606a;
+      margin: 0
+    }
+
+    .c1 {
+      --c: #3b82d4
+    }
+
+    .c2 {
+      --c: #22c55e
+    }
+
+    .c3 {
+      --c: #f59e0b
+    }
+
+    .c4 {
+      --c: #ef4444
+    }
+
+    .c5 {
+      --c: #7c5cd8
+    }
+
+    .c6 {
+      --c: #06b6d4
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.8125rem;
+      background: #fff;
+      border: 1px solid #e5e7eb;
+      margin: 0.75rem 0
+    }
+
+    th {
+      background: #f0f2f5;
+      font-weight: 700;
+      padding: 0.5rem 0.875rem;
+      text-align: left;
+      border-bottom: 2px solid #e5e7eb
+    }
+
+    td {
+      padding: 0.5rem 0.875rem;
+      border-bottom: 1px solid #f0f2f5;
+      vertical-align: top
+    }
+
+    tr:last-child td {
+      border-bottom: none
+    }
+
+    .pill {
+      display: inline-block;
+      padding: 0.15rem 0.5rem;
+      font-size: 0.7rem;
+      font-weight: 700;
+      border-radius: 10px
+    }
+
+    .pill-green {
+      background: #dcfce7;
+      color: #15803d
+    }
+
+    .pill-yellow {
+      background: #fef9c3;
+      color: #92400e
+    }
+
+    .pill-red {
+      background: #fee2e2;
+      color: #991b1b
+    }
+
+    .pill-blue {
+      background: #dbeafe;
+      color: #1d4ed8
+    }
+
+    .callout {
+      padding: 0.85rem 1rem;
+      border-radius: 4px;
+      margin: 0.75rem 0;
+      font-size: 0.8125rem
+    }
+
+    .cb {
+      background: #eff6ff;
+      border-left: 4px solid #3b82d4
+    }
+
+    .cg {
+      background: #f0fdf4;
+      border-left: 4px solid #22c55e
+    }
+
+    .cy {
+      background: #fffbeb;
+      border-left: 4px solid #f59e0b
+    }
+
+    .cr {
+      background: #fef2f2;
+      border-left: 4px solid #ef4444
+    }
+
+    .cp {
+      background: #faf5ff;
+      border-left: 4px solid #7c5cd8
+    }
+
+    .footer {
+      text-align: center;
+      margin-top: 3rem;
+      padding-top: 1.25rem;
+      border-top: 1px solid #e5e7eb;
+      font-size: 0.75rem;
+      color: #8b949e
+    }
+  </style>
+</head>
+
+<body>
+<div style="background:#161616;border-bottom:1px solid #393939;padding:0.6rem 1.5rem;display:flex;align-items:center;gap:1.25rem;flex-wrap:wrap;font-family:-apple-system,'Segoe UI',system-ui,sans-serif;font-size:0.78rem;position:sticky;top:0;z-index:100;">
+  <a href="index.html" style="color:#78a9ff;text-decoration:none;font-weight:700;white-space:nowrap;">← OoruShare</a>
+  <span style="color:#393939;">|</span>
+  <span style="color:#6f6f6f;font-size:0.7rem;text-transform:uppercase;letter-spacing:.08em;white-space:nowrap;">Docs</span>
+  <a href="docs-market-gap.html"    style="color:#c6c6c6;text-decoration:none;white-space:nowrap;">Market Gap</a>
+  <a href="docs-rsu-usp.html"       style="color:#c6c6c6;text-decoration:none;white-space:nowrap;">RSU &amp; USP</a>
+  <a href="docs-business-model.html" style="color:#c6c6c6;text-decoration:none;white-space:nowrap;">Business Model</a>
+  <a href="docs-technical.html"     style="color:#c6c6c6;text-decoration:none;white-space:nowrap;">Technical Docs</a>
+  <a href="docs-responsible-ai.html" style="color:#ffffff;text-decoration:none;white-space:nowrap;border-bottom:2px solid #78a9ff;padding-bottom:2px;font-weight:600;">Responsible AI</a>
+  <span style="margin-left:auto;color:#393939;font-size:0.7rem;">Built by Pankajkr Jain · IBM Bob</span>
+</div>
+  <div class="header">
+    <div class="sub">OoruShare · Responsible AI Documentation</div>
+    <h1>Responsible AI Principles</h1>
+    <span class="doc-tag">RAI-001 · v1.0 · Nov 2026</span>
+  </div>
+  <div class="wrap">
+
+    <h2>Executive Summary</h2>
+    <p>OoruShare is a hyperlocal loading-dock coordination platform operating across Bengaluru's residential
+      neighbourhoods. It uses algorithmic scheduling (staggered dispatch), geospatial data, and community credit scoring
+      to coordinate three user groups: <strong>residents</strong>, <strong>delivery riders</strong>, and <strong>dark
+        store operators</strong>. This document establishes the Responsible AI (RAI) principles governing all
+      algorithmic and data-driven decisions within the system.</p>
+
+    <div class="principle-grid">
+      <div class="pcard c1">
+        <div class="icon">01</div>
+        <h3>Fairness</h3>
+        <p>Equal access to spots regardless of platform affiliation or rider identity</p>
+      </div>
+      <div class="pcard c2">
+        <div class="icon">02</div>
+        <h3>Transparency</h3>
+        <p>All scheduling logic is deterministic and explainable to every stakeholder</p>
+      </div>
+      <div class="pcard c3">
+        <div class="icon">03</div>
+        <h3>Accountability</h3>
+        <p>Human override at every automated decision point; full audit trail</p>
+      </div>
+      <div class="pcard c4">
+        <div class="icon">04</div>
+        <h3>Privacy</h3>
+        <p>Minimum data collection; no PII beyond display name; location data bounded</p>
+      </div>
+      <div class="pcard c5">
+        <div class="icon">05</div>
+        <h3>Safety</h3>
+        <p>Rate limits, advisory locks, and graceful degradation prevent system abuse</p>
+      </div>
+      <div class="pcard c6">
+        <div class="icon">06</div>
+        <h3>Inclusivity</h3>
+        <p>No algorithmic barriers based on caste, religion, language, or platform</p>
+      </div>
+    </div>
+
+    <h2>1 · Fairness</h2>
+    <h3>1.1 Spot allocation</h3>
+    <p>Spots are allocated on a strict <strong>first-come, first-served</strong> basis enforced by a PostgreSQL advisory
+      lock (<code>pg_try_advisory_xact_lock</code>). No rider receives preferential access based on platform, rating, or
+      past booking history.</p>
+    <div class="callout cg"><strong>Implementation:</strong> The advisory lock key is <code>42000000 + spot_id</code>.
+      Only one booking transaction per spot can hold the lock at any moment — no side-channel for platform-level
+      priority.</div>
+
+    <h3>1.2 Dispatch staggering</h3>
+    <p>The staggering algorithm — <code>scheduled_at = MAX(pending for store) + stagger_mins</code> — treats all riders
+      from the same store equally. The default 4-minute gap is configurable per store but applies uniformly to every
+      rider in the queue.</p>
+
+    <h3>1.3 Credit scoring</h3>
+    <p>Community credits are awarded at a flat rate of <strong>10 credits per booking</strong> regardless of platform,
+      duration extension, or rider identity. No gamification that could skew resident participation toward high-volume
+      platforms.</p>
+
+    <h3>1.4 RWA approval</h3>
+    <p>RWA admins can approve or reject spots. To prevent discriminatory rejection patterns, the RWA admin dashboard
+      surfaces the <em>neighbourhood</em> and <em>address</em> only — no rider or platform data is shown at the approval
+      stage.</p>
+    <div class="callout cy"><strong>Risk:</strong> Rejection decisions by RWA admins carry human bias risk.
+      <strong>Mitigation roadmap:</strong> Log all approve/reject actions with timestamps; flag spots rejected more than
+      twice without resolution for escalation review.</div>
+
+    <h2>2 · Transparency</h2>
+    <h3>2.1 Algorithmic explainability</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Decision</th>
+          <th>Algorithm</th>
+          <th>Explainability to user</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Which spots appear on the rider map</td>
+          <td>All approved spots with status=available, ordered by map proximity</td>
+          <td>Legend shows colour-coding; tooltip shows address and gate width</td>
+        </tr>
+        <tr>
+          <td>When a rider is scheduled to dispatch</td>
+          <td>MAX(pending scheduled_at for store) + stagger_mins</td>
+          <td>Countdown timer shows exact time; store operator sees full queue</td>
+        </tr>
+        <tr>
+          <td>How many credits a resident earns</td>
+          <td>Flat 10 per completed booking</td>
+          <td>Credit history table shows reason and booking_id for every entry</td>
+        </tr>
+        <tr>
+          <td>Why a spot is unavailable</td>
+          <td>status field: available / booked / unavailable</td>
+          <td>Marker colour + panel text explains current state</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>2.2 No hidden scoring</h3>
+    <p>OoruShare does not maintain hidden reputation scores for riders, residents, or dark stores. The only derived
+      value is <code>total_credits</code> for residents, which is a transparent sum of logged credit events.</p>
+
+    <h3>2.3 Open-source logic</h3>
+    <p>All scheduling, credit, and approval logic is in plain Node.js — no ML models, no black-box vendors. Any operator
+      can audit the exact SQL queries executed for every decision.</p>
+
+    <h2>3 · Accountability</h2>
+    <h3>3.1 Human override points</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Automated action</th>
+          <th>Human override available</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Spot auto-released after 2 minutes</td>
+          <td>Resident can mark spot unavailable at any time; rider can cancel booking early (DELETE /bookings/:id)</td>
+        </tr>
+        <tr>
+          <td>Dispatch scheduled by stagger algorithm</td>
+          <td>Dark store operator can manually dispatch any rider immediately via the Dispatch button</td>
+        </tr>
+        <tr>
+          <td>RWA status defaults to "approved"</td>
+          <td>RWA admin can reject at any point; reversal is also available</td>
+        </tr>
+        <tr>
+          <td>Credit awarded automatically on booking</td>
+          <td>Platform admin can void credits (future roadmap — not yet implemented)</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>3.2 Audit trail</h3>
+    <p>Every state change is persisted with a <code>created_at</code> or <code>booked_at</code> timestamp. The
+      <code>credits</code> table links each award to a <code>booking_id</code> for complete end-to-end traceability. The
+      <code>X-Request-Id</code> correlation header ties API calls to structured server logs.</p>
+
+    <h3>3.3 Incident response</h3>
+    <p>The graceful shutdown handler drains SSE clients and in-flight requests before stopping, preventing corrupted
+      booking states during deployments. PostgreSQL transactions with ROLLBACK ensure no partial bookings persist.</p>
+
+    <h2>4 · Privacy</h2>
+    <h3>4.1 Data minimisation</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Data element</th>
+          <th>Collected</th>
+          <th>Justification</th>
+          <th>Retention</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Resident display name</td>
+          <td><span class="pill pill-yellow">Pseudonym</span></td>
+          <td>Required for credit ledger and community identity</td>
+          <td>Until spot deleted</td>
+        </tr>
+        <tr>
+          <td>Full address + lat/lng</td>
+          <td><span class="pill pill-yellow">Precise</span></td>
+          <td>Required for map placement</td>
+          <td>Until spot deleted</td>
+        </tr>
+        <tr>
+          <td>Rider display name</td>
+          <td><span class="pill pill-yellow">Pseudonym</span></td>
+          <td>Required for booking record and dispatch queue</td>
+          <td>90 days after booking</td>
+        </tr>
+        <tr>
+          <td>Rider phone</td>
+          <td><span class="pill pill-green">Optional</span></td>
+          <td>Contact fallback; not required by API</td>
+          <td>90 days after booking</td>
+        </tr>
+        <tr>
+          <td>Platform affiliation</td>
+          <td><span class="pill pill-blue">Category</span></td>
+          <td>Shown on map/queue for operational routing</td>
+          <td>90 days after booking</td>
+        </tr>
+        <tr>
+          <td>IP address</td>
+          <td><span class="pill pill-yellow">Transient</span></td>
+          <td>Rate limiting only; not logged to DB</td>
+          <td>In-memory, TTL = rate window (1 min)</td>
+        </tr>
+        <tr>
+          <td>Device geolocation</td>
+          <td><span class="pill pill-green">Optional</span></td>
+          <td>"Use My Location" button — browser Geolocation API, user-initiated only</td>
+          <td>Never stored; used only to pre-fill form</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>4.2 Location data</h3>
+    <div class="callout cr"><strong>Sensitive data notice:</strong> Residential addresses and GPS coordinates are stored
+      in plain text. Production deployments must enable PostgreSQL column-level encryption or use a cloud KMS-backed
+      storage solution before handling real residential data at scale.</div>
+
+    <h3>4.3 B2B Fleet Integration &amp; DPDP Act 2023 Compliance</h3>
+    <p>In accordance with India's <strong>Digital Personal Data Protection (DPDP) Act 2023</strong>, delivery platforms
+      (Blinkit, Zepto, Swiggy) enter into a <strong>Business Associate Agreement (BAA) / Civic Integration SLA</strong>
+      with OoruShare. Active delivery shifts and drop targets are ingested via automated webhooks
+      (<code>POST /integrations/dispatch</code>). Rider identities are strictly pseudonymized via tokenized identifiers
+      (e.g. <code>rider_token: "BLK_HSR_4021"</code>). Riders do not undergo separate KYC or redundant onboarding,
+      eliminating friction while ensuring zero PII leakage to driveway owners.</p>
+
+    <h2>5 · Safety &amp; Robustness</h2>
+    <h3>5.1 Abuse prevention</h3>
+    <ul>
+      <li><strong>Rate limiting:</strong> 300 API requests/minute per IP; 10 booking attempts/minute per IP+spot</li>
+      <li><strong>Body size cap:</strong> 64 KB maximum request body</li>
+      <li><strong>Input validation:</strong> Required fields enforced at API layer; status values allowlisted</li>
+      <li><strong>SQL injection:</strong> All queries use parameterised statements — no string interpolation</li>
+    </ul>
+
+    <h3>5.2 System degradation</h3>
+    <ul>
+      <li>Without Redis: falls back to in-process EventEmitter — SSE continues for single-instance deployments</li>
+      <li>Without PostgreSQL: falls back to in-memory store — system remains functional for demos/dev</li>
+      <li>SSE client disconnects: heartbeat every 25 s detects dead connections; graceful shutdown closes all SSE
+        streams before process exit</li>
+    </ul>
+
+    <h3>5.3 Out-of-scope risks and mitigations</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Risk</th>
+          <th>Likelihood</th>
+          <th>Current mitigation</th>
+          <th>Roadmap</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Fraudulent spot listings (fake addresses)</td>
+          <td><span class="pill pill-yellow">Medium</span></td>
+          <td>RWA admin approval gate</td>
+          <td>Address geocoding verification</td>
+        </tr>
+        <tr>
+          <td>Rider identity fraud (fake names)</td>
+          <td><span class="pill pill-yellow">Medium</span></td>
+          <td>Platform self-declaration; rate limiting</td>
+          <td>WhatsApp OTP login</td>
+        </tr>
+        <tr>
+          <td>Credit farming (booking own spot)</td>
+          <td><span class="pill pill-red">High</span></td>
+          <td>None currently</td>
+          <td>Cross-check rider_name ≠ owner_name</td>
+        </tr>
+        <tr>
+          <td>Spot monopolisation (same rider books all spots)</td>
+          <td><span class="pill pill-yellow">Medium</span></td>
+          <td>bookLimiter (10/min per IP+spot)</td>
+          <td>Max 1 concurrent active booking per rider</td>
+        </tr>
+        <tr>
+          <td>RWA discriminatory rejection</td>
+          <td><span class="pill pill-yellow">Medium</span></td>
+          <td>Reversible decisions</td>
+          <td>Rejection reason field + escalation review</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>6 · Inclusivity &amp; Equity</h2>
+    <p>OoruShare operates in mixed-income residential neighbourhoods. The platform is designed to serve gig workers — a
+      population that is often underserved by formal infrastructure — by giving them access to legal, predictable
+      loading space. The following design choices reflect this commitment:</p>
+    <ul>
+      <li><strong>No app install required:</strong> Progressive web interface works in any browser, including low-end
+        Android devices</li>
+      <li><strong>No language barrier:</strong> Interface targets English-literate users; Kannada/Hindi localisation is
+        on the roadmap</li>
+      <li><strong>No platform lock-in:</strong> All four major Bengaluru delivery platforms (Blinkit, Zepto, Swiggy,
+        Dunzo) are supported equally</li>
+      <li><strong>Community benefit:</strong> Credits earned by residents are redeemable for neighbourhood maintenance —
+        value flows back to the community, not a central profit centre</li>
+    </ul>
+
+    <h2>7 · Governance</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Role</th>
+          <th>RAI responsibility</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Platform operator</td>
+          <td>Maintain rate limits, review flagged RWA rejections, publish this document annually</td>
+        </tr>
+        <tr>
+          <td>RWA admin</td>
+          <td>Apply consistent criteria for spot approval; not permitted to reject based on rider identity</td>
+        </tr>
+        <tr>
+          <td>Dark store operator</td>
+          <td>Responsible for accurate rider registration; must not artificially inflate queue to manipulate congestion
+            scores</td>
+        </tr>
+        <tr>
+          <td>Resident</td>
+          <td>Responsible for accurate address and availability window; must mark spot unavailable when car is home</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="footer">Made with IBM Bob</div>
+  </div>
+</body>
+
+</html>
