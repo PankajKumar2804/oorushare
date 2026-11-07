@@ -1,0 +1,199 @@
+1
+00:00:02,000 --> 00:00:07,000
+Bengaluru processes 2.5 million quick-commerce
+deliveries every single day.
+
+2
+00:00:07,100 --> 00:00:13,000
+Blinkit, Zepto, and Swiggy have solved the warehouse end —
+their dark stores have loading docks, their riders have routing.
+
+3
+00:00:13,100 --> 00:00:18,500
+But there is one piece of the delivery journey
+nobody has solved: the last 10 metres.
+
+4
+00:00:18,600 --> 00:00:24,500
+The 2-minute stop at the customer's residential gate —
+on a 30-foot bylane with zero legal loading infrastructure.
+
+5
+00:00:24,600 --> 00:00:30,000
+Riders double-park across private gates, blocking residents
+and racking up ₹1,500 a month in wrongful police fines.
+
+6
+00:00:30,100 --> 00:00:38,500
+OoruShare fills exactly that gap — turning idle residential driveways
+into a cooperative network of authorized 2-minute loading bays,
+coordinated by an autonomous agentic curb governor.
+
+7
+00:00:40,000 --> 00:00:46,500
+OoruShare coordinates four civic stakeholders:
+residents who monetize idle driveways,
+
+8
+00:00:46,600 --> 00:00:52,500
+dark stores whose dispatch engine pre-allocates bays
+before riders even leave the store,
+
+9
+00:00:52,600 --> 00:00:58,000
+RWA admins who govern access, and riders who arrive
+at a legal stop — without installing anything new.
+
+10
+00:00:58,100 --> 00:01:04,500
+Experienced riders already know their local spots.
+What they can't solve alone is the 7 PM surge —
+
+11
+00:01:04,600 --> 00:01:09,500
+six riders from the same dark store
+flooding the same bylane simultaneously.
+
+12
+00:01:09,600 --> 00:01:15,500
+That's the coordination problem OoruShare fixes at the dispatch layer,
+using IBM Granite 3.8B time-series forecasting.
+
+13
+00:01:15,600 --> 00:01:20,500
+The resident dashboard auto-loads with Priya Sharma's driveway data —
+one approved spot on 27th Main, HSR Layout.
+
+14
+00:01:20,600 --> 00:01:25,500
+She has earned credits from multiple platform drops —
+Blinkit, Zepto, Swiggy, Dunzo.
+
+15
+00:01:25,600 --> 00:01:30,000
+Each drop earns 10 community credits,
+redeemable as ₹50 off her monthly society maintenance bill.
+
+16
+00:01:30,100 --> 00:01:36,000
+The rider spatial radar is the fallback interface —
+for riders not yet reached by BAA dispatch integration
+
+17
+00:01:36,100 --> 00:01:41,500
+and for new or cross-zone riders
+who don't have local street knowledge.
+
+18
+00:01:41,600 --> 00:01:47,000
+The 18 green pulsing pins are RWA-approved,
+legally authorized bays across Bengaluru.
+
+19
+00:01:47,100 --> 00:01:53,000
+The three dashed zone circles are live saturation heatmaps —
+green: clear, amber: busy, red: throttled.
+
+20
+00:01:53,100 --> 00:01:56,000
+I'll click a pin to book a 2-minute slot.
+
+21
+00:01:56,100 --> 00:02:02,500
+Dark store managers use this staggering co-pilot.
+Instead of flooding a bylane with 6 riders at once,
+
+22
+00:02:02,600 --> 00:02:08,000
+IBM Granite 3.8B recommends dynamic dispatch intervals —
+preventing curb bottlenecks before they happen.
+
+23
+00:02:08,100 --> 00:02:13,500
+The live queue shows 14 riders across 4 dark stores:
+Blinkit HSR, Zepto Koramangala, Swiggy Indiranagar, Dunzo HSR.
+
+24
+00:02:13,600 --> 00:02:19,000
+I'll hit Simulate Order Surge to add 5 more riders
+and watch the agent throttle automatically.
+
+25
+00:02:19,100 --> 00:02:25,000
+RWA administrators retain full democratic governance.
+No driveway goes live without committee approval.
+
+26
+00:02:25,100 --> 00:02:30,500
+18 approved, 4 pending review, 2 rejected.
+I'll approve a pending spot —
+
+27
+00:02:30,600 --> 00:02:35,500
+— it instantly appears on the rider map.
+The credit ledger shows 8 maintenance offsets settled — ₹400 total.
+
+28
+00:02:36,000 --> 00:02:41,500
+Back on the landing page — the live city telemetry panel
+shows real-time zone saturation percentages
+
+29
+00:02:41,600 --> 00:02:47,000
+and the autonomous agent's live perception feed —
+the same data powering the rider map heatmap, updated every 8 seconds.
+
+30
+00:02:50,000 --> 00:02:55,500
+Let me run the full autonomous agent simulation.
+Watch as the system perceives an incoming Blinkit dispatch,
+
+31
+00:02:55,600 --> 00:03:01,000
+reasons about bylane capacity using Granite forecasting,
+allocates the optimal bay to a resident,
+
+32
+00:03:01,100 --> 00:03:06,500
+and self-corrects if a conflict is detected.
+The entire loop executes in under 500 milliseconds.
+
+33
+00:03:07,000 --> 00:03:13,000
+Perception → Reasoning → Action → Reflection.
+Each phase completing with a verified outcome:
+
+34
+00:03:13,100 --> 00:03:19,000
+4.2 minutes transit saved · 0.14 kg CO₂ abated
+· Zero driveway blockage · +10 Credits awarded.
+
+35
+00:03:25,000 --> 00:03:31,500
+Every architectural decision in OoruShare was made
+with IBM Bob as the principal co-architect:
+
+36
+00:03:31,600 --> 00:03:37,000
+the Responsible AI charter written before any code,
+the PostgreSQL advisory locking layer,
+
+37
+00:03:37,100 --> 00:03:42,500
+the Redis pub/sub SSE fan-out that scales to 100,000
+simultaneous riders at constant database cost,
+
+38
+00:03:42,600 --> 00:03:47,500
+and the full Carbon v11 interface you see here.
+The gap OoruShare fills — the last 10 metres —
+
+39
+00:03:47,600 --> 00:03:52,500
+is one no single quick-commerce platform will build,
+because it benefits all of them equally.
+
+40
+00:03:52,600 --> 00:03:56,000
+I'm Pankaj Kumar, SWE AI Full Stack.
+This is OoruShare — Built with IBM Bob. Built for Bengaluru.
