@@ -1,10 +1,10 @@
-# OoruShare — Bengaluru Civic Curb Network
+﻿# OoruShare — Bengaluru Civic Curb Network
 
 > **IBM Bobathon: Build for Bengaluru** — Theme 1: *Smarter Streets Better Living*
 > *Turning 2 metres of Bengaluru curb space into a shared community asset.*
 > **Built with IBM Bob** · Node.js · PostgreSQL · Redis · Leaflet.js · IBM Carbon Design System v11
 
-**Builder & Idea Originator:** [Pankaj Kumar (Pankajkr Jain)](https://github.com/PankajKumar2804) · SWE AI Full Stack · Healthcare Industry
+**Builder & Idea Originator:** [Pankajkr Jain (Pankaj Kumar)](https://github.com/PankajKumar2804) · SWE AI Full Stack · Healthcare Industry
 **Co-Pilot:** IBM Bob · Autonomous Principal Architect
 
 [![Built with IBM Bob](https://img.shields.io/badge/Built%20with-IBM%20Bob-8a3ffc?style=flat-square)](BOB_STORY.md)

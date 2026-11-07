@@ -1,4 +1,4 @@
-# OoruShare: Master Submission & Deliverables Index
+﻿# OoruShare: Master Submission & Deliverables Index
 
 **IBM Bobathon: Build for Bengaluru** — Theme 1: *Smarter Streets Better Living*
 
@@ -6,7 +6,7 @@
 
 ### Builder & Idea Originator
 
-**Pankaj Kumar (Pankajkr Jain)**
+**Pankajkr Jain (Pankaj Kumar)**
 SWE AI Full Stack · Healthcare Industry
 *Conceived, designed, and built OoruShare end-to-end — from the original civic problem statement and product architecture through every line of backend, frontend, and agentic AI code.*
 

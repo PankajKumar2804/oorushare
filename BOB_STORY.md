@@ -1,4 +1,4 @@
-# The Bob Story: Building OoruShare with IBM Bob
+﻿# The Bob Story: Building OoruShare with IBM Bob
 
 > **Hackathon:** IBM Bobathon: Build for Bengaluru  
 > **Project:** OoruShare — Hyperlocal Residential Loading-Dock Co-pilot  
@@ -181,7 +181,7 @@ IBM Bob was the co-pilot for the complete OoruShare workflow — not just code g
 
 ---
 
-**Builder & Idea Originator:** Pankaj Kumar (Pankajkr Jain)  
+**Builder & Idea Originator:** Pankajkr Jain (Pankaj Kumar)  
 SWE AI Full Stack · Healthcare Industry  
 GitHub: [PankajKumar2804](https://github.com/PankajKumar2804)  
 *Conceived the OoruShare idea, defined the civic problem statement, designed the product architecture, and built the full stack end-to-end — with IBM Bob as co-pilot throughout.*

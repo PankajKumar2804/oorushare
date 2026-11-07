@@ -1,4 +1,4 @@
-# OoruShare — Video Demonstration Script
+﻿# OoruShare — Video Demonstration Script
 > **IBM Bobathon: Build for Bengaluru · Theme 1: Smarter Streets Better Living**  
 > **Target Duration:** 3–4 minutes  
 > **Recording Tool:** IBM Webex screen recording  
@@ -150,7 +150,7 @@ node server.js
 **Screen:** Scroll to the `http://localhost:3001/` Bob Story callout card and footer
 
 **Narration:**
-> "Every architectural decision in OoruShare was made with IBM Bob as the principal co-architect: the Responsible AI charter written before any code, the PostgreSQL advisory locking layer that eliminates double-bookings under concurrent load, the Redis pub/sub SSE fan-out that scales to 100,000 simultaneous riders at constant database cost, and the full Carbon v11 interface you see here. The gap OoruShare fills — the last 10 metres of every delivery — is one no single quick-commerce platform will build, because it benefits all of them equally. That's why it needs a neutral civic layer. OoruShare is that layer. Production-ready for citywide deployment. I'm Pankaj Kumar, SWE AI Full Stack, and this is OoruShare — Built with IBM Bob. Built for Bengaluru."
+> "Every architectural decision in OoruShare was made with IBM Bob as the principal co-architect: the Responsible AI charter written before any code, the PostgreSQL advisory locking layer that eliminates double-bookings under concurrent load, the Redis pub/sub SSE fan-out that scales to 100,000 simultaneous riders at constant database cost, and the full Carbon v11 interface you see here. The gap OoruShare fills — the last 10 metres of every delivery — is one no single quick-commerce platform will build, because it benefits all of them equally. That's why it needs a neutral civic layer. OoruShare is that layer. Production-ready for citywide deployment. I'm Pankajkr Jain, SWE AI Full Stack, and this is OoruShare — Built with IBM Bob. Built for Bengaluru."
 
 **Actions:**
 1. Show the **IBM Bob Story callout card** (Section 03) with the mascot
