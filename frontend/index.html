@@ -236,18 +236,42 @@
       </div>
     </div>
     <!-- Bob Story Engineering Callout -->
-    <div style="margin-top:1.5rem;padding:1.25rem 1.5rem;background:#1e1e1e;border:1px solid #333333;border-left:4px solid #0f62fe;display:flex;align-items:flex-start;gap:1.25rem;">
-      <img src="images/ibm-bob.svg" width="56" height="56" alt="IBM Bob" style="flex-shrink:0;margin-top:0.25rem;" />
-      <div>
-        <div style="font-family:var(--font-mono);font-size:0.75rem;color:#78a9ff;letter-spacing:0.04em;text-transform:uppercase;font-weight:600;margin-bottom:0.25rem;">
-          The Bob Story &middot; Autonomous Co-Engineering Milestone
+    <div style="margin-top:1.5rem;padding:1.25rem 1.5rem;background:#1e1e1e;border:1px solid #333333;border-left:4px solid #0f62fe;">
+      <!-- Header row: Bob icon + title -->
+      <div style="display:flex;align-items:flex-start;gap:1.25rem;margin-bottom:1rem;">
+        <img src="images/ibm-bob.svg" width="56" height="56" alt="IBM Bob" style="flex-shrink:0;margin-top:0.25rem;" />
+        <div>
+          <div style="font-family:var(--font-mono);font-size:0.75rem;color:#78a9ff;letter-spacing:0.04em;text-transform:uppercase;font-weight:600;margin-bottom:0.25rem;">
+            The Bob Story &middot; Builder + AI Co-Engineering Partnership
+          </div>
+          <h4 style="font-size:1.05rem;font-weight:600;color:#ffffff;margin-bottom:0.4rem;">
+            Pankajkr Jain's Civic Vision × IBM Bob's Engineering Power
+          </h4>
+          <p style="font-size:0.875rem;line-height:1.55;color:#c6c6c6;margin:0;">
+            OoruShare began as <strong style="color:#fff;">Pankajkr Jain's</strong> original insight — that 2.5M daily deliveries were hitting a structural gap nobody had named: the last 10 metres at the customer's residential gate. IBM Bob then became the co-pilot that turned that civic idea into production-grade reality across every phase: Planning, Coding, Reviews, Testing, and Documentation.
+          </p>
         </div>
-        <h4 style="font-size:1.05rem;font-weight:600;color:#ffffff;margin-bottom:0.4rem;">
-          How IBM Bob Architected OoruShare's Core Autonomous Loop
-        </h4>
-        <p style="font-size:0.875rem;line-height:1.55;color:#c6c6c6;margin:0;">
-          Throughout development, IBM Bob functioned as lead system architect: synthesizing the 4-phase perpetual governor loop, engineering the zero-knowledge DPDP-compliant BAA webhook intake for delivery fleets, implementing PostgreSQL transaction advisory locking to eliminate race conditions, and enforcing strict Carbon v11 design discipline.
-        </p>
+      </div>
+      <!-- Two-column: what Pankajkr brought vs what Bob brought -->
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:0.75rem;">
+        <div style="background:#262626;border-radius:4px;padding:0.875rem 1rem;border-left:3px solid #42be65;">
+          <div style="font-family:var(--font-mono);font-size:0.68rem;color:#42be65;text-transform:uppercase;letter-spacing:0.06em;font-weight:700;margin-bottom:0.4rem;">Pankajkr Jain · Builder & Idea Originator</div>
+          <ul style="font-size:0.8rem;color:#c6c6c6;line-height:1.6;padding-left:1.1rem;margin:0;">
+            <li>Identified the last-10-metres civic gap in Bengaluru</li>
+            <li>Defined the 4-sided marketplace model (resident · rider · dark store · RWA)</li>
+            <li>Designed product architecture and BAA strategy</li>
+            <li>Drove every feature decision end-to-end</li>
+          </ul>
+        </div>
+        <div style="background:#262626;border-radius:4px;padding:0.875rem 1rem;border-left:3px solid #0f62fe;">
+          <div style="font-family:var(--font-mono);font-size:0.68rem;color:#78a9ff;text-transform:uppercase;letter-spacing:0.06em;font-weight:700;margin-bottom:0.4rem;">IBM Bob · Principal Co-Architect</div>
+          <ul style="font-size:0.8rem;color:#c6c6c6;line-height:1.6;padding-left:1.1rem;margin:0;">
+            <li>Responsible AI charter before any code was written</li>
+            <li>PostgreSQL advisory locks — zero double-bookings under surge</li>
+            <li>Redis SSE fan-out — O(1) DB cost at 100K simultaneous riders</li>
+            <li>4-phase agentic governor, Carbon v11 UI, full documentation</li>
+          </ul>
+        </div>
       </div>
     </div>
   </section>
