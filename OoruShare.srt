@@ -1,4 +1,4 @@
-1
+﻿1
 00:00:02,000 --> 00:00:07,000
 Bengaluru processes 2.5 million quick-commerce
 deliveries every single day.
@@ -195,5 +195,5 @@ because it benefits all of them equally.
 
 40
 00:03:52,600 --> 00:03:56,000
-I'm Pankaj Kumar, SWE AI Full Stack.
+I'm Pankajkr Jain, SWE AI Full Stack.
 This is OoruShare — Built with IBM Bob. Built for Bengaluru.

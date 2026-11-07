@@ -1,11 +1,11 @@
-# OoruShare — IBM Bobathon: Build for Bengaluru
+﻿# OoruShare — IBM Bobathon: Build for Bengaluru
 > **Theme 1:** Smarter Streets Better Living
 > **Tagline:** Turning 2 metres of Bengaluru curb space into a shared community asset.
 > **Core Requirement:** Built with IBM Bob throughout architecture, development, and delivery.
 
 ---
 
-**Builder & Idea Originator:** Pankaj Kumar (Pankajkr Jain) · SWE AI Full Stack · Healthcare Industry
+**Builder & Idea Originator:** Pankajkr Jain (Pankaj Kumar) · SWE AI Full Stack · Healthcare Industry
 *Original concept, product design, full-stack implementation, and civic strategy — built end-to-end.*
 **Co-Pilot:** IBM Bob · Autonomous Principal Architect
 
