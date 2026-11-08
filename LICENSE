@@ -1,0 +1,51 @@
+MIT License
+
+Copyright (c) 2026 Pankajkr Jain (Pankaj Kumar)
+
+Original Concept & Authorship Notice
+─────────────────────────────────────
+The OoruShare concept — decentralised residential driveway sharing as authorised
+2-minute delivery loading bays, coordinated by an autonomous agentic curb governor,
+governed by Resident Welfare Associations (RWAs), and monetised via Business
+Associate Agreements (BAA) with quick-commerce dark store operators — was conceived,
+designed, and built from scratch by Pankajkr Jain (Pankaj Kumar) in November 2026
+for the IBM Bobathon: Build for Bengaluru hackathon (Theme 1: Smarter Streets
+Better Living).
+
+Originality Anchors (verifiable via git commit history):
+  - First commit: ff1b36d  (Nov 2026 — IBM Bobathon submission origin)
+  - Repository:   https://github.com/PankajKumar2804/oorushare
+  - Builder:      Pankajkr Jain  ·  SWE AI Full Stack  ·  Healthcare Industry
+  - AI leverage:  IBM Bob (execution multiplier — not the idea originator)
+
+Specific IP elements originated by Pankajkr Jain:
+  1. The "Last 10 Metres" framing of the quick-commerce residential delivery gap
+  2. The RSU (Resident Spot Unit) — atomic unit of idle driveway capacity
+  3. The 4-sided marketplace: resident · rider · dark store · RWA
+  4. BAA (Business Associate Agreement) enterprise monetisation model
+  5. Community credit system (10 credits = ₹50 RWA maintenance offset)
+  6. Agentic curb governor with IBM Granite 3.8B time-series dispatch staggering
+  7. PostgreSQL advisory lock atomic 2-minute bay reservation pattern
+  8. RWA human-in-the-loop governance gate for driveway activation
+  9. Civic data licensing to BBMP/BTP as zero-marginal-cost revenue stream
+ 10. The principle that no single quick-commerce platform will build this
+     because it benefits all of them equally — requiring a neutral civic layer
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice, this permission notice, and the Originality
+Anchors section shall be included in all copies or substantial portions
+of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
