@@ -122,10 +122,69 @@ a { color: var(--blue); }
 /* rule 10: active page clearly distinct, blue underline not just color */
 .os-header .nav a.active { color: #ffffff; border-bottom-color: #0f62fe; font-weight: 600; }
 
-/* rule 8: docs links visually grouped, clearly secondary */
-.os-header .nav .nav-sep { color: #1e1e1e; padding: 0 0.125rem; pointer-events: none; align-self: center; font-size: 1rem; }
-.os-header .nav .nav-doc { font-size: 0.7rem; color: #3d3d3d; letter-spacing: 0.02em; }
-.os-header .nav .nav-doc:hover { color: #8d8d8d; }
+/* ── Docs dropdown — CSS-only hover, no JS ── */
+.nav-docs-wrapper {
+  position: relative;
+  display: flex;
+  align-items: stretch;
+}
+.nav-docs-trigger {
+  color: #6f6f6f;
+  text-decoration: none;
+  font-size: 0.8125rem;
+  padding: 0 0.875rem;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  border-bottom: 2px solid transparent;
+  transition: color 0.12s;
+  white-space: nowrap;
+  cursor: default;
+  user-select: none;
+  letter-spacing: 0.01em;
+}
+.nav-docs-trigger::after {
+  content: '';
+  display: inline-block;
+  width: 0;
+  height: 0;
+  border-left: 3px solid transparent;
+  border-right: 3px solid transparent;
+  border-top: 4px solid currentColor;
+  margin-left: 2px;
+  opacity: 0.5;
+}
+.nav-docs-wrapper:hover .nav-docs-trigger { color: #e0e0e0; }
+
+.nav-docs-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background: #111111;
+  border: 1px solid #2a2a2a;
+  border-top: 2px solid #0f62fe;
+  min-width: 180px;
+  z-index: 200;
+  padding: 0.375rem 0;
+}
+.nav-docs-wrapper:hover .nav-docs-menu { display: block; }
+
+.nav-docs-menu a {
+  display: block;
+  padding: 0.5rem 1rem;
+  font-size: 0.8rem;
+  color: #8d8d8d;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: color 0.1s, background 0.1s;
+  border-bottom: none !important;
+}
+.nav-docs-menu a:hover { color: #ffffff; background: #1e1e1e; }
+
+/* hide the old individual sep/doc classes (kept for docs pages' own nav) */
+.os-header .nav .nav-sep { display: none; }
+.os-header .nav .nav-doc  { display: none; }
 
 /* rule 6: tour button is the one true action in the header */
 .tour-btn {
@@ -148,8 +207,9 @@ a { color: var(--blue); }
 
 @media (max-width: 960px) {
   .header-sub-tag { display: none; }
-  .os-header .nav .nav-sep,
-  .os-header .nav .nav-doc { display: none; }
+}
+@media (max-width: 700px) {
+  .nav-docs-wrapper { display: none; }
 }
 @media (max-width: 640px) {
   .header-github span { display: none; }
