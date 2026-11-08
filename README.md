@@ -5,7 +5,6 @@
 > **Built with IBM Bob** · Node.js · PostgreSQL · Redis · Leaflet.js · IBM Carbon Design System v11
 
 **Builder & Idea Originator:** [Pankajkr Jain (Pankaj Kumar)](https://github.com/PankajKumar2804) · SWE AI Full Stack · Healthcare Industry
-
 **AI Leverage Tool:** IBM Bob · Execution multiplier — turned one engineer's decisions into a production-grade system at hackathon speed
 
 [![Built with IBM Bob](https://img.shields.io/badge/Built%20with-IBM%20Bob-8a3ffc?style=flat-square)](BOB_STORY.md)
