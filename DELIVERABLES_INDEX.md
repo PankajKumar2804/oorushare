@@ -10,7 +10,7 @@
 SWE AI Full Stack · Healthcare Industry
 *Conceived, designed, and built OoruShare end-to-end — from the original civic problem statement and product architecture through every line of backend, frontend, and agentic AI code.*
 
-**IBM Bob** — Autonomous Co-Pilot & Principal Architect
+**IBM Bob** — Execution leverage tool · Multiplied Pankajkr Jain's output across all 5 SDLC phases
 *Co-architected concurrency design, Responsible AI charter, agentic governor, Carbon v11 interfaces, and containerisation.*
 
 ---

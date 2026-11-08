@@ -8,7 +8,7 @@
 
 ## 1. Executive Summary
 
-OoruShare was not built *using* IBM Bob as a code assistant — it was built *with* IBM Bob as a **Principal Architect, Product Thinker, and Quality Partner** across every phase of the development workflow: Planning, Coding, Reviews, Testing, and Documentation. The more context Bob held across sessions, the sharper every decision became.
+OoruShare was not built *using* IBM Bob as a code assistant — it was built *with* IBM Bob as an **execution leverage layer** across every phase of the development workflow: Planning, Coding, Reviews, Testing, and Documentation. Pankajkr Jain made every architectural and product decision. Bob compressed months of implementation work into hackathon hours. The more context Bob held across sessions, the faster every decision landed in production.
 
 This document traces exactly how Bob was used at each stage — with specific artifacts, decisions, and file-level outputs as evidence.
 

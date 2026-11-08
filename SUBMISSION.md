@@ -7,7 +7,7 @@
 
 **Builder & Idea Originator:** Pankajkr Jain (Pankaj Kumar) · SWE AI Full Stack · Healthcare Industry
 *Original concept, product design, full-stack implementation, and civic strategy — built end-to-end.*
-**Co-Pilot:** IBM Bob · Autonomous Principal Architect
+**AI Leverage Tool:** IBM Bob · The force-multiplier that let one engineer ship a production-grade 4-sided civic platform in hackathon time
 
 ---
 
