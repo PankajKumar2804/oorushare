@@ -160,9 +160,9 @@ node server.js
 
 ## Post-Recording Checklist
 
-- [ ] Export as MP4, H.264, 1080p
-- [ ] Filename: `OoruShare_IBM_Bobathon_Video_Demo.mp4`
-- [ ] Verify total duration is under 5 minutes
-- [ ] Upload to YouTube (unlisted) or IBM Box
-- [ ] Paste video link into `SUBMISSION.md` Section 7 — replace the `*To be added*` placeholder
-- [ ] Push final commit to GitHub with updated `SUBMISSION.md`
+- [x] Export as MP4, H.264, 1080p
+- [x] Filename: `OoruShare_IBM_Bobathon_Video_Demo.mp4`
+- [x] Verify total duration is under 5 minutes
+- [x] Upload to YouTube — **https://youtu.be/lTbdyv2hhck**
+- [x] Paste video link into `SUBMISSION.md` Section 7 — ✅ Done
+- [x] Push final commit to GitHub with updated `SUBMISSION.md` — ✅ Done

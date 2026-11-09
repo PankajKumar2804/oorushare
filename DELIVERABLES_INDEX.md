@@ -29,7 +29,7 @@ Per official IBM Bobathon submission criteria, this archive contains the followi
 | **2. Working Prototype built with IBM Bob** | `backend/` + `frontend/` — 4 dashboards + civic landing, Node.js, Carbon v11, ESRI GIS | ✅ Operational at `http://localhost:3001` · 24 spots · 18 residents · live agent |
 | **3. Source Code Repository** | [https://github.com/PankajKumar2804/oorushare](https://github.com/PankajKumar2804/oorushare) | ✅ Public & Active |
 | **4. Presentation Deck** | [`OoruShare_IBM_Bobathon_Theme1_Submission.pptx`](OoruShare_IBM_Bobathon_Theme1_Submission.pptx) | ✅ IBM Plex Sans font, Carbon v11, IBM Bob mascot |
-| **5. Video Demonstration** | [`VIDEO_SCRIPT.md`](VIDEO_SCRIPT.md) — 6-scene script, all dashboards covered | ⏳ Record using IBM Webex · paste link in SUBMISSION.md §7 |
+| **5. Video Demonstration** | [https://youtu.be/lTbdyv2hhck](https://youtu.be/lTbdyv2hhck) — 6-scene walkthrough, all dashboards covered | ✅ Published on YouTube |
 | **6. Market Gap & Competitive Analysis** | [`SUBMISSION.md §1`](SUBMISSION.md) — Last-10-Metres gap, why platforms won't build this | ✅ Added — Platform neutrality argument documented |
 | **7. Strategic Roadmap** | [`SUBMISSION.md §8`](SUBMISSION.md), [`hld.md §9–10`](hld.md) — 4-phase plan, defensibility scenarios | ✅ Added — Phase 0 → 3 execution plan |
 | **8. Responsible AI Charter** | [`oorushare-responsible-ai-principles.html`](oorushare-responsible-ai-principles.html) — RAI-001 v1.0 | ✅ Pre-code governance, DPDP 2023, fairness framework |

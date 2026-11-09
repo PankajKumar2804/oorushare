@@ -21,6 +21,7 @@
 - [**High-Level Design (hld.md)**](hld.md) — System architecture, asymmetric onboarding, and DPDP Act 2023 governance
 - [**The Bob Story (BOB_STORY.md)**](BOB_STORY.md) — Detailed narrative of how IBM Bob architected and accelerated OoruShare
 - [**Responsible AI Charter (RAI-001)**](oorushare-responsible-ai-principles.html) — Pre-code governance, privacy & fairness architecture
+- [**▶ Video Demonstration**](https://youtu.be/lTbdyv2hhck) — Full walkthrough: all 4 dashboards, agent tour, live heatmap
 - [**Video Walkthrough Script (VIDEO_SCRIPT.md)**](VIDEO_SCRIPT.md) — Scene-by-scene recording guide
 - **1-Click Judge Tour:** Click **"Run 30s Agent Tour"** in any dashboard header to execute the live autonomous agentic loop!
 

@@ -1,4 +1,4 @@
-﻿# OoruShare — IBM Bobathon: Build for Bengaluru
+# OoruShare — IBM Bobathon: Build for Bengaluru
 > **Theme 1:** Smarter Streets Better Living
 > **Tagline:** Turning 2 metres of Bengaluru curb space into a shared community asset.
 > **Core Requirement:** Built with IBM Bob throughout architecture, development, and delivery.
@@ -147,7 +147,7 @@ Click the **"Run 30s Agent Tour"** button in the header of any screen to watch t
 - **Low-Level Design (LLD):** See [`lld.md`](lld.md) for full database schemas, API contracts, sequence diagrams, and concurrency locking specifications.
 - **High-Level Design (HLD):** See [`hld.md`](hld.md) for architectural trade-offs, DPDP Act 2023 compliance, and the asymmetric BAA onboarding model.
 - **Video Demonstration Walkthrough:** A comprehensive 3–4 minute recording script with exact screen cues and voiceover is documented in [`VIDEO_SCRIPT.md`](VIDEO_SCRIPT.md).
-- **Video Link:** *To be added after recording — upload to IBM Box or a public video host and paste the link here.*
+- **Video Link:** [https://youtu.be/lTbdyv2hhck](https://youtu.be/lTbdyv2hhck)
 - **Presentation Deck:** [`OoruShare_IBM_Bobathon_Theme1_Submission.pptx`](OoruShare_IBM_Bobathon_Theme1_Submission.pptx) (10 widescreen slides formatted in Carbon v11 with IBM Bob branding).
 
 ---
