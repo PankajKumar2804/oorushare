@@ -73,7 +73,7 @@ Adheres strictly to **IBM Carbon Design System v11** and **Refero Design** stand
 │    - [Launch Dark Store Engine]  [Launch RWA Admin Panel]              │
 ├────────────────────────────────────────────────────────────────────────┤
 │ 8. VERIFIABLE CIVIC ROI & ESG IMPACT (TechGig Exit Criteria)           │
-│    - 4.2 min/drop saved · 14.8 kg CO₂ abated · ₹12,500 fines averted   │
+│    - 4.2 min/drop saved · 14.8 kg CO₂ abated · ₹1,20,000 fines averted │
 ├────────────────────────────────────────────────────────────────────────┤
 │ 9. FOOTER: IBM Bobathon Submission · Theme 1 · Open Architecture       │
 └────────────────────────────────────────────────────────────────────────┘

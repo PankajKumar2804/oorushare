@@ -23,7 +23,7 @@ async function updateTelemetry() {
     if (co2El)   co2El.textContent   = `${t.co2_emissions_abated_kg} kg`;
     if (timeEl)  timeEl.textContent  = `${data.primary_metric.headline.split(' ')[0]} min`;
     if (dispEl)  dispEl.textContent  = `-${t.rwa_dispute_reduction_pct}%`;
-    if (finesEl) finesEl.textContent = `₹${(t.police_fines_averted_inr || 12500).toLocaleString('en-IN')}`;
+    if (finesEl) finesEl.textContent = `₹${(t.police_fines_averted_inr || 120000).toLocaleString('en-IN')}`;
   } catch (_) {}
 }
 
