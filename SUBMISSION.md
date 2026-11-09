@@ -7,7 +7,7 @@
 
 **Builder & Idea Originator:** Pankajkr Jain (Pankaj Kumar) · SWE AI Full Stack · Healthcare Industry
 *Original concept, product design, full-stack implementation, and civic strategy — built end-to-end.*
-**AI Leverage Tool:** IBM Bob · The force-multiplier that let one engineer ship a production-grade 4-sided civic platform in hackathon time
+**AI Leverage Tool:** IBM Bob · A great builder tool and force multiplier that helped one engineer ship a production-grade 4-sided civic platform in hackathon time
 
 ---
 
@@ -71,7 +71,7 @@ OoruShare connects all four civic stakeholders through an **autonomous, agentic 
 
 ## 3. The Bob Story: How the Team Used IBM Bob Throughout Development
 
-IBM Bob was not used as a superficial auto-complete, but as a **Principal Architect and Systems Co-pilot** across the complete building journey:
+IBM Bob was a great builder tool throughout the journey—not just autocomplete, but a **Systems Co-pilot** supporting architecture, implementation, and delivery:
 
 ### Step 1 — Responsible AI Chartering:
 Before writing code, IBM Bob scaffolded the complete **Responsible AI Principles document** (`.bob/artifacts/oorushare-responsible-ai-principles.html`), defining fairness metrics, privacy boundaries (data minimization, PII masking), and human-in-the-loop governance gates.
@@ -110,6 +110,7 @@ Bob generated production-hardened Dockerfiles with non-root user execution, cont
 2. **BAA Fleet Federation & DPDP Tokenization:** Delivery platforms integrate via Business Associate Agreements. Active shift rosters are federated via enterprise webhooks; riders never download an untrusted app, and personal phone numbers/Aadhaar IDs are never stored.
 3. **Strict 2-Minute Loading Cap:** Bays are legally designated as 2-minute temporary loading zones, not long-term parking. Any bike remaining past 5 minutes triggers an automated alert to dark store supervisors.
 4. **Transparent watsonx Audit Trail:** Every curb allocation, stagger interval calculation, and credit issuance is permanently recorded in an immutable ledger, auditable by residents, dark stores, and traffic authorities.
+5. **Privacy and Human Review for Safety Actions:** Rate limits and abuse signals use transient IP data, not persistent rider or resident profiles. Safety alerts use aggregated signals; access restrictions are reversible and require a human-reviewable audit record before they persist beyond the current session.
 
 ---
 

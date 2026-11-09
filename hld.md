@@ -2,15 +2,12 @@
 
 ## 1. Executive Summary & Purpose
 
-**OoruShare** was engineered for the **IBM Bobathon: Build for Bengaluru** under **Theme 1: Smarter Streets Better Living**. 
+**OoruShare** was engineered for the **IBM Bobathon: Build for Bengaluru** under **Theme 1: Smarter Streets Better Living**. IBM Bob was a great builder tool throughout architecture, implementation, and delivery.
 
-Currently, the root web route (`/` or `index.html`) immediately renders the raw **Resident Dashboard CRUD interface**. While functionally complete, this creates a major evaluation friction for hackathon judges, municipal authorities, and citizens:
-- **No Conceptual Context**: Evaluators are dropped into a driveway listing form without understanding *why* this solves Bengaluru's bylane gridlock.
-- **Hidden Agentic AI Capabilities**: The 4-stage autonomous curb loop, IBM Granite 3.8B congestion forecasting, and dual-layer conflict resolution are buried across separate pages.
-- **Lost ESG & Civic Story**: The 4.2-minute transit delay reduction, 14.8 kg CO₂ abatement, and ₹1,500/month fine savings are not highlighted up-front.
+The root web route (`/` or `index.html`) is the **Civic Landing Page**, introducing OoruShare's impact, agentic curb loop, and live prototypes. The resident, rider, dark-store, and RWA workflows remain available on their dedicated dashboard pages.
 
 ### Goal
-Decouple the operational dashboard from the marketing and narrative layer by creating a **world-class, high-craft Civic Marketing & Platform Overview Page** at root `/` (`index.html`), while preserving full, seamless access to the operational dashboards (`resident.html`, `rider.html`, `darkstore.html`, `rwa.html`).
+Keep the civic story and operational workflows easy to discover: the root page explains the platform and links to the live dashboards (`resident.html`, `rider.html`, `darkstore.html`, `rwa.html`).
 
 ---
 
@@ -73,7 +70,7 @@ Adheres strictly to **IBM Carbon Design System v11** and **Refero Design** stand
 │    - [Launch Dark Store Engine]  [Launch RWA Admin Panel]              │
 ├────────────────────────────────────────────────────────────────────────┤
 │ 8. VERIFIABLE CIVIC ROI & ESG IMPACT (TechGig Exit Criteria)           │
-│    - 4.2 min/drop saved · 14.8 kg CO₂ abated · ₹1,20,000 fines averted │
+│    - 4.2 min/drop saved · 14.8 kg CO₂ abated · ₹1,20,000/day pilot fine estimate │
 ├────────────────────────────────────────────────────────────────────────┤
 │ 9. FOOTER: IBM Bobathon Submission · Theme 1 · Open Architecture       │
 └────────────────────────────────────────────────────────────────────────┘
@@ -219,5 +216,5 @@ Under India's **Digital Personal Data Protection (DPDP) Act 2023**, sharing unma
 1. **Tokenized Identity Federation**: Platforms push anonymized tokens (e.g., `rider_token: "BLK_HSR_4021"`, masked vehicle number `KA01***39`), preventing PII leakage across third-party networks.
 2. **Geofenced Temporal Scoping**: Loading bay reservations are strictly time-bounded to 2 minutes with atomic advisory locks (`pg_try_advisory_xact_lock`), self-expiring upon departure.
 3. **Audit Immutability**: All BAA dispatch transactions are recorded in the audit trail without exposing personal resident or rider identity to external telemetry consumers.
-
+4. **Privacy and Human Review for Safety Actions**: Rate limits and abuse signals use transient IP data rather than persistent identity profiles. Safety signals remain aggregated; access restrictions are reversible and must have a human-reviewable audit record before they persist beyond the current session.
 
