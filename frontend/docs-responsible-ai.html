@@ -1,4 +1,4 @@
-﻿<html lang="en">
+<html lang="en">
 
 <head>
   <!-- OoruShare · Copyright (c) 2026 Pankajkr Jain (Pankaj Kumar) · MIT Licence
@@ -304,7 +304,7 @@
       <div class="pcard c5">
         <div class="icon">05</div>
         <h3>Safety</h3>
-        <p>Rate limits, advisory locks, and graceful degradation prevent system abuse</p>
+        <p>Rate limits, advisory locks, graceful degradation, privacy-by-design, and mandatory human review prevent system abuse</p>
       </div>
       <div class="pcard c6">
         <div class="icon">06</div>
@@ -490,7 +490,7 @@
       (e.g. <code>rider_token: "BLK_HSR_4021"</code>). Riders do not undergo separate KYC or redundant onboarding,
       eliminating friction while ensuring zero PII leakage to driveway owners.</p>
 
-    <h2>5 · Safety &amp; Robustness</h2>
+    <h2>5 · Safety, Privacy &amp; Human Review</h2>
     <h3>5.1 Abuse prevention</h3>
     <ul>
       <li><strong>Rate limiting:</strong> 300 API requests/minute per IP; 10 booking attempts/minute per IP+spot</li>
@@ -507,7 +507,17 @@
         streams before process exit</li>
     </ul>
 
-    <h3>5.3 Out-of-scope risks and mitigations</h3>
+    <h3>5.3 Privacy &amp; human review in safety design</h3>
+    <p>For safety-focused decisions, privacy and human review are built into the design — not added as an afterthought:</p>
+    <ul>
+      <li><strong>Privacy by default:</strong> Safety mechanisms (rate limiting, abuse detection) operate on transient IP data only — no persistent profiling of riders or residents is performed. Aggregated anomaly signals never resolve to individual identities.</li>
+      <li><strong>Human review gate:</strong> Any automated safety action that affects a user's access (e.g. spot lockout, booking block) surfaces a review flag to the platform operator. No user is silently locked out without a human-reviewable audit record.</li>
+      <li><strong>Reversibility:</strong> All automated safety interventions are reversible by a human operator. The system records the triggering signal, the automated response, and the reviewing operator in a single audit row.</li>
+      <li><strong>Minimal data exposure:</strong> Safety dashboards show aggregated counts and event types — operator UI never surfaces raw PII (name, phone, address) in safety-alert context.</li>
+    </ul>
+    <div class="callout cb"><strong>Design principle:</strong> When a safety control touches personal data or restricts access, a human review step is mandatory before the restriction persists beyond the current session.</div>
+
+    <h3>5.4 Out-of-scope risks and mitigations</h3>
     <table>
       <thead>
         <tr>
